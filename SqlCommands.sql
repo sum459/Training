@@ -133,6 +133,13 @@ SELECT D.dept_name , COUNT(D.dept_head_ID) FROM dept AS D inner JOIN emp AS E
 ON E.ID = D.dept_head_ID AND dept_head_ID IS NOT NULL
 group BY dept_head_ID ;
 
+SELECT D.dept_name , COUNT(D.dept_head_ID) FROM dept AS D inner JOIN emp AS E
+ON E.ID = D.dept_head_ID 
+where dept_head_ID IS NOT NULL
+group BY dept_head_ID 
+having COUNT(D.dept_head_ID) < 1;
+
+
 
 
 
