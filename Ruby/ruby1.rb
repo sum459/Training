@@ -1,6 +1,37 @@
+2.6.0 :001 > for i in 0..10
+2.6.0 :002?>   puts "hello"
+2.6.0 :003?>   end
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+
+2.6.0 :007 > (0..5).each do |i|
+2.6.0 :008 >     puts "#{i}"
+2.6.0 :009?>   end
+0
+1
+2
+3
+4
+5
+
+
+
+
+
+
+
 #If-Else,Elsif,unless
 
-=begin
+
 a,b=10,5
 if a < b
   puts "#{a} is less than #{b}"
@@ -54,4 +85,34 @@ print defined?(c)
 
 beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/Ruby$ ruby ruby1.rb
 local-variable
-=end
+
+
+n=1
+while n<=10
+	puts "#{n}"
+	n+=1
+end
+
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/Ruby$ ruby ruby1.rb
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+
+n=1
+begin
+	puts "#{n}"
+	n+=1
+end until n<10 and n!=1
+
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/Ruby$ ruby ruby1.rb
+1
+
+
