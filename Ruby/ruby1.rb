@@ -1,4 +1,4 @@
-#If-Else
+#If-Else,Elsif,unless
 
 =begin
 a,b=10,5
@@ -24,4 +24,34 @@ end
 beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/Ruby$ ruby ruby1.rb
 X is more than 2
 
+
+
+#case
+
+age = 25
+case age
+ when 0..2
+ 	puts "Baby"
+ when 3..7
+ 	puts "little child"
+ when 8..12
+ 	puts "Child"
+ when 13..17
+ 	puts "Youth"
+ else
+ 	puts "Adult"
+ end
+
+
+print 1.respond_to?("even")
+puts "#{1.respond_to?("even?")}"
+
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/Ruby$ ruby ruby1.rb
+falsetrue
+
+c=5
+print defined?(c)
+
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/Ruby$ ruby ruby1.rb
+local-variable
 =end
