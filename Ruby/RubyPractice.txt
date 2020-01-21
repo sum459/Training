@@ -1,0 +1,78 @@
+
+beryl@beryl-To-be-filled-by-O-E-M:~$ irb
+2.7.0 :001 > puts "Hello"
+ => nil 
+3+4
+2.7.0 :003 > puts "#{3+4}"
+7
+ => nil 
+2.7.0 :004 > print 3+4
+7 => nil 
+2.7.0 :005 > a=5
+2.7.0 :006 > b=2
+2.7.0 :007 > c=a**b
+
+2.7.0 :010 > print "value of c is = ",c
+value of c is = 25 => nil 
+2.7.0 :011 > puts "#{a%b}"
+1
+ => nil 
+2.7.0 :012 > c.class
+ => Integer 
+2.7.0 :017"> print <<EOF
+2.7.0 :018"> Hii This is Sumit
+2.7.0 :019"> Hello this is Ishant
+2.7.0 :020 > EOF
+Hii This is Sumit
+Hello this is Ishant
+ => nil 
+2.7.0 :021 > BEGIN {
+2.7.0 :022 >   puts "This is very beginning" }
+This is very beginning
+ => nil 
+
+END{"End of the class"}  
+BEGIN{puts "Stating of class"} #This executes first
+puts "Body of class"
+
+
+beryl@beryl-To-be-filled-by-O-E-M:~$ ruby ruby.rb
+Stating of class
+Body of class
+
+2.6.0 :001 > class Phone
+2.6.0 :002?>   @@phone_type='Android'
+2.6.0 :003?>   def ram
+2.6.0 :004?>     puts "Its ram is 4gb"
+2.6.0 :005?>     end
+2.6.0 :006?>   end
+ => :ram 
+2.6.0 :007 > ob=Phone.new
+ => #<Phone:0x000055c1f6ac83f8> 
+2.6.0 :008 > ob.ram
+Its ram is 4gb
+ => nil 
+2.6.0 :002 > class Office
+2.6.0 :003?>   def initialize(id,did,name)
+2.6.0 :004?>     @id=id
+2.6.0 :005?>     @did=did
+2.6.0 :006?>     @name=name
+2.6.0 :007?>     end
+2.6.0 :008?>   def show
+2.6.0 :009?>     puts "id=#{@id}  did=#{@did} name=#{@name}"
+2.6.0 :010?>     end
+2.6.0 :011?>   end
+ => :show 
+2.6.0 :012 > ob1=Office.new("1","101","Sumit")
+ => #<Office:0x000055a06d9086f8 @id="1", @did="101", @name="Sumit"> 
+2.6.0 :014 > ob2=Office.new("2","101","Sahil")
+ => #<Office:0x000055a06d973958 @id="2", @did="101", @name="Sahil"> 
+2.6.0 :015 > ob1.show
+id=1  did=101 name=Sumit
+ => nil 
+2.6.0 :016 > ob2.show
+id=2  did=101 name=Sahil
+ => nil 
+
+
+
