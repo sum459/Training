@@ -23,6 +23,18 @@ hello
 4
 5
 
+ => 0..5 
+2.6.0 :010 > def hello
+2.6.0 :011?>   yield 5
+2.6.0 :012?>   puts "hii"
+2.6.0 :013?>   yield 100
+2.6.0 :014?>   end
+ => :hello 
+2.6.0 :015 > hello {|i| puts"hello G #{i}"}
+hello G 5
+hii
+hello G 100
+
 
 
 
@@ -93,7 +105,7 @@ while n<=10
 	n+=1
 end
 
-beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/Ruby$ ruby ruby1.rb
+
 1
 2
 3
@@ -112,7 +124,53 @@ begin
 	n+=1
 end until n<10 and n!=1
 
-beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/Ruby$ ruby ruby1.rb
+
 1
 
 
+if ((1..10) === 4)
+   puts "4 lies in (1..10)"
+end
+
+if (('a'..'j') === 'b')
+   puts "b lies in ('a'..'j')"
+end
+
+if (('a'..'j') === 'z')
+   puts "z lies in ('a'..'j')"
+end
+
+4 lies in (1..10)
+b lies in ('a'..'j')
+
+
+score = 90
+
+result = case score
+   when 0..40 then "Fail"
+   when 41..60 then "Pass"
+   when 61..70 then "Pass with Merit"
+   when 71..100 then "Pass with Distinction"
+   else "Invalid Score"
+end
+
+puts result
+
+Pass with Distinction
+
+2.6.0 :016 > d=  ["a",5]
+ => ["a", 5] 
+2.6.0 :017 > print d
+["a", 5] => nil 
+2.6.0 :018 > puts "#{d}"
+["a", 5]
+ => nil 
+2.6.0 :019 > puts d
+a
+5
+2.6.0 :020 > H = Hash["a" => 100, "b" => 200]
+ => {"a"=>50, "b"=>1200} 
+ 
+2.6.0 :024 > puts "#{H['a']}"
+50
+ 
