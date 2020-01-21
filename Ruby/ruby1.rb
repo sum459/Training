@@ -158,6 +158,7 @@ puts result
 
 Pass with Distinction
 
+
 2.6.0 :016 > d=  ["a",5]
  => ["a", 5] 
 2.6.0 :017 > print d
@@ -168,9 +169,47 @@ Pass with Distinction
 2.6.0 :019 > puts d
 a
 5
+
+
 2.6.0 :020 > H = Hash["a" => 100, "b" => 200]
  => {"a"=>50, "b"=>1200} 
- 
+
 2.6.0 :024 > puts "#{H['a']}"
 50
  
+
+
+
+2.6.0 :018 > t=Time.new
+ => 2020-01-21 17:10:53 +0530 
+2.6.0 :019 > puts t
+2020-01-21 17:10:53 +0530
+ => nil 
+2.6.0 :020 > t=Time.now
+ => 2020-01-21 17:11:10 +0530 
+
+2.6.0 :022 > puts "Current Time= "+t.inspect
+Current Time= 2020-01-21 17:11:10 +0530
+ => nil 
+2.6.0 :026 > time=Time.new
+ => 2020-01-21 17:15:50 +0530 
+2.6.0 :027 > puts time.year
+2020
+ => nil 
+2.6.0 :028 > puts time.day
+21
+ => nil 
+2.6.0 :029 > puts time.wday
+2
+ => nil 
+
+2.6.0 :031 > puts time.hour
+17
+ => nil 
+2.6.0 :032 > puts time.sec
+50
+ => nil 
+2.6.0 :033 > puts time.yday
+21
+
+
