@@ -59,3 +59,57 @@ Enter third no:
 5 is max
 
 
+# Pattern Programs 
+=begin
+for i in 1..5
+	for j in 1..5
+		print "*"
+	end
+	print "\n"
+end
+
+*****
+*****
+*****
+*****
+*****
+
+
+
+for i in 1..5
+	for j in 1..5
+		if(i<j)
+		print "*"
+	        end
+	end
+	print "\n"
+end
+
+****
+***
+**
+*
+
+
+
+
+
+for i in 1..5
+	for j in 1..5
+		if(i>=j)
+		print "*"
+	        end
+	end
+	print "\n"
+end
+
+*
+**
+***
+****
+*****
+
+
+=end
+
+
