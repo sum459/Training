@@ -382,7 +382,30 @@ Mat.sf(Mat::B)
 0
 0.84
 
- => 0 
+
+require_relative "rr1.rb"
+
+puts Mat::B 
+
+0
+0.84
+1
+
+
+require_relative "rr1.rb"
+
+class Abc 
+
+  include Mat	
+    def m
+     puts Mat::B 
+    end
+end
+
+a=Abc.new
+puts a.m
+
+1
 
 
 
