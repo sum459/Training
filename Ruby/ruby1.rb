@@ -1,4 +1,6 @@
 
+Practice Basic Concepts:
+
 beryl@beryl-To-be-filled-by-O-E-M:~$ irb
 2.7.0 :001 > puts "Hello"
  => nil 
@@ -40,6 +42,8 @@ beryl@beryl-To-be-filled-by-O-E-M:~$ ruby ruby.rb
 Stating of class
 Body of class
 
+Practice Variables:
+
 2.6.0 :001 > class Phone
 2.6.0 :002?>   @@phone_type='Android'
 2.6.0 :003?>   def ram
@@ -75,7 +79,7 @@ id=2  did=101 name=Sahil
  => nil 
 
 
-
+Practice loops:
 
 2.6.0 :001 > for i in 0..10
 2.6.0 :002?>   puts "hello"
@@ -102,6 +106,7 @@ hello
 4
 5
 
+Practice Blocks:
  => 0..5 
 2.6.0 :010 > def hello
 2.6.0 :011?>   yield 5
@@ -171,6 +176,7 @@ puts "#{1.respond_to?("even?")}"
 beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/Ruby$ ruby ruby1.rb
 falsetrue
 
+Practice Defined etc:
 c=5
 print defined?(c)
 
@@ -257,7 +263,7 @@ a
 50
  
 
-
+Time and Date:
 
 2.6.0 :018 > t=Time.new
  => 2020-01-21 17:10:53 +0530 
@@ -288,6 +294,8 @@ Current Time= 2020-01-21 17:11:10 +0530
 2.6.0 :032 > puts time.sec
 50
  => nil 
+
+Setter nd Getter nd Iterators
 
 class Animal
 #setter
@@ -366,6 +374,8 @@ hey 15
 hey 20
 hey 25
 
+Module,Require,Include Practice
+
 module Mat
 	A,B=0,1
 def Mat.sf(x)
@@ -407,5 +417,76 @@ puts a.m
 
 1
 
+Array Methods
+
+2.7.0 :045 > a=[1,2,3,4,"f","g"]
+2.7.0 :046 > a.class
+ => Array 
+ => 6 
+2.7.0 :048 > a.size
+2.7.0 :049 > puts a.reverse
+g
+4
+3
+2
+1
+ => nil 
+2.7.0 :050 > puts a.inspect
+ => nil 
+2.7.0 :051 > puts a
+1
+2
+3
+4
+f
+g
+2.7.0 :052 > puts a.empty?
+false
+ => nil 
+2.7.0 :053 > puts a.shift
+1
+ => nil 
+2.7.0 :054 > puts a
+4
+f
+ => nil 
+
+2.7.0 :056 > puts a<<5
+2
+3
+4
+f
+g
+5
+ => nil 
+2.7.0 :057 > b=["a",1,2,3]
+2.7.0 :058 > puts a.equal?b
+false
+ => nil 
+
+
+2-D Array
+box=[]
+2.7.0 :033 > 5.times do |row|
+2.7.0 :034 >   box[row]=[]
+2.7.0 :035 >   10.times do
+2.7.0 :036 >     box[row]<<"*"
+2.7.0 :037 >   end
+2.7.0 :038 >   print "\n"
+2.7.0 :039 > end
+
+
+
+
+
+ => 5 
+2.7.0 :040 > for row in box
+2.7.0 :041 >     puts (row.inspect)
+2.7.0 :042 > end
+["*", "*", "*", "*", "*", "*", "*", "*", "*", "*"]
+["*", "*", "*", "*", "*", "*", "*", "*", "*", "*"]
+["*", "*", "*", "*", "*", "*", "*", "*", "*", "*"]
+["*", "*", "*", "*", "*", "*", "*", "*", "*", "*"]
+["*", "*", "*", "*", "*", "*", "*", "*", "*", "*"]
 
 
