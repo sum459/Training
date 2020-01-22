@@ -58,6 +58,27 @@ Enter third no:
 1
 5 is max
 
+#Program to check prime no.
+
+2.7.0 :089 > puts "Enter a no:"
+Enter a no:
+ => nil 
+2.7.0 :090 > n=gets.chomp.to_i
+5
+2.7.0 :091 > for i in (2..n)
+2.7.0 :092 >     if(n%i==0)
+2.7.0 :093 >       break
+2.7.0 :094 >     end
+2.7.0 :095 > end
+ => nil 
+2.7.0 :096 > if(n==i)
+2.7.0 :097 >   puts"Prime"
+2.7.0 :098 > else
+2.7.0 :099 >   puts "not prime"
+2.7.0 :100 > end
+Prime
+
+
 
 # Pattern Programs 
 =begin

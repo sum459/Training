@@ -464,6 +464,103 @@ g
 false
  => nil 
 
+2.7.0 :064 > puts a.index(3)
+1
+
+
+2.7.0 :065 > puts a.concat(b)
+2
+3
+4
+f
+g
+a
+1
+2
+3
+ => nil 
+2.7.0 :066 > a.delete_at(3)
+ => "f" 
+2.7.0 :067 > puts a.concat(b)
+2
+3
+4
+g
+5
+a
+2
+3
+a
+1
+2
+ => nil 
+2.7.0 :068 > puts a
+2
+3
+4
+g
+5
+1
+2
+3
+a
+1
+2
+ => nil 
+2.7.0 :069 > puts b
+a
+1
+2
+3
+ => nil 
+2.7.0 :070 > puts a[0,6]
+2
+3
+4
+g
+5
+a
+ => nil 
+2.7.0 :071 > puts a[-5..-1]
+3
+a
+1
+2
+3
+ => nil 
+
+
+2.7.0 :072 > puts a.index("a")
+ => nil 
+2.7.0 :073 > c=a&b
+2.7.0 :074 > puts c
+2
+3
+a
+1
+ => nil 
+3
+4
+g
+5
+a
+1
+ => nil 
+2.7.0 :076 > puts o=a-b
+4
+g
+5
+ => nil 
+2.7.0 :077 > puts a.sort
+
+2.7.0 :078 > c=[2,5,3,8]
+2.7.0 :079 > puts c.sort
+2
+3
+5
+8
+
+
 
 2-D Array
 box=[]
@@ -489,4 +586,28 @@ box=[]
 ["*", "*", "*", "*", "*", "*", "*", "*", "*", "*"]
 ["*", "*", "*", "*", "*", "*", "*", "*", "*", "*"]
 
+
+#Hashes
+2.7.0 :080 > hash={1=>"Apple",2=>"Mango",}
+2.7.0 :081 > puts hash
+{1=>"Apple", 2=>"Mango"}
+ => nil 
+2.7.0 :082 > puts hash.inspect
+ => nil 
+2.7.0 :083 > puts hash.keys
+1
+2
+ => nil 
+Apple
+Mango
+ => nil 
+2.7.0 :085 > puts hash.invert
+{"Apple"=>1, "Mango"=>2}
+ => nil 
+
+2.7.0 :088 > hash.each {|x,y| puts "key : #{x}","value : #{y}" }
+key : 1
+value : Apple
+key : 2
+value : Mango
 
