@@ -611,3 +611,22 @@ value : Apple
 key : 2
 value : Mango
 
+2.7.0 :138 > hash[1]="Apple"
+2.7.0 :139 > hash[2]="Mango"
+2.7.0 :140 > puts hash
+{3=>"grapes", "w"=>"orange", 1=>"Apple", 2=>"Mango"}
+
+2.7.0 :143 > puts hash.value?("2")
+false
+ => nil 
+2.7.0 :144 > puts hash.key?("2")
+false
+ => nil 
+2.7.0 :145 > puts hash.key?(2)
+true
+2.7.0 :150 > puts hash.values_at(1) 
+Apple
+2.7.0 :151 > puts hash.fetch(1) 
+Apple
+
+
