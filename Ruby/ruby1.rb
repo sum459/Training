@@ -322,4 +322,67 @@ Cat
 2.6.0 :033 > puts time.yday
 21
 
+2.7.0 :001 > 5.times do puts "hey" end
+hey
+hey
+hey
+hey
+ => 5 
+2.7.0 :002 > 5.times {puts "hey"}
+hey
+hey
+hey
+hey
+ => 5 
+2.7.0 :003 > 5.upto(8) {puts "hey"}
+hey
+hey
+hey
+ => 5 
+2.7.0 :004 > 5.downto(8) {|i|puts "hey #{i}"}
+ => 5 
+2.7.0 :005 > 5.downto(8) {|i| puts "hey #{i}"}
+ => 5 
+2.7.0 :006 > 12.downto(8) {|i| puts "hey #{i}"}
+hey 12
+hey 11
+hey 10
+hey 9
+hey 8
+ => 12 
+2.7.0 :007 > 0.step(5) {|i| puts "hey #{i}"}
+hey 0
+hey 1
+hey 2
+hey 3
+hey 4
+hey 5
+ => 0 
+2.7.0 :008 > 0.step(25,5) {|i| puts "hey #{i}"}
+hey 0
+hey 5
+hey 10
+hey 15
+hey 20
+hey 25
+
+module Mat
+	A,B=0,1
+def Mat.sf(x)
+	puts Math.sin(x).round(2)
+end
+
+def Mat.cf(x)
+	puts "#{(Math.cos(x)).round(2)}"
+end
+end
+puts Mat::A 
+Mat.sf(Mat::B)
+
+0
+0.84
+
+ => 0 
+
+
 
