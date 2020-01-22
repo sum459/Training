@@ -133,4 +133,69 @@ end
 
 =end
 
+#Hotel Menu Program
+
+class Menu
+	attr_reader:il
+	def initialize(*items)
+		@items=items
+		@il=@items.size
+	end
+
+	def m_choise
+		@items.each_with_index do|item,index|
+			puts "#{index+1} . #{item}"
+		end
+       print "Place your order sir..!!!"
+       user_choise=gets.to_i
+      return user_choise
+    end
+end
+ob=Menu.new("Pizza","Burger","Sandwich","Hot_dog","Quit")
+
+while((choise=ob.m_choise) != ob.il)
+	case choise
+      when 1
+      	puts "Your order for pizza Has been placed!!!"
+      when 2
+      	puts "Your order for Burger Has been placed!!!"
+      when 3
+      	puts "Your order for Sandwich Has been placed!!!"
+      when 4
+      	puts "Your order for Hot-dog Has been placed!!!"
+      else
+      	puts "Plz press valid no."
+      end
+ end  	
+ puts "Thanxx for the visit"
+
+1 . Pizza
+2 . Burger
+3 . Sandwich
+4 . Hot_dog
+5 . Quit
+Place your order sir..!!!1
+Your order for pizza Has been placed!!!
+1 . Pizza
+2 . Burger
+3 . Sandwich
+4 . Hot_dog
+5 . Quit
+Place your order sir..!!!
+Plz press valid no.
+1 . Pizza
+2 . Burger
+3 . Sandwich
+4 . Hot_dog
+5 . Quit
+Place your order sir..!!!2
+Your order for Burger Has been placed!!!
+1 . Pizza
+2 . Burger
+3 . Sandwich
+4 . Hot_dog
+5 . Quit
+Place your order sir..!!!5
+Thanxx for the visit
+
 
