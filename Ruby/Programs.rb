@@ -306,6 +306,21 @@ class Patterns_p
     end
   end
 
+  def diamond_d(r)
+      k=0
+    (1..r).each do |i|
+      i<=(r/2)?k+=1:k-=1
+      (1...2*r).each do |j|
+        if(j>=((r/2)+1)-k and j<=((r/2)-1)+k)
+          print "*"
+        else
+          print" "
+        end
+      end
+      puts
+    end
+  end
+
 end
 ob=Patterns_p.new
 puts "Enter No. of rows:"
