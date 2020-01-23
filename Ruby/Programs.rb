@@ -198,4 +198,20 @@ Your order for Burger Has been placed!!!
 Place your order sir..!!!5
 Thanxx for the visit
 
+#Palindrome Program using Modules classes
+require_relative "rr.rb"
+
+class Palindrome_n
+	 def initialize(n)
+         if M_c_r.reverse_digits(n)==n
+         	return puts "#{n} is a palindrome no."
+         else
+         	return puts "#{n} is not a palindrome no."
+         end
+     end
+end
+
+puts "Enter a no:"
+$n=gets.to_i
+ob=Palindrome_n.new($n)
 
