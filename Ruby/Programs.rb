@@ -199,6 +199,7 @@ Place your order sir..!!!5
 Thanxx for the visit
 
 #Palindrome Program using Modules classes
+
 require_relative "rr.rb"
 
 class Palindrome_n
@@ -214,4 +215,67 @@ end
 puts "Enter a no:"
 $n=gets.to_i
 ob=Palindrome_n.new($n)
+
+OUTPUT:
+34566543
+34566543 is a palindrome no.
+
+Enter a no:
+345 is not a palindrome no.
+
+
+
+#Armstrong no. program using self module
+  
+require_relative "rr.rb"
+
+ class Armstrong_n
+      def initialize(n)
+         p=M_c_r.count_digits(n) 
+         sum,y,r=0,0,n
+          while n!= 0
+           y=n%10
+           sum=sum+(y**p)
+           n/=10
+        end
+        if sum==r
+            return puts "Armstrong No."
+          else
+           return puts"Not armstrong no."
+        end
+      end
+ end
+
+puts "Enter a no:"
+$n=gets.to_i
+ob=Armstrong_n.new($n)
+
+OUTPUT:
+
+beryl@beryl-To-be-filled-by-O-E-M:~/mm$ ruby rr1.rb
+Enter a no:
+45
+Not armstrong no.
+
+beryl@beryl-To-be-filled-by-O-E-M:~/mm$ ruby rr1.rb
+Enter a no:
+1
+Armstrong No.
+y-O-E-M:~/mm$ ruby rr1.rb
+Enter a no:
+0
+Armstrong No.
+
+beryl@beryl-To-be-filled-by-O-E-M:~/mm$ ruby rr1.rb
+Enter a no:
+10
+Not armstrong no.
+beryl@beryl-To-be-filled-by-O-E-M:~/mm$ ruby rr1.rb
+Enter a no:
+153
+Armstrong No.
+beryl@beryl-To-be-filled-by-O-E-M:~/mm$ ruby rr1.rb
+Enter a no:
+1634
+Armstrong No.
 
