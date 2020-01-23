@@ -421,7 +421,4 @@ Please press valid button
 Enter your choise
 4
 
-#puts "Enter No. of cols:"
-#c=gets.to_i 
-#ob.square_p(r,c)
-ob.pyramid_t(r)
+
