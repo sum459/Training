@@ -279,3 +279,38 @@ Enter a no:
 1634
 Armstrong No.
 
+#Pattern of user's choice
+class Patterns_p
+=begin
+  def square_p(r,c)
+    (1..r).each do |i|
+      (1..c).each do |j|
+        print "*"
+      end
+       puts
+    end
+  end
+=end
+  def pyramid_t(r)
+    (1..r).each do |i|
+      (1...2*r).each do |j|
+        if(j>=(r+1)-i and j<=(r-1)+i)
+          print "*"
+        elsif(j==r+i)
+          break
+        else
+          print" "
+        end
+      end
+      puts
+    end
+  end
+
+end
+ob=Patterns_p.new
+puts "Enter No. of rows:"
+r=gets.to_i
+#puts "Enter No. of cols:"
+#c=gets.to_i 
+#ob.square_p(r,c)
+ob.pyramid_t(r)
