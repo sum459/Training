@@ -280,8 +280,9 @@ Enter a no:
 Armstrong No.
 
 #Pattern of user's choice
+
 class Patterns_p
-=begin
+
   def square_p(r,c)
     (1..r).each do |i|
       (1..c).each do |j|
@@ -290,7 +291,7 @@ class Patterns_p
        puts
     end
   end
-=end
+
   def pyramid_t(r)
     (1..r).each do |i|
       (1...2*r).each do |j|
@@ -305,8 +306,7 @@ class Patterns_p
       puts
     end
   end
-
-  def diamond_d(r)
+    def diamond_d(r)
       k=0
     (1..r).each do |i|
       i<=(r/2)?k+=1:k-=1
@@ -321,10 +321,106 @@ class Patterns_p
     end
   end
 
+  def choise_c
+    puts "1. Box "
+    puts "2. Pyramid "
+    puts "3. Diamond "
+    puts "4. Quit"
+    puts "Enter your choise"
+    c=gets.to_i
+    return c
+  end
+
 end
 ob=Patterns_p.new
-puts "Enter No. of rows:"
-r=gets.to_i
+
+ while (c=ob.choise_c)
+      
+  case c
+    when 1 
+      puts "Enter No. of rows:"
+      r=gets.to_i
+      puts "Enter No. of cols:"
+      c=gets.to_i 
+     ob.square_p(r,c)
+    when 2 then puts "Enter No. of rows:"
+      r=gets.to_i 
+      ob.pyramid_t(r)
+    when 3 then puts "Enter No. of rows:"
+      r=gets.to_i
+      ob.diamond_d(r)
+    when 4 then break
+    else
+      puts "Please press valid button"
+  end
+end
+
+Output:
+
+1. Box 
+2. Pyramid 
+3. Diamond 
+4. Quit
+Enter your choise
+3
+Enter No. of rows:
+12
+     *                 
+    ***                
+   *****               
+  *******              
+ *********             
+***********            
+ *********             
+  *******              
+   *****               
+    ***                
+     *                 
+                       
+1. Box 
+2. Pyramid 
+3. Diamond 
+4. Quit
+Enter your choise
+2
+Enter No. of rows:
+8
+       *
+      ***
+     *****
+    *******
+   *********
+  ***********
+ *************
+***************
+1. Box 
+2. Pyramid 
+3. Diamond 
+4. Quit
+Enter your choise
+1
+Enter No. of rows:
+4
+Enter No. of cols:
+10
+**********
+**********
+**********
+**********
+1. Box 
+2. Pyramid 
+3. Diamond 
+4. Quit
+Enter your choise
+5
+Please press valid button
+1. Box 
+2. Pyramid 
+3. Diamond 
+4. Quit
+Enter your choise
+4
+
 #puts "Enter No. of cols:"
 #c=gets.to_i 
 #ob.square_p(r,c)
