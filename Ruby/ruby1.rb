@@ -783,5 +783,21 @@ Traceback (most recent call last):
 FrozenError (can't modify frozen M: #<M:0x00005639a53c6ad8 @l=2, @h=3>)
 2.7.0 :316 > 
 
+#Formatting Date and time
+2.7.0 :351"> puts t.strftime("Year : %y
+2.7.0 :352"> Month : %m
+2.7.0 :353"> Day   : %d
+2.7.0 :354"> Time  : %H:%M:%S %p
+2.7.0 :355"> Time Zone :%z
+2.7.0 :356">           
+2.7.0 :357 > %A")
+
+Year : 20
+Month : 01
+Day   : 24
+Time  : 12:27:46 PM
+Time Zone :+0530
+          
+Friday
 
 
