@@ -662,6 +662,29 @@ Apple
 =>> nil 
 
 
+#Inheritance
+
+2.7.0 :013 > class Pa
+2.7.0 :014 >   attr_accessor:name,:age
+2.7.0 :015 > end
+ => nil 
+2.7.0 :016 > class Ca < Pa
+2.7.0 :017 >   attr_accessor:cast
+2.7.0 :018 > end
+ => nil 
+2.7.0 :019 > ob=Ca.new
+2.7.0 :020 > ob.name="Sumit"
+2.7.0 :021 > ob.age=20
+2.7.0 :022 > ob.cast="Genera"
+2.7.0 :023 > puts ob
+#<Ca:0x00005639a518a968>
+ => nil 
+2.7.0 :024 > puts ob.inspect
+#<Ca:0x00005639a518a968 @name="Sumit", @age=20, @cast="Genera">
+ => nil 
+2.7.0 :025 > puts ob.age
+20
+ => nil 
 
 
 
