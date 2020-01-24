@@ -800,4 +800,45 @@ Time Zone :+0530
           
 Friday
 
+#Strings
+
+2.7.0 :358 > "Sumit".upcase
+ => "SUMIT" 
+2.7.0 :359 > "Sumit".downcase
+ => "sumit" 
+2.7.0 :360 > "Sumit".swapcase
+ => "sUMIT" 
+2.7.0 :361 > "Sumit".reverse.swapcase
+ => "TIMUs" 
+2.7.0 :362 > a="Sumit"
+2.7.0 :363 > a.class
+ => String 
+2.7.0 :365 > a.length
+ => 5 
+2.7.0 :366 > a.size
+ => 5 
+2.7.0 :370 > str="Hello, This is Sumit Goyal"
+2.7.0 :371 > str.split
+ => ["Hello,", "This", "is", "Sumit", "Goyal"] 
+2.7.0 :372 > str.capitalize
+ => "Hello, this is sumit goyal" 
+2.7.0 :373 > str.split("    ")
+ => ["Hello, This is Sumit Goyal"] 
+2.7.0 :374 > str.split("  vv  ")
+ => ["Hello, This is Sumit Goyal"] 
+2.7.0 :375 > str.empty?
+ => false 
+2.7.0 :376 > str.encoding
+ => #<Encoding:UTF-8> 
+2.7.0 :377 > str[1]
+ => "e" 
+2.7.0 :378 > age=12
+2.7.0 :379 > "My #{age}"
+ => "My 12" 
+2.7.0 :380 > 'My #{age}'
+ => "My \#{age}" 
+2.7.0 :381 > puts 'My #{age}'
+My #{age}
+ => nil 
+
 
