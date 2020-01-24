@@ -716,5 +716,21 @@ Blue
 2.7.0 :070 > ob.inspect
  => "#<Android:0x00005639a53b2380 @color=\"Blue\", @weight=\"167g\">" 
 
+#Method Overriding
+2.7.0 :092 > class Phones
+2.7.0 :093 >   attr_accessor:color,:weight
+2.7.0 :094 >   def initialize(x,y)
+2.7.0 :099 >     puts "Parant class Ram: #{y}"
+2.7.0 :100 >   end
+2.7.0 :101 > end
+ => :Ram 
+2.7.0 :102 > class Android < Phones
+2.7.0 :105 >   end
+2.7.0 :106 > end
+ => :Ram 
+2.7.0 :109 > ob=Android.new("Red","256")
+
+2.7.0 :111 > puts ob.Ram(5)
+Child class Ram: 5
 
 
