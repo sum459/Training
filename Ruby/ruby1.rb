@@ -686,5 +686,35 @@ Apple
 20
  => nil 
 
+2.7.0 :059 > class Phones
+2.7.0 :060 >   attr_accessor:color,:weight
+2.7.0 :061 >   def initialize(x,y)
+2.7.0 :062 >     @color=x
+2.7.0 :063 >     @weight=y
+2.7.0 :064 >   end
+2.7.0 :065 > end
+
+2.7.0 :043 > class Android < Phone
+2.7.0 :044 >   def Ram(x)
+2.7.0 :045 >     return x
+2.7.0 :046 >   end
+
+2.7.0 :066 > ob=Android.new("Black","167g")
+
+
+2.7.0 :057 > ob.Ram(4)
+ => 4 
+2.7.0 :058 > ob.inspect
+ => "#<Android:0x00005639a540c920 @color=\"Black\", @weight=\"167g\">" 
+2.7.0 :067 > puts ob.color
+Black
+ => nil 
+2.7.0 :068 > ob.color="Blue"
+2.7.0 :069 > puts ob.color
+Blue
+ => nil 
+2.7.0 :070 > ob.inspect
+ => "#<Android:0x00005639a53b2380 @color=\"Blue\", @weight=\"167g\">" 
+
 
 
