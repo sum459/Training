@@ -756,4 +756,32 @@ Child class Ram: 5
 #<Animal:0x00005639a539caf8 @n="Sam Ham)", @t="20 10">
  => nil 
 
+2.7.0 :303 > class M
+2.7.0 :304 >   attr_accessor:l,:h
+2.7.0 :305 >   def initialize(l,h)
+2.7.0 :306 >     @l=l
+2.7.0 :307 >     @h=h
+2.7.0 :308 >   end
+2.7.0 :309 > end
+ => :initialize 
+2.7.0 :310 > m=M.new(2,3)
+2.7.0 :311 > puts m.l
+2
+ => nil 
+2.7.0 :312 > puts m.h
+3
+ => nil 
+
+2.7.0 :314 > m.freeze
+ => #<M:0x00005639a53c6ad8 @l=2, @h=3> 
+2.7.0 :315 > m.l=8
+Traceback (most recent call last):
+        4: from /home/beryl/.rvm/rubies/ruby-2.7.0/bin/irb:23:in `<main>'
+        3: from /home/beryl/.rvm/rubies/ruby-2.7.0/bin/irb:23:in `load'
+        2: from /home/beryl/.rvm/rubies/ruby-2.7.0/lib/ruby/gems/2.7.0/gems/irb-1.2.1/exe/irb:11:in `<top (required)>'
+        1: from (irb):315
+FrozenError (can't modify frozen M: #<M:0x00005639a53c6ad8 @l=2, @h=3>)
+2.7.0 :316 > 
+
+
 
