@@ -733,4 +733,27 @@ Blue
 2.7.0 :111 > puts ob.Ram(5)
 Child class Ram: 5
 
+#Operator Overloading
+2.7.0 :287 > class Animal
+2.7.0 :288 >   attr_accessor:n,:t
+2.7.0 :289 >   def initialize(x,y)
+2.7.0 :290 >     @n=x
+2.7.0 :291 >     @t=y
+2.7.0 :292 >   end
+2.7.0 :293 >   def +(o)
+2.7.0 :294 >     return Animal.new("#{self.n} #{o.n})","#{self.t} #{o.t}")
+2.7.0 :295 >   end
+2.7.0 :296 > end
+ => :+ 
+2.7.0 :297 > class Cat < Animal
+2.7.0 :298 > end
+ => nil 
+2.7.0 :299 > a=Cat.new("Sam",20)
+2.7.0 :300 > puts a+b
+#<Animal:0x00005639a53dd0a8>
+ => nil 
+2.7.0 :301 > puts (a+b).inspect
+#<Animal:0x00005639a539caf8 @n="Sam Ham)", @t="20 10">
+ => nil 
+
 
