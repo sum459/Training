@@ -1016,5 +1016,36 @@ hello
 2.7.0 :504 > 
 2.7.0 :505 > b.prepend("Go","Sam")
  => "GoSam!!" 
+#Hashes
+
+2.7.0 :507 > h={1=>"Sam",2=>"Baru"}
+2.7.0 :508 > h
+ => {1=>"Sam", 2=>"Baru"} 
+2.7.0 :509 > puts h
+{1=>"Sam", 2=>"Baru"}
+ => nil 
+2.7.0 :510 > h[1]
+ => "Sam" 
+2.7.0 :511 > h[3]="Dhruv"
+2.7.0 :512 > puts h
+{1=>"Sam", 2=>"Baru", 3=>"Dhruv"}
+ => nil 
+2.7.0 :513 > h[:A]=5
+2.7.0 :514 > puts h
+{1=>"Sam", 2=>"Baru", 3=>"Dhruv", :A=>5}
+ => nil 
+2.7.0 :515 > h[B]=8
+2.7.0 :531 > ha=Hash.new("hello")
+2.7.0 :535 > ha[:a]="Sam"
+2.7.0 :536 > ha[:b]="Sharma"
+2.7.0 :538 > ha[:c]
+ => "hello" 
+2.7.0 :539 > ha.keys
+ => [:a, :b] 
+2.7.0 :540 > puts ha
+{:a=>"Sam", :b=>"Sharma"}
+ => nil 
+2.7.0 :541 > ha.inspect
+ => "{:a=>\"Sam\", :b=>\"Sharma\"}" 
 
 
