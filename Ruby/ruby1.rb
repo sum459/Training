@@ -1047,5 +1047,96 @@ hello
  => nil 
 2.7.0 :541 > ha.inspect
  => "{:a=>\"Sam\", :b=>\"Sharma\"}" 
+2.7.0 :542 > h=Hash.try_convert({1=>2})
+2.7.0 :543 > h
+ => {1=>2} 
+2.7.0 :544 > h=Hash.try_convert({1=>2})
+2.7.0 :545 > h=Hash.try_convert("1=>2")
+2.7.0 :546 > h=Hash.try_convert("2=>1")
+2.7.0 :547 > h
+ => nil 
+2.7.0 :548 > h.inspect
+ => "nil" 
+2.7.0 :542 > h=Hash.try_convert({1=>2})
+2.7.0 :543 > h
+ => {1=>2} 
+2.7.0 :544 > h=Hash.try_convert({1=>2})
+2.7.0 :545 > h=Hash.try_convert("1=>2")
+2.7.0 :546 > h=Hash.try_convert("2=>1")
+2.7.0 :547 > h
+ => nil 
+2.7.0 :548 > h.inspect
+ => "nil" 
+2.7.0 :549 > a=100
+2.7.0 :550 > a="a"
+2.7.0 :551 > b="b".freeze
+2.7.0 :552 > ho={a=>100,b=>200}
+2.7.0 :553 > ho
+ => {"a"=>100, "b"=>200} 
+
+
+2.7.0 :555 > ho.key(100).equal?a
+ => false 
+2.7.0 :556 > ho.key(200).equal?b
+ => true 
+2.7.0 :559 > ho.assoc("b")
+ => ["b", 200] 
+2.7.0 :560 > h
+ => nil 
+2.7.0 :561 > hh
+ => {:A=>"Apple", :P=>"Pine-Apple"} 
+2.7.0 :562 > ho.clear
+ => {} 
+2.7.0 :563 > hh[:A]
+ => "Apple" 
+2.7.0 :564 > hh.compare_by_identity?
+ => false 
+2.7.0 :565 > hh.compare_by_identity
+ => {:A=>"Apple", :P=>"Pine-Apple"} 
+2.7.0 :572 > hh.fetch(:A)
+ => "Apple" 
+2.7.0 :573 > a={1=>"A",2=>[2=>"f"]}
+2.7.0 :574 > a.flatten
+ => [1, "A", 2, [{2=>"f"}]] 
+2.7.0 :575 > a.flatten(2)
+ => [1, "A", 2, {2=>"f"}] 
+2.7.0 :576 > a.flatten(3)
+ => [1, "A", 2, {2=>"f"}] 
+2.7.0 :577 > hh.has_key?:A
+ => true 
+2.7.0 :578 > hh.has_value?:A
+ => false 
+2.7.0 :588 > hh.delete(:A)
+ => "Apple" 
+2.7.0 :589 > hh
+ => {:P=>"Pine-Apple"} 
+2.7.0 :592 > a
+ => {1=>"A", 2=>[{2=>"f"}]} 
+2.7.0 :593 > hh
+ => {:P=>"Pine-Apple"} 
+2.7.0 :594 > a.merge(hh)
+ => {1=>"A", 2=>[{2=>"f"}], :P=>"Pine-Apple"} 
+
+2.7.0 :597 > a.rassoc("A")
+ => [1, "A"] 
+2.7.0 :598 > a=["a","b"]
+2.7.0 :599 > b=["c",'d']
+2.7.0 :600 > h={a=>100,b=>200}
+2.7.0 :601 > h[a]
+ => 100 
+2.7.0 :602 > a[0]="z"
+2.7.0 :603 > h[a]
+ => nil 
+2.7.0 :604 > h.rehash
+ => {["z", "b"]=>100, ["c", "d"]=>200} 
+2.7.0 :607 > h.replace({ "c" => 300, "d" => 400 }) 
+ => {"c"=>300, "d"=>400} 
+2.7.0 :608 > h.select {|k,v| k > "a"}
+ => {"c"=>300, "d"=>400} 
+2.7.0 :610 > h.select {|k,v| v > 300}
+ => {"d"=>400} 
+
+
+
 
 
