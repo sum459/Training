@@ -911,5 +911,110 @@ My #{age}
  => "" 
 2.7.0 :441 > a
  => "" 
+2.7.0 :442 > a="Hello World"
+2.7.0 :443 > a.count "l"
+ => 3 
+2.7.0 :444 > a.count "llo"
+ => 5 
+2.7.0 :445 > a << "!!!"
+ => "Hello World!!!" 
+2.7.0 :446 > b="Sam"
+2.7.0 :447 > a.concat(b)
+ => "Hello World!!!Sam" 
+2.7.0 :448 > a.concat(b,a)
+ => "Hello World!!!SamSamHello World!!!Sam" 
+2.7.0 :449 > a.concat(b,"  ",a)
+ => "Hello World!!!SamSamHello World!!!SamSam  Hello World!!!SamSamHello World!!!Sam" 
+2.7.0 :450 > a
+ => "Hello World!!!SamSamHello World!!!SamSam  Hello World!!!SamSamHello World!!!Sam" 
+               ^
+2.7.0 :454 > 'HELLO'.delete"L"
+ => "HEO" 
+2.7.0 :455 > 'HELLO'.delete"L","EL"
+ => "HEO" 
+2.7.0 :456 > 'HELLO'.delete"L","H"
+ => "HELLO" 
+2.7.0 :457 > 'HELLO'.delete"L","^H"
+ => "HEO" 
+2.7.0 :458 > 'HELLO'.delete"L","*H"
+ => "HELLO" 
+2.7.0 :459 > 'HELLO'.delete"aeiou","^H"
+ => "HELLO" 
+2.7.0 :460 > 'HELLO'.delete"AEIOU","^H"
+ => "HLL" 
+2.7.0 :461 > 'HELLO'.delete"bc-f","^H"
+ => "HELLO" 
+2.7.0 :462 > 'HELLO'.delete"BC-F","^H"
+ => "HLLO" 
+2.7.0 :463 > 'HELLO'.dump
+ => "\"HELLO\"" 
+2.7.0 :464 > a="Hey"
+2.7.0 :465 > a.dump
+ => "\"Hey\"" 
+2.7.0 :466 > a
+ => "Hey" 
+2.7.0 :467 > a.each_byte {|i| puts i}
+72
+101
+121
+ => "Hey" 
+2.7.0 :468 > a.each_char {|i| puts i}
+H
+e
+y
+ => "Hey" 
+<pre>2.7.0 :469 &gt; a.each_codepoint {|i| puts i}
+72
+101
+121
+
+2.7.0 :474 a.each_line {|i| puts i}
+Hey How Are Yoy
+ Tell me
+2.7.0 :476 > a.empty?
+ => false 
+2.7.0 :477 > a.eql?b
+ => false 
+.7.0 :480 > a.end_with?"me"
+ => true 
+2.7.0 :481 > a.gsub"me","ab"
+ => "Hey How Are Yoy\n Tell ab" 
+2.7.0 :482 > a.gsub"e","*"
+ => "H*y How Ar* Yoy\n T*ll m*" 
+2.7.0 :483 > a.include?"a"
+ => false 
+2.7.0 :484 > a.replace"a"
+ => "a" 
+2.7.0 :485 > a
+ => "a" 
+2.7.0 :486 > a="heyy"
+2.7.0 :487 > a.index"2"
+ => nil 
+2.7.0 :492 > a.insert(0,"h")
+ => "hheyy" 
+2.7.0 :493 > "B".hex
+ => 11 
+2.7.0 :494 > "hello".match"h"
+ => #<MatchData "h"> 
+2.7.0 :495 > puts "hello".match"h"
+h
+ => nil 
+2.7.0 :496 > puts "  hello".lstrip
+hello
+ => nil 
+2.7.0 :497 > "hello".match?"h"
+ => true 
+2.7.0 :498 > "hello".succ
+ => "hellp" 
+2.7.0 :499 > "hello".oct
+ => 0 
+2.7.0 :501 > a.ord
+ => 104 
+2.7.0 :502 > a.partition("y")
+ => ["hhe", "y", "y"] 
+2.7.0 :503 > b="!!"
+2.7.0 :504 > 
+2.7.0 :505 > b.prepend("Go","Sam")
+ => "GoSam!!" 
 
 
