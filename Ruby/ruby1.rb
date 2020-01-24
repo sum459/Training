@@ -840,5 +840,76 @@ Friday
 2.7.0 :381 > puts 'My #{age}'
 My #{age}
  => nil 
+.0 :389 > "Hey!!!" + 3.to_s 
+ => "Hey!!!3" 
+2.7.0 :390 > "f  "*3
+ => "f  f  f  " 
+2.7.0 :391 > "hey " +self.to_s
+ => "hey main" 
+2.7.0 :393 > "abcdef"<=>"abc"
+2.7.0 :394 > "abcdef"<=>"abcdefgh"
+2.7.0 :395 > "abcdef"<=>"abcdef"
+ => 1 
+ => 1 
+ => -1 
+ => 1 
+ => false 
+ => false 
+ => true 
+2.7.0 :403 > "ab"=="bc"
+ => false 
+2.7.0 :404 > "a"==5
+ => false 
+2.7.0 :405 > "a"==65
+ => false 
+2.7.0 :406 > "a"==95
+ => false 
+2.7.0 :407 > a="Hello World"
+2.7.0 :408 > a[2]
+ => "l" 
+2.7.0 :409 > a[2..6]
+ => "llo W" 
+2.7.0 :410 > a[1,6]
+ => "ello W" 
+2.7.0 :411 > a[1,6].size
+ => 6 
+2.7.0 :412 > a["ho"]
+ => nil 
+2.7.0 :413 > a["H"]
+ => "H" 
+2.7.0 :414 > a["H"].index
+2.7.0 :417 > a.byteslice(5,8)
+ => " World" 
+2.7.0 :420 > a.casecmp"abcdefgh"
+ => 1 
+2.7.0 :421 > a.casecmp?"abcdefgh"
+ => false 
+2.7.0 :425 > "hello".center(14)
+ => "    hello     " 
+2.7.0 :429 > "Hello\n".chomp
+ => "Hello" 
+2.7.0 :430 > "Hello\r\n".chomp
+ => "Hello" 
+2.7.0 :431 > "Hello\n\n\r\n".chomp
+ => "Hello\n\n" 
+2.7.0 :432 > "Hello\n\n\r\n".chomp("llo")
+ => "Hello\n\n\r\n" 
+2.7.0 :433 > "Hello".chomp("llo")
+ => "He" 
+2.7.0 :434 > "Hello".chomp!("llo")
+ => "He" 
+2.7.0 :435 > "Hello\r\n".chop
+ => "Hello" 
+2.7.0 :436 > "Hello".chop
+ => "Hell" 
+2.7.0 :437 > "Hello".chop.chop.chop
+ => "He" 
+ => "Hello World" 
+2.7.0 :439 > a.chr
+ => "H" 
+2.7.0 :440 > a.clear
+ => "" 
+2.7.0 :441 > a
+ => "" 
 
 
