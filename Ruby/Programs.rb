@@ -428,3 +428,8 @@ Enter your choise
 2.7.0 :003 > cd=t.strftime "%d-%m-%Y  %H:%M "
 2.7.0 :004 > puts cd
 27-01-2020  14:04 
+# sum of array elements
+2.7.0 :008 > a=[10,20,30,40,50]
+2.7.0 :009 > puts a.inject(0) {|sum,x| sum+x}
+150
+
