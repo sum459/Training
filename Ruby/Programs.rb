@@ -585,3 +585,24 @@ abdf
 abcde
 bacdef
 
+
+BEGIN{ puts "this is a fibonacci series program" }
+
+a,b = 0,1
+
+puts "enter the number upto you want to print fibonacci series"
+n = gets.to_i
+
+print "#{a} #{b} "
+
+for i in 3..n
+    c = a+b
+    a = b
+    b = c
+    print "#{c} "
+end 
+
+this is a fibonacci series program
+enter the number upto you want to print fibonacci series
+8
+0 1 1 2 3 5 8 13
