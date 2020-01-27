@@ -456,6 +456,7 @@ Green
 black
 white
 
+#Take input array from user and sort it
 
 2.7.0 :058 > print "Enter length of array:"
 Enter length of array: => nil 
@@ -549,6 +550,7 @@ puts ob.f_array(10,20,3,49,46,46)
 
 
 #Search strings with given pattern from array 
+
 arra1 = ['abcde', 'abdf', 'adeab', 'abdgse', 'bdefa', 'bacdef']
 print "Original array:\n"
 print arra1
@@ -562,6 +564,7 @@ Search items start with 'ab':
 ["abcde", "abdf", "abdgse"]
 
 # sort an given array of strings by length
+
 arra1 = ['abcde', 'abdf', 'adb', 'ae', 'b',"", 'bacdef']
 puts "Original array:\n"
 puts arra1
@@ -585,7 +588,7 @@ abdf
 abcde
 bacdef
 
-
+#Fibomnicci series
 BEGIN{ puts "this is a fibonacci series program" }
 
 a,b = 0,1
@@ -606,3 +609,29 @@ this is a fibonacci series program
 enter the number upto you want to print fibonacci series
 8
 0 1 1 2 3 5 8 13
+
+#Operator overloading
+class Tester 
+    attr_accessor:num
+    def initialize(num) 
+        @num = num 
+    end
+    def +(obj) 
+        return @num+obj 
+    end
+    def *(obj) 
+        return @num*obj 
+    end
+    def **(obj) 
+        return @num**obj 
+    end
+end
+a=Tester.new(5) 
+puts a + 3
+puts a * 3
+puts a ** 3
+
+8
+15
+125
+
