@@ -1166,6 +1166,41 @@ hello
 2.7.0 :043 > f.sysread(100)
  => "\n This is my file../nThis is second  line.This is third  line. This is \n my file." 
 2.7.0 :044 > f.close
+2.7.0 :049 > f=File.open("Hey.txt","r+")
+2.7.0 :050 > f.read()
+ => "\n This is my file../nThis is second  line.This is third  line. This is \n my file." 
+2.7.0 :051 > f=File.open("Hii.txt","r+")
+2.7.0 :052 > f.read()
+ => "Helloo Faridabad!!! \nkaise hai ap sbhi log!!! \n" 
+2.7.0 :067 > f=File.open("Hii.txt","r")
+2.7.0 :068 > print(f.readlines)
+2.7.0 :070 > puts File.rename("Hii.txt","Bye.txt")
+0
+ => nil 
+2.7.0 :071 > File.file?("Hii.txt")
+ => false 
+2.7.0 :072 > File.file?("Bye.txt")
+ => true 
+2.7.0 :073 > File.readable?("Bye.txt")
+ => true 
+2.7.0 :074 > File.writable?("Bye.txt")
+ => true 
+
+Did you mean?  executable?
+2.7.0 :076 > File.executable?("Bye.txt")
+ => false 
+2.7.0 :077 > f.chmod(777)
+ => 0 
+2.7.0 :078 > File.executable?("Bye.txt")
+ => false 
+2.7.0 :079 > f.chmod(000)
+ => 0 
+2.7.0 :080 > File.executable?("Bye.txt")
+ => false 
+2.7.0 :081 > File.writable?("Bye.txt")
+ => false 
+2.7.0 :082 > File.readable?("Bye.txt")
+ => false 
 
 
 
