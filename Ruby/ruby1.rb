@@ -1211,6 +1211,50 @@ Did you mean?  executable?
 2.7.0 :088 > f=File.open("HiiB.txt","r")
 2.7.0 :089 > f.read()
  => "Hell\nWorld\n" 
+#Regular Exp
+2.7.0 :093 > puts a.match(/[aeiou]/)
+2.7.0 :094 >   
+e
+ => nil 
+2.7.0 :097 > puts a.match(/\d/)
+2.7.0 :098 >   
+
+ => nil 
+2.7.0 :099 > a="45Hiii"
+2.7.0 :100 >   
+2.7.0 :101 > puts a.match(/\d/)
+2.7.0 :102 >   
+4
+ => nil 
+2.7.0 :103 > puts a.match(/\d+/)
+2.7.0 :104 >   
+45
+ 2.7.0 :138 > "Hi there, I am sumit goyal".match(/Hi/)
+ => #<MatchData "Hi"> 
+2.7.0 :139 > "Hi there, I am sumit goyal"=~/Hi/
+ => 0 
+2.7.0 :140 > "Hi there, I am sumit goyal"=~/Hiy/
+ => nil 
+2.7.0 :141 > a="Hi there, I am sumit goyal"
+2.7.0 :142 > if a.match(/I/)
+2.7.0 :143 >   puts "match"
+2.7.0 :144 > else
+2.7.0 :145 >   puts "no match"
+2.7.0 :146 > end
+match
+2.7.0 :179 > def hello(str)
+2.7.0 :180 >   str=~ /[aeiou]/
+2.7.0 :181 > end
+ => :hello 
+2.7.0 :182 > puts (hello("Hii"))
+1
+ => nil 
+2.7.0 :183 > puts (hello("Hii Raj"))
+1
+ => nil 
+2.7.0 :184 > puts (hello("byy"))
+
+ => nil 
 
 
 
