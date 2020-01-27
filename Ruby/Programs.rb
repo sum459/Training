@@ -548,18 +548,40 @@ puts ob.f_array(10,20,3,49,46,46)
 49
 
 
-#Search strings with given pattern
+#Search strings with given pattern from array 
 arra1 = ['abcde', 'abdf', 'adeab', 'abdgse', 'bdefa', 'bacdef']
 print "Original array:\n"
 print arra1
 print "\nSearch items start with 'ab':\n"
 print arra1.grep(/^ab/)
 print "\nSearch items start with 'b':\n"
-print arra1.grep(/^b/)
 
-Original array:
+
 ["abcde", "abdf", "adeab", "abdgse", "bdefa", "bacdef"]
 Search items start with 'ab':
 ["abcde", "abdf", "abdgse"]
-Search items start with 'b':
+
+# sort an given array of strings by length
+arra1 = ['abcde', 'abdf', 'adb', 'ae', 'b',"", 'bacdef']
+puts "Original array:\n"
+puts arra1
+puts "Sort according to length"
+puts arra1.sort_by(&:length)
+
+Original array:
+abcde
+abdf
+adb
+ae
+b
+
+bacdef
+Sort according to length
+
+b
+ae
+adb
+abdf
+abcde
+bacdef
 
