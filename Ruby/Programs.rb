@@ -456,3 +456,43 @@ Green
 black
 white
 
+
+2.7.0 :058 > print "Enter length of array:"
+Enter length of array: => nil 
+2.7.0 :059 > a=gets.chomp.to_i
+6    
+2.7.0 :060 > puts "Enter elements of array:"
+Enter elements of array:
+ => nil 
+2.7.0 :128 > array=Array.new()
+2.7.0 :129 > for i in 0...a
+2.7.0 :130 >     array<<gets.chomp.to_i
+2.7.0 :131 > end
+34    
+5
+63
+2
+1
+5
+ => 0...6 
+2.7.0 :132 > array
+ => [34, 5, 63, 2, 1, 5] 
+2.7.0 :133 > for i in 0...array.size
+2.7.0 :134 >     for j in i+1...array.size
+2.7.0 :135 >         if (array[i]>array[j])
+2.7.0 :136 >            c=array[i]
+2.7.0 :137 >            array[i]=array[j]
+2.7.0 :138 >            array[j]=c
+2.7.0 :139 >         end
+2.7.0 :140 >     end
+2.7.0 :141 > end
+ => 0...6 
+2.7.0 :142 > puts array
+1
+2
+5
+5
+34
+63
+
+
