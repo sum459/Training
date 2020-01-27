@@ -433,3 +433,26 @@ Enter your choise
 2.7.0 :009 > puts a.inject(0) {|sum,x| sum+x}
 150
 
+#Remove blank elements from an given array
+2.7.0 :011 > a=["red","Green","","black","","white"]
+2.7.0 :012 > puts "Original array:"
+Original array:
+ => nil 
+2.7.0 :013 > puts a
+red
+Green
+
+black
+
+white
+ => nil 
+2.7.0 :014 > puts"Array after removing white spaces:"
+Array after removing white spaces:
+ => nil 
+2.7.0 :015 > n=a.reject {|x| x.empty? }
+2.7.0 :016 > puts n
+red
+Green
+black
+white
+
