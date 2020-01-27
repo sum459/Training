@@ -421,4 +421,10 @@ Please press valid button
 Enter your choise
 4
 
-
+#Print current date nd time
+2.7.0 :001 > require 'date'
+ => true 
+2.7.0 :002 > t=DateTime.now
+2.7.0 :003 > cd=t.strftime "%d-%m-%Y  %H:%M "
+2.7.0 :004 > puts cd
+27-01-2020  14:04 
