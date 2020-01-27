@@ -494,6 +494,7 @@ Enter elements of array:
 5
 34
 63
+
 #1st and 2nd max of array
 
 module Farray
@@ -545,4 +546,20 @@ puts ob.f_array(10,20,3,49,46,46)
 
 46
 49
+
+
+#Search strings with given pattern
+arra1 = ['abcde', 'abdf', 'adeab', 'abdgse', 'bdefa', 'bacdef']
+print "Original array:\n"
+print arra1
+print "\nSearch items start with 'ab':\n"
+print arra1.grep(/^ab/)
+print "\nSearch items start with 'b':\n"
+print arra1.grep(/^b/)
+
+Original array:
+["abcde", "abdf", "adeab", "abdgse", "bdefa", "bacdef"]
+Search items start with 'ab':
+["abcde", "abdf", "abdgse"]
+Search items start with 'b':
 
