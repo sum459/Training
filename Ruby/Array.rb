@@ -133,7 +133,25 @@ e
 2.7.0 :145 >   puts "no match"
 2.7.0 :146 > end
 match
+2.7.0 :179 > def hello(str)
+2.7.0 :180 >   str=~ /[aeiou]/
+2.7.0 :181 > end
+ => :hello 
+2.7.0 :182 > puts (hello("Hii"))
+1
+ => nil 
+2.7.0 :183 > puts (hello("Hii Raj"))
+1
+ => nil 
+2.7.0 :184 > puts (hello("byy"))
 
+ => nil 
 
+# sort an given array of strings by length
+arra1 = ['abcde', 'abdf', 'adb', 'ae', 'b',"", 'bacdef']
+puts "Original array:\n"
+puts arra1
+puts "Sort according to length"
+puts arra1.sort_by(&:length)
 
 
