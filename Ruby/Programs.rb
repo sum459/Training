@@ -494,5 +494,55 @@ Enter elements of array:
 5
 34
 63
+#1st and 2nd max of array
 
+module Farray
+    def f_array(*t)
+            for i in 0...t.size
+                if (t[i].to_i > t[i+1].to_i)
+                    c=t[i]
+                    t[i]=t[i+1]
+                    t[i+1]=c
+                end
+            end
+      return t[t.size-1]
+   end    
+end
+
+module Sarray
+    def s_array(*t)
+        max=t[0].to_i
+        max2=t[1].to_i
+        if max<max2
+            temp=max
+            max=max2
+            max2=temp
+        end
+            for i in 2...t.size
+                if (t[i].to_i > max)
+                    temp=max
+                    max=t[i]
+                    max2=temp
+                elsif (t[i].to_i>max2)
+                    max2=t[i]
+                end
+            end
+      return max2
+   end    
+end
+
+class Fsarray
+
+    include Farray
+    include Sarray
+
+end
+
+ob=Fsarray.new
+
+puts ob.s_array(10,20,3,49,46,46)
+puts ob.f_array(10,20,3,49,46,46)
+
+46
+49
 
