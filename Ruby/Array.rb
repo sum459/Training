@@ -102,6 +102,37 @@ h
  => [1, 45, 6, 7] 
 2.7.0 :006 > a<<2<<"f"<<[2,0]
  => [1, 2, 3, 45, 6, 7, 2, "f", [2, 0]] 
+#Regular Exp
+2.7.0 :093 > puts a.match(/[aeiou]/)
+2.7.0 :094 >   
+e
+ => nil 
+2.7.0 :097 > puts a.match(/\d/)
+2.7.0 :098 >   
+
+ => nil 
+2.7.0 :099 > a="45Hiii"
+2.7.0 :100 >   
+2.7.0 :101 > puts a.match(/\d/)
+2.7.0 :102 >   
+4
+ => nil 
+2.7.0 :103 > puts a.match(/\d+/)
+2.7.0 :104 >   
+45
+ 2.7.0 :138 > "Hi there, I am sumit goyal".match(/Hi/)
+ => #<MatchData "Hi"> 
+2.7.0 :139 > "Hi there, I am sumit goyal"=~/Hi/
+ => 0 
+2.7.0 :140 > "Hi there, I am sumit goyal"=~/Hiy/
+ => nil 
+2.7.0 :141 > a="Hi there, I am sumit goyal"
+2.7.0 :142 > if a.match(/I/)
+2.7.0 :143 >   puts "match"
+2.7.0 :144 > else
+2.7.0 :145 >   puts "no match"
+2.7.0 :146 > end
+match
 
 
 

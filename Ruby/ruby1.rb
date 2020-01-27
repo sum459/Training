@@ -1201,6 +1201,16 @@ Did you mean?  executable?
  => false 
 2.7.0 :082 > File.readable?("Bye.txt")
  => false 
+2.7.0 :084 > f=File.open("HiiB.txt","w")
+2.7.0 :085 > f.puts "Hell"
+ => nil 
+2.7.0 :086 > f.puts "World"
+ => nil 
+2.7.0 :087 > f.close
+ => nil 
+2.7.0 :088 > f=File.open("HiiB.txt","r")
+2.7.0 :089 > f.read()
+ => "Hell\nWorld\n" 
 
 
 
