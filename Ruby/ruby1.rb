@@ -1136,6 +1136,37 @@ hello
 2.7.0 :610 > h.select {|k,v| v > 300}
  => {"d"=>400} 
 
+#Files i/o operations
+2.7.0 :022 > f.syswrite("This is first line./n")
+2.7.0 :023 > f.syswrite("This is second  line.")
+ => 20 
+ => nil 
+ => "This is first line./nThis is second  line.This is third  line." 
+2.7.0 :029 > f=File.open("Hey.txt","r+")
+2.7.0 :030 > f.syswrite("\n This is my file.")
+2.7.0 :031 > f.close
+ => nil 
+2.7.0 :032 > f=File.open("Hey.txt","r")
+2.7.0 :033 > f.sysread(100)
+ => "\n This is my file../nThis is second  line.This is third  line." 
+2.7.0 :034 > f=File.open("Hey.txt","r+")
+2.7.0 :035 > f.sysread(100)
+ => "\n This is my file../nThis is second  line.This is third  line." 
+2.7.0 :036 > f.close
+ => nil 
+2.7.0 :037 > f=File.open("Hey.txt","a+")
+2.7.0 :038 > f.syswrite(" This is \n my file.")
+ => 19 
+2.7.0 :039 > f.close
+ => nil 
+2.7.0 :040 > f=File.open("Hey.txt","a+")
+2.7.0 :041 > f.close
+ => nil 
+2.7.0 :042 > f=File.open("Hey.txt","r+")
+2.7.0 :043 > f.sysread(100)
+ => "\n This is my file../nThis is second  line.This is third  line. This is \n my file." 
+2.7.0 :044 > f.close
+
 
 
 
