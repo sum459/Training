@@ -1271,6 +1271,40 @@ match
  => :initialize 
 2.7.0 :063 > GreetUser.greet
 Hello
+#Error Handling
+
+2.7.0 :108 > begin
+2.7.0 :109 >   puts "b4 exception raised"
+2.7.0 :110 >   raise 'Exception'
+2.7.0 :111 >   puts "Exception raised"
+2.7.0 :112 > rescue
+2.7.0 :113 >   puts  "saved"
+2.7.0 :114 > ensure
+2.7.0 :115 >   puts "done"
+2.7.0 :116 > end
+b4 exception raised
+saved
+done
+
+
+2.7.0 :079 > begin
+2.7.0 :080 >   n=10/0
+2.7.0 :081 > rescue
+2.7.0 :082 >   puts "dividion by zero error"
+2.7.0 :083 > end
+dividion by zero error
+
+2.7.0 :100 > begin
+2.7.0 :101 >   num["s"]
+2.7.0 :102 >   n=10/0
+2.7.0 :103 > rescue ZeroDivisionError
+2.7.0 :104 >   puts "dividion by zero error"
+2.7.0 :105 > rescue TypeError =>e 
+2.7.0 :106 >   puts e
+2.7.0 :107 > end
+no implicit conversion of String into Integer
+ => nil 
+
 
 
 
