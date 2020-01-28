@@ -1385,4 +1385,16 @@ trees
  => "persons" 
 
 
-
+#Prawn Module
+gem install prawn
+2.7.0 :001 > require 'prawn'
+ => true 
+2.7.0 :002 > Prawn::Document.generate("summer.pdf") do |pdf|
+2.7.0 :003 >   pdf.font "Courier"
+2.7.0 :004 >   pdf.move_down(50)
+2.7.0 :005 >   pdf.draw_text("Hello, I am Summer", :at=> [0,pdf.y])
+2.7.0 :006 > end
+ => nil 
+output:
+Create a pdf document
+/home/beryl/summer.pdf
