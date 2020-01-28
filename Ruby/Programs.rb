@@ -7,7 +7,8 @@ if (n % 2 == 0)
 else 
 	puts "#{n} is odd"
 
-endEnter number : 4
+end
+Enter number : 4
 4 is even
 
 Enter number : 5
@@ -634,4 +635,15 @@ puts a ** 3
 8
 15
 125
+
+#Recrsive factorial program
+2.7.0 :071 > def factorial(n)
+2.7.0 :072 >   if (0..1).include?n
+2.7.0 :073 >     return 1
+2.7.0 :074 >   end
+2.7.0 :075 >    n * factorial(n-1)
+2.7.0 :076 > end
+ => :factorial 
+2.7.0 :077 > factorial(5)
+ => 120 
 
