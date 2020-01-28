@@ -1367,3 +1367,22 @@ trees
  => #<MatchData "a+b\"s"> 
 
 
+#Linguistics
+
+<gem install linguistics>
+
+2.7.0 :003 > require 'linguistics'
+ => true 
+2.7.0 :004 > Linguistics::use(:en)
+ => [String, Numeric, Array] 
+2.7.0 :005 > 2004.en.numwords
+ => "two thousand and four" 
+2.7.0 :006 > 123545677545567654445566776554445665555.en.numwords
+ => "one hundred and twenty-three undecillion, five hundred and forty-five decillion, six hundred and seventy-seven nonillion, five hundred and forty-five octillion, five hundred and sixty-seven septillion, six hundred and fifty-four sextillion, four hundred and forty-five quintillion, five hundred and sixty-six quadrillion, seven hundred and seventy-six trillion, five hundred and fifty-four billion, four hundred and forty-five million, six hundred and sixty-five thousand, five hundred and fifty-five" 
+2.7.0 :007 > 123545677545567654445566776554445665555.class
+ => Integer 
+2.7.0 :008 > "person".en.plural
+ => "persons" 
+
+
+
