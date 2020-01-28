@@ -1348,3 +1348,22 @@ trees
 ["white", "snow", "winter", "wonderland", "melting", "ice", "slippery", "sidewalk", "salted", "roads", "white", "trees"]
  => ["white", "snow", "winter", "wonderland", "melting", "ice", "slippery", "sidewalk", "salted", "roads", "white", "trees"] 
 
+
+2.7.0 :231 > a.tr("H","How")
+ => "Hello I am Sumit" 
+2.7.0 :232 > a.tr("Hel","How")
+ => "Howwo I am Sumit" 
+2.7.0 :233 > a.tr("Heli","Howk")
+ => "Howwo I am Sumkt" 
+2.7.0 :234 > a.tr("HeliS","Howk")
+ => "Howwo I am kumkt" 
+2.7.0 :235 > a.tr("HeliS ","Howk")
+ => "HowwokIkamkkumkt" 
+2.7.0 :247 >  /a\+b/.match("a+b")
+ => #<MatchData "a+b"> 
+2.7.0 :248 >  /a\+b\'s/.match("a+b's")
+ => #<MatchData "a+b's"> 
+2.7.0 :249 >  /a\+b\"s/.match("a+b\"s")
+ => #<MatchData "a+b\"s"> 
+
+
