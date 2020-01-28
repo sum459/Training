@@ -1255,7 +1255,22 @@ match
 2.7.0 :184 > puts (hello("byy"))
 
  => nil 
-
+#Extend in Modules
+2.7.0 :052 > module Greeting
+2.7.0 :053 >   def greet
+2.7.0 :054 >     puts "Hello"
+2.7.0 :055 >   end
+2.7.0 :056 > end
+ => :greet 
+2.7.0 :057 > class GreetUser
+2.7.0 :058 > extend Greeting
+2.7.0 :059 >   def initialize(x)
+2.7.0 :060 >     print " "+x
+2.7.0 :061 >   end
+2.7.0 :062 > end
+ => :initialize 
+2.7.0 :063 > GreetUser.greet
+Hello
 
 
 
