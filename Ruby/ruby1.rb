@@ -1306,6 +1306,45 @@ no implicit conversion of String into Integer
  => nil 
 
 
+#Hashes
+2.7.0 :117 > h={a:5,b:6,c:1}
+2.7.0 :118 > h
+ => {:a=>5, :b=>6, :c=>1} 
+2.7.0 :119 > h[:e]=13
+2.7.0 :120 > h
+ => {:a=>5, :b=>6, :c=>1, :e=>13} 
+2.7.0 :121 > h.keys
+ => [:a, :b, :c, :e] 
+2.7.0 :122 > h.each {|k,v| v<5}
+ => {:a=>5, :b=>6, :c=>1, :e=>13} 
+
+2.7.0 :126 > h.each {|k,v| puts k,v if  v<5}
+c
+1
+ => {:a=>5, :b=>6, :c=>1, :e=>13} 
+2.7.0 :127 > h.delete_if {|k,v|  v<5}
+ => {:a=>5, :b=>6, :e=>13} 
 
 
+2.7.0 :128 > a = ['white snow', 'winter wonderland', 'melting ice',
+2.7.0 :129 >        'slippery sidewalk', 'salted roads', 'white trees']
+2.7.0 :130 > a=a.map {|w| w.split}
+2.7.0 :131 > puts a
+white
+snow
+winter
+wonderland
+melting
+ice
+slippery
+sidewalk
+salted
+roads
+white
+trees
+ => nil 
+2.7.0 :132 > a=a.flatten
+2.7.0 :133 > p a
+["white", "snow", "winter", "wonderland", "melting", "ice", "slippery", "sidewalk", "salted", "roads", "white", "trees"]
+ => ["white", "snow", "winter", "wonderland", "melting", "ice", "slippery", "sidewalk", "salted", "roads", "white", "trees"] 
 
