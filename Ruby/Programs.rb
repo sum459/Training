@@ -647,3 +647,63 @@ puts a ** 3
 2.7.0 :077 > factorial(5)
  => 120 
 
+#Linear search in array
+
+
+a = Array.new()
+puts "Enter the size of array"
+s = gets.to_i
+puts "Enter the element in Array"
+for i in 0...s
+  a[i] = gets.to_i
+end	
+puts "Array is :"
+for i in 0...s
+	puts "#{a[i]}"
+end	
+
+print "enter the element you want to search in array : "
+b = gets.to_i
+
+for i in 0..s
+	if a[i] == b
+		puts " item is at index = #{i}"
+		break	
+	end	
+	if i==s
+		puts "Element not found"
+	end
+end
+
+beryl@beryl-To-be-filled-by-O-E-M:~/mm$ ruby rr.rb
+Enter the size of array
+5
+Enter the element in Array
+1
+2
+3
+4
+5
+Array is :
+1
+2
+3
+4
+5
+enter the element you want to search in array : 5
+ item is at index = 4
+
+beryl@beryl-To-be-filled-by-O-E-M:~/mm$ ruby rr.rb
+Enter the size of array
+3
+Enter the element in Array
+1
+2
+3
+Array is :
+1
+2
+3
+enter the element you want to search in array : 4
+Element not found
+	
