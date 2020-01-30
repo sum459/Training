@@ -105,3 +105,69 @@ Foreign-key constraints:
     "course_sub_cid_fkey" FOREIGN KEY (cid) REFERENCES course(id)
     "course_sub_sid_fkey" FOREIGN KEY (sid) REFERENCES subject(id)
 
+
+
+Insert Data into tables:
+
+
+
+
+student_teacher=# insert into student(name,contact,dob,city) values('Kabir','9899989812','11-02-1999','Faridabad'),
+('Dhruv','7041989812','03-22-1998','Faridabad'),('Nandini','9211118137','01-01-1999','Delhi'),
+('Sachin','7779989823','01-04-1999','Palwal'),
+('Mukti','7011244312','02-14-1999','Ballabgarh');
+INSERT 0 5
+student_teacher=# select * from student;
+ id |  name   |  contact   |    dob     |    city    
+----+---------+------------+------------+------------
+  1 | Manik   | 9899989802 | 2000-11-02 | Faridabad
+  2 | Manik   | 9899989802 | 2000-11-02 | Faridabad
+  3 | Kabir   | 9899989812 | 1999-11-02 | Faridabad
+  4 | Dhruv   | 7041989812 | 1998-03-22 | Faridabad
+  5 | Nandini | 9211118137 | 1999-01-01 | Delhi
+  6 | Sachin  | 7779989823 | 1999-01-04 | Palwal
+  7 | Mukti   | 7011244312 | 1999-02-14 | Ballabgarh
+(7 rows)
+
+student_teacher=# insert into teacher(id,name,contact,city) values(100,'Ram','3434989812','Faridabad'),
+(102,'Gudiya','6241989812','Faridabad'),(103,'Naveen','1611118137','Delhi'),
+(104,'Sumit','4479989823','Palwal'),
+(105,'Mukti','2311244312','Sec-23');
+INSERT 0 5
+student_teacher=# select * from teacher;
+ id  |  name  |  contact   |   city    
+-----+--------+------------+-----------
+ 100 | Ram    | 3434989812 | Faridabad
+ 102 | Gudiya | 6241989812 | Faridabad
+ 103 | Naveen | 1611118137 | Delhi
+ 104 | Sumit  | 4479989823 | Palwal
+ 105 | Mukti  | 2311244312 | Sec-23
+(5 rows)
+
+
+student_teacher=# insert into subject(id,name) values(50,'os'),(51,'dbms'),(52,'java'),(53,'math1'),(54,'math3'),(55,'wn'),(56,'egd'),(57,'accounts'),(58,'english'),(59,'english');
+INSERT 0 10
+student_teacher=# select * from course;
+ id | name 
+----+------
+  1 | cse
+  2 | ece
+  3 | ce
+  4 | bca
+(4 rows)
+
+student_teacher=# select * from subject;
+ id |   name   
+----+----------
+ 50 | os
+ 51 | dbms
+ 52 | java
+ 53 | math1
+ 54 | math3
+ 55 | wn
+ 56 | egd
+ 57 | accounts
+ 58 | english
+ 59 | english
+(10 rows)
+
