@@ -1,0 +1,67 @@
+->Student-Teacher management database:
+
+->Tables:
+->Student
+->Teacher
+->Course
+->Subject
+
+->Creation of Database and tables:
+
+postgres=# create database student_teacher;
+CREATE DATABASE
+postgres=# \c student_teacher;
+
+
+student_teacher=# create table student(id serial primary key,name varchar(30) not null,contact varchar(10) not null,dob date not null,city varchar not null);
+CREATE TABLE
+student_teacher=# \d student
+                                    Table "public.student"
+ Column  |         Type          | Collation | Nullable |               Default               
+---------+-----------------------+-----------+----------+-------------------------------------
+ id      | integer               |           | not null | nextval('student_id_seq'::regclass)
+ name    | character varying(30) |           | not null | 
+ contact | character varying(10) |           | not null | 
+ dob     | date                  |           | not null | 
+ city    | character varying     |           | not null | 
+Indexes:
+    "student_pkey" PRIMARY KEY, btree (id)
+
+
+student_teacher=# create table teacher(id serial primary key,name varchar(30) not null,contact varchar(10) not null,city varchar not null);
+CREATE TABLE
+student_teacher=# \d teacher
+                                    Table "public.teacher"
+ Column  |         Type          | Collation | Nullable |               Default               
+---------+-----------------------+-----------+----------+-------------------------------------
+ id      | integer               |           | not null | nextval('teacher_id_seq'::regclass)
+ name    | character varying(30) |           | not null | 
+ contact | character varying(10) |           | not null | 
+ city    | character varying     |           | not null | 
+Indexes:
+    "teacher_pkey" PRIMARY KEY, btree (id)
+
+
+student_teacher=# create table course(id serial primary key,name varchar(30) unique not null);
+CREATE TABLE
+student_teacher=# \d course
+                                   Table "public.course"
+ Column |         Type          | Collation | Nullable |              Default               
+--------+-----------------------+-----------+----------+------------------------------------
+ id     | integer               |           | not null | nextval('course_id_seq'::regclass)
+ name   | character varying(30) |           | not null | 
+Indexes:
+    "course_pkey" PRIMARY KEY, btree (id)
+    "course_name_key" UNIQUE CONSTRAINT, btree (name)
+
+
+student_teacher=# create table subject(id serial primary key,name varchar(30) not null);
+CREATE TABLE
+student_teacher=# \dt subject
+          List of relations
+ Schema |  Name   | Type  |  Owner   
+--------+---------+-------+----------
+ public | subject | table | postgres
+(1 row)
+
+
