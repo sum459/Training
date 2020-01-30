@@ -246,6 +246,70 @@ student_teacher-# ;
 (7 rows)
 
 
+QUERIES:
+
+->Select student,teacher from same city:
+
+student_teacher=# select s.name,t.name,city from student s join teacher t using(city);                                                                     
+  name   |  name  |   city    
+---------+--------+-----------
+ Manik   | Ram    | Faridabad
+ Dhruv   | Ram    | Faridabad
+ Kabir   | Ram    | Faridabad
+ Manik   | Ram    | Faridabad
+ Manik   | Gudiya | Faridabad
+ Dhruv   | Gudiya | Faridabad
+ Kabir   | Gudiya | Faridabad
+ Manik   | Gudiya | Faridabad
+ Nandini | Naveen | Delhi
+ Sachin  | Sumit  | Palwal
+(10 rows)
+
+->show students with same name:
+
+student_teacher=# select name from student group by name having count(name)>1;   
+ name  
+-------
+ Manik
+(1 row)
+
+
+->Select those teachers who can teach cse students:
+
+student_teacher=# select name as teachers from teacher where id in(select tid id from teacher_sub where sid in(select sid from course_sub where cid in (select id cid from course where name like 'cse'))); 
+ teachers 
+----------
+ Ram
+ Gudiya
+ Mukti
+(3 rows)
+
+->Select teachers who are qualified to teach more than 2 subjects:
+
+student_teacher=# select name as teacher from teacher where id in(select tid id from teacher_sub group by tid having count(tid)>2);
+ teacher 
+---------
+ Gudiya
+ Mukti
+(2 rows)
+
+->Select students who is persuing more than one course:
+
+student_teacher=# select name as student from student where id in (select sid id from stu_course group by sid having count(sid)>1);
+ student 
+---------
+ Manik
+(1 row)
+
+->select course 2nd highest enrolled course id among students:
+
+student_teacher=# select cid,count(cid) c from stu_course group by cid order by c desc limit 1 offset 1;
+ cid | c 
+-----+---
+   3 | 2
+(1 row)
+
+
 
 
 
