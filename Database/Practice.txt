@@ -65,3 +65,43 @@ student_teacher=# \dt subject
 (1 row)
 
 
+
+
+
+
+
+student_teacher=# create table stu_course(sid int references student(id),cid int references course(id));
+CREATE TABLE
+student_teacher=# \dt stu_course
+           List of relations
+ Schema |    Name    | Type  |  Owner   
+--------+------------+-------+----------
+ public | stu_course | table | postgres
+(1 row)
+
+
+student_teacher=# create table teacher_sub(tid int references teacher(id),sid int references subject(id));
+CREATE TABLE
+student_teacher=# \d teacher_sub
+            Table "public.teacher_sub"
+ Column |  Type   | Collation | Nullable | Default 
+--------+---------+-----------+----------+---------
+ tid    | integer |           |          | 
+ sid    | integer |           |          | 
+Foreign-key constraints:
+    "teacher_sub_sid_fkey" FOREIGN KEY (sid) REFERENCES subject(id)
+    "teacher_sub_tid_fkey" FOREIGN KEY (tid) REFERENCES teacher(id)
+
+
+student_teacher=# create table course_sub(cid int references course(id),sid int references subject(id));
+CREATE TABLE
+student_teacher=# \d course_sub
+             Table "public.course_sub"
+ Column |  Type   | Collation | Nullable | Default 
+--------+---------+-----------+----------+---------
+ cid    | integer |           |          | 
+ sid    | integer |           |          | 
+Foreign-key constraints:
+    "course_sub_cid_fkey" FOREIGN KEY (cid) REFERENCES course(id)
+    "course_sub_sid_fkey" FOREIGN KEY (sid) REFERENCES subject(id)
+
