@@ -167,6 +167,16 @@ student_teacher=# select * from subject;
  55 | wn
  56 | egd
  57 | accounts
+
+
+student_teacher=# insert into stu_course values(1,1),(1,4),(2,3),(3,3),(4,4),(5,1),(6,1),(7,2);
+INSERT 0 8
+student_teacher=# insert into course_sub values(1,50),(1,51),(2,55),(2,58),(3,56),(3,56),(4,59),(4,53),(1,54),(3,54),(4,59);
+INSERT 0 11
+
+student_teacher=# insert into teacher_sub values(100,50),(100,51),(102,50),(102,52),(103,57),(104,58),(105,59),(105,58),(102,56),(102,55),(105,54),(104,53);
+INSERT 0 12
+
  58 | english
  59 | english
 (10 rows)
