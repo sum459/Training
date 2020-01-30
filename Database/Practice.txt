@@ -168,6 +168,10 @@ student_teacher=# select * from subject;
  56 | egd
  57 | accounts
 
+ 58 | english
+ 59 | english
+(10 rows)
+
 
 student_teacher=# insert into stu_course values(1,1),(1,4),(2,3),(3,3),(4,4),(5,1),(6,1),(7,2);
 INSERT 0 8
@@ -177,7 +181,71 @@ INSERT 0 11
 student_teacher=# insert into teacher_sub values(100,50),(100,51),(102,50),(102,52),(103,57),(104,58),(105,59),(105,58),(102,56),(102,55),(105,54),(104,53);
 INSERT 0 12
 
- 58 | english
- 59 | english
-(10 rows)
+
+student_teacher=# select * from stu_course
+student_teacher-# ;
+ sid | cid 
+-----+-----
+   1 |   1
+   1 |   4
+   2 |   3
+   3 |   3
+   4 |   4
+   5 |   1
+   6 |   1
+   7 |   2
+(8 rows)
+
+student_teacher=# select * from teacher_sub;
+ tid | sid 
+-----+-----
+ 100 |  50
+ 100 |  51
+ 102 |  50
+ 102 |  52
+ 103 |  57
+ 104 |  58
+ 105 |  59
+ 105 |  58
+ 102 |  56
+ 102 |  55
+ 105 |  54
+ 104 |  53
+(12 rows)
+
+student_teacher=# select * from course_sub;
+ cid | sid 
+-----+-----
+   1 |  50
+   1 |  51
+   2 |  55
+   2 |  58
+   3 |  56
+   3 |  56
+   4 |  59
+   4 |  53
+   1 |  54
+   3 |  54
+   4 |  59
+(11 rows)
+
+
+student_teacher=# update student set contact='1234567890' where id=2;
+UPDATE 1
+student_teacher=# select * from student
+student_teacher-# ;
+ id |  name   |  contact   |    dob     |    city    
+----+---------+------------+------------+------------
+  1 | Manik   | 9899989802 | 2000-11-02 | Faridabad
+  3 | Kabir   | 9899989812 | 1999-11-02 | Faridabad
+  4 | Dhruv   | 7041989812 | 1998-03-22 | Faridabad
+  5 | Nandini | 9211118137 | 1999-01-01 | Delhi
+  6 | Sachin  | 7779989823 | 1999-01-04 | Palwal
+  7 | Mukti   | 7011244312 | 1999-02-14 | Ballabgarh
+  2 | Manik   | 1234567890 | 2000-11-02 | Faridabad
+(7 rows)
+
+
+
+
 
