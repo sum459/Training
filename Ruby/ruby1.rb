@@ -1398,3 +1398,8 @@ gem install prawn
 output:
 Create a pdf document
 /home/beryl/summer.pdf
+
+#Practice some new concepts
+beryl@beryl-To-be-filled-by-O-E-M:~$ ruby -e 'puts "Hello"'
+Hello
+
