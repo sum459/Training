@@ -1403,3 +1403,31 @@ Create a pdf document
 beryl@beryl-To-be-filled-by-O-E-M:~$ ruby -e 'puts "Hello"'
 Hello
 
+#building hash from user input
+
+h = { }
+i = ""
+name = ""
+age = 0
+ 
+print "Enter name, age; or just ENTER to quit: "
+i = gets.chomp
+ while i != "" do
+ 	(name, age) = i.split(",")
+ 	age = age.to_i
+ 	h[name] = age
+ 	
+ 	print "Enter name, age; or just ENTER to quit: "
+ 	i = gets.chomp
+ end
+
+ puts h.inspect
+
+
+Enter name, age; or just ENTER to quit: sumit,19
+Enter name, age; or just ENTER to quit: sunidhi,20
+Enter name, age; or just ENTER to quit: Ishu , 14
+Enter name, age; or just ENTER to quit: Ekta 21
+Enter name, age; or just ENTER to quit: 
+{"sumit"=>19, "sunidhi"=>20, "Ishu "=>14, "Ekta 21"=>0}
+
