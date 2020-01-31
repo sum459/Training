@@ -382,6 +382,13 @@ student_teacher=# select name teacher from teacher where name not in (select r.n
 (1 row)
 
 
+->Least popular course among students
+
+student_teacher=# select cid,count(cid) c from stu_course group by cid order by c limit 1;
+ cid | c 
+-----+---
+   2 | 1
+(1 row)
 
 
 
