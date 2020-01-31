@@ -301,13 +301,25 @@ student_teacher=# select name as student from student where id in (select sid id
  Manik
 (1 row)
 
-->select course 2nd highest enrolled course id among students:
+->2nd highest enrolled course id among students:
 
 student_teacher=# select cid,count(cid) c from stu_course group by cid order by c desc limit 1 offset 1;
  cid | c 
 -----+---
    3 | 2
 (1 row)
+
+#Name the teachers who are qualified to teach Nandini
+
+student_teacher=# select name from teacher where id in (select tid id from teacher_sub where sid in (select sid from course_sub where cid in (select cid from stu_course where sid in (select id from student where name like 'Nandini'))));
+  name  
+--------
+ Ram
+ Gudiya
+ Mukti
+(3 rows)
+
+
 
 
 
