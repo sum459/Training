@@ -319,6 +319,34 @@ student_teacher=# select name from teacher where id in (select tid id from teach
  Mukti
 (3 rows)
 
+->Name which teacher can assign to which student and also tell thieir id and course that student is persuing:
+
+student_teacher=# select y.name,y.sid,y.cid,y.tid,r.name teacher from teacher r join (select p.name,x.sid,x.cid,x.tid from student p join (select sid,s.cid,tid from stu_course s join (select c.cid ,t.tid from teacher_sub t join course_sub c using(sid) group by c.cid,t.tid order by cid)as e on s.cid=e.cid) as x on x.sid=p.id) as y on y.tid=r.id;
+  name   | sid | cid | tid | teacher 
+---------+-----+-----+-----+---------
+ Nandini |   5 |   1 | 100 | Ram
+ Nandini |   5 |   1 | 102 | Gudiya
+ Nandini |   5 |   1 | 105 | Mukti
+ Manik   |   1 |   1 | 100 | Ram
+ Manik   |   1 |   1 | 102 | Gudiya
+ Manik   |   1 |   1 | 105 | Mukti
+ Sachin  |   6 |   1 | 100 | Ram
+ Sachin  |   6 |   1 | 102 | Gudiya
+ Sachin  |   6 |   1 | 105 | Mukti
+ Mukti   |   7 |   2 | 102 | Gudiya
+ Mukti   |   7 |   2 | 104 | Sumit
+ Mukti   |   7 |   2 | 105 | Mukti
+ Kabir   |   3 |   3 | 102 | Gudiya
+ Kabir   |   3 |   3 | 105 | Mukti
+ Manik   |   2 |   3 | 102 | Gudiya
+ Manik   |   2 |   3 | 105 | Mukti
+ Dhruv   |   4 |   4 | 104 | Sumit
+ Dhruv   |   4 |   4 | 105 | Mukti
+ Manik   |   1 |   4 | 104 | Sumit
+ Manik   |   1 |   4 | 105 | Mukti
+(20 rows)
+
+
 
 
 
