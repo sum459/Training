@@ -346,6 +346,42 @@ student_teacher=# select y.name,y.sid,y.cid,y.tid,r.name teacher from teacher r 
  Manik   |   1 |   4 | 105 | Mukti
 (20 rows)
 
+->Name the students and teachers who are qualified to  teach them:
+
+student_teacher=# select y.name student,r.name teacher from teacher r join (select p.name,x.sid,x.cid,x.tid from student p join (select sid,s.cid,tid from stu_course s join (select c.cid ,t.tid from teacher_sub t join course_sub c using(sid) group by c.cid,t.tid order by cid)as e on s.cid=e.cid) as x on x.sid=p.id) as y on y.tid=r.id; 
+ student | teacher 
+---------+---------
+ Nandini | Ram
+ Nandini | Gudiya
+ Nandini | Mukti
+ Manik   | Ram
+ Manik   | Gudiya
+ Manik   | Mukti
+ Sachin  | Ram
+ Sachin  | Gudiya
+ Sachin  | Mukti
+ Mukti   | Gudiya
+ Mukti   | Sumit
+ Mukti   | Mukti
+ Kabir   | Gudiya
+ Kabir   | Mukti
+ Manik   | Gudiya
+ Manik   | Mukti
+ Dhruv   | Sumit
+ Dhruv   | Mukti
+ Manik   | Sumit
+ Manik   | Mukti
+(20 rows)
+
+->Name the teacher who is not having any student
+
+student_teacher=# select name teacher from teacher where name not in (select r.name teacher from teacher r join (select p.name,x.sid,x.cid,x.tid from student p join (select sid,s.cid,tid from stu_course s join (select c.cid ,t.tid from teacher_sub t join course_sub c using(sid) group by c.cid,t.tid order by cid)as e on s.cid=e.cid) as x on x.sid=p.id) as y on y.tid=r.id);
+ teacher 
+---------
+ Naveen
+(1 row)
+
+
 
 
 
