@@ -706,4 +706,30 @@ Array is :
 3
 enter the element you want to search in array : 4
 Element not found
-	
+
+
+# Program to print notes needed from high to low according to ammount:
+
+2.7.0 :051 > def c(x)
+2.7.0 :052 >  a=[2000,500,200,100,50,20,10,5,2,1]
+2.7.0 :053 >    for i in 0...a.size
+2.7.0 :054 >      notes= x/a[i]
+2.7.0 :055 >        if notes>0
+2.7.0 :056 >          puts "#{a[i]}  =>   #{ notes}"
+2.7.0 :057 >        end
+2.7.0 :058 >        x=x%a[i]
+2.7.0 :059 >    end
+2.7.0 :060 > end
+ => :c 
+2.7.0 :061 > c(2300)
+2000  =>   1
+200  =>   1
+100  =>   1
+ => 0...10 
+2.7.0 :062 > c(230035446215364264272)
+2000  =>   115017723107682132
+200  =>   1
+50  =>   1
+20  =>   1
+2  =>   1
+ => 0...10 	
