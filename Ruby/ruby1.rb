@@ -1431,3 +1431,65 @@ Enter name, age; or just ENTER to quit: Ekta 21
 Enter name, age; or just ENTER to quit: 
 {"sumit"=>19, "sunidhi"=>20, "Ishu "=>14, "Ekta 21"=>0}
 
+
+#Count no. of vowels in a given string
+
+
+2.7.0 :036 > str="Hello I am sumit Goyal"
+2.7.0 :037 > str.count('aeiou')
+ => 7 
+2.7.0 :038 > str.count('aeiouAEIOU')
+ => 8 
+
+#Print odd position letters of string
+2.7.0 :034 > p("AlifLaila")
+AlifLaila => nil 
+2.7.0 :035 > def p(s)
+2.7.0 :036 >   x,a=s,0
+2.7.0 :037 >   while a < x.length
+2.7.0 :038 >     print x[a]
+2.7.0 :039 >     a+=2
+2.7.0 :040 >   end
+2.7.0 :041 > end
+ => :p 
+2.7.0 :042 > p("AlifLaila")
+AiLia => nil 
+
+
+#
+
+2.7.0 :110 > def p(s)
+2.7.0 :111 >   x,a=s,0
+2.7.0 :112 >   b=Array.new()
+2.7.0 :113 >   while a<x.length
+2.7.0 :114 >     b<<s[a]
+2.7.0 :115 >     a+=2
+2.7.0 :116 >   end
+2.7.0 :117 >   return b
+2.7.0 :118 > end
+ => :p 
+2.7.0 :119 > e = p("AlifLaila")
+2.7.0 :120 > def p(s)
+2.7.0 :121 >   x,a=s,1
+2.7.0 :122 >   b=Array.new()
+2.7.0 :123 >   while a<x.length
+2.7.0 :124 >     b<<s[a]
+2.7.0 :125 >     a+=2
+2.7.0 :126 >   end
+2.7.0 :127 >   return b
+2.7.0 :128 > end
+ => :p 
+2.7.0 :129 > f = p("AlifLaila")
+2.7.0 :130 > e
+ => ["A", "i", "L", "i", "a"] 
+2.7.0 :131 > f
+ => ["l", "f", "a", "l"] 
+2.7.0 :132 > x=e.concat(f)
+2.7.0 :133 > x
+ => ["A", "i", "L", "i", "a", "l", "f", "a", "l"] 
+2.7.0 :138 > y=x.join("")
+2.7.0 :139 > y
+ => "AiLialfal" 
+
+
+
