@@ -1491,5 +1491,21 @@ AiLia => nil
 2.7.0 :139 > y
  => "AiLialfal" 
 
+#Sort string chars and print string
+2.7.0 :070 > a="HelloThere"
+2.7.0 :071 > a.chars.sort.join
+ => "HTeeehllor" 
+
+
+ #Combine two arrays and make a single hash
+
+ => [:A, :B, :c, :D] 
+2.7.0 :083 > a.inject({}) {|m,n| m[n]=b[a.index(n)];m}
+ => {:A=>"apple", :B=>"mango", :c=>"banana", :D=>"pine-apple"}  
+
+2.7.0 :092 > b
+ => [10, 20, 30] 
+2.7.0 :095 > b.each.inject(0) {|m,n| m+=n;m}
+ => 60 
 
 
