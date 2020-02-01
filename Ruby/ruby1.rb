@@ -1508,4 +1508,8 @@ AiLia => nil
 2.7.0 :095 > b.each.inject(0) {|m,n| m+=n;m}
  => 60 
 
+#Find max frequency item from an array
+
+2.7.0 :101 > b.inject(Hash.new(0)) {|h,v| h[v]+=1;h}
+ => {10=>1, 23=>1, 4=>4, 52=>1, 3=>4, 2=>2, 5=>2, 5232=>1, 32=>1, 1=>1} 
 
