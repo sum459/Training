@@ -1398,6 +1398,7 @@ gem install prawn
 output:
 Create a pdf document
 /home/beryl/summer.pdf
+<<<<<<< HEAD
 
 #Practice some new concepts
 beryl@beryl-To-be-filled-by-O-E-M:~$ ruby -e 'puts "Hello"'
@@ -1544,6 +1545,5 @@ AiLia => nil
 2.7.0 :052 > h=[1,2,3,4,5,6,2,4,56,8,6,54,3,523,4,32,5,25,2,5,2]
 2.7.0 :053 > h.tally
  => {1=>1, 2=>4, 3=>2, 4=>3, 5=>3, 6=>2, 56=>1, 8=>1, 54=>1, 523=>1, 32=>1, 25=>1} 
-
 
 
