@@ -1,0 +1,26 @@
+->Create a new project and connect with specified db:
+
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop$ rails new OLMS -d postgresql
+
+->Create Database specified in config/database.yml
+
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/OLMS$ rake db:create
+
+->Create tables:
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/OLMS$ rails g model book
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/OLMS$ rails g model user
+
+->Make and update changes to the schema
+
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/OLMS$ rake db:migrate
+
+->Add Column
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/OLMS$ rails g migration add_category_to_books category:string
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/OLMS$ rails g migration AddContactToUsers
+
+->Remove column
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/OLMS$ rails g migration remove_contact_to_users
+
+->Change Datatype
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/OLMS$ rails g migration change_datatype_for_name
+
