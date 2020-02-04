@@ -16,11 +16,29 @@ beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/OLMS$ rake db:migrate
 
 ->Add Column
 beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/OLMS$ rails g migration add_category_to_books category:string
+
+  add_column :users, :name, :string 
+
 beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/OLMS$ rails g migration AddContactToUsers
 
 ->Remove column
 beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/OLMS$ rails g migration remove_contact_to_users
 
+   remove_column :books, :cat, :string
+
 ->Change Datatype
 beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/OLMS$ rails g migration change_datatype_for_name
 
+           change_column :reviews, :ratings, :string
+
+->Drop table
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/OLMS$ rails g migration drop_users
+      
+          drop_table :users
+->Rename column
+
+  rename_column :books, :author, :writer
+
+->Add foreign key constraint
+  
+add_reference :purchases, :u_users, foreign_key: true
