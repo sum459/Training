@@ -42,3 +42,14 @@ beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/OLMS$ rails g migration dro
 ->Add foreign key constraint
   
 add_reference :purchases, :u_users, foreign_key: true
+
+->Revert the last changes
+
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/OLMS$ rake db:migrate:redo
+
+-> rake db migrate:down,up,rollback
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/OLMS$ rake db:migrate:up VERSION=20200204100436
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/OLMS$ rake db:migrate:status
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/OLMS$ rake db:rollback STEP=4
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/OLMS$ rake db:migrate:down VERSION=20200204100436
+
