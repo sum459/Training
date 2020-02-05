@@ -1546,4 +1546,38 @@ AiLia => nil
 2.7.0 :053 > h.tally
  => {1=>1, 2=>4, 3=>2, 4=>3, 5=>3, 6=>2, 56=>1, 8=>1, 54=>1, 523=>1, 32=>1, 25=>1} 
 
+#Validate email add reg exp:
+
+2.7.0 :008 > email = "sumit_goyal@gmail.com"
+2.7.0 :009 > !!email.match(/\A[\w.+-]+@\w+\.\w+\z/)
+ => true 
+2.7.0 :010 > email = "sumit.goyal@gmail.com"
+2.7.0 :011 > !!email.match(/\A[\w.+-]+@\w+\.\w+\z/)
+ => true 
+2.7.0 :012 > email = "sumit@goyal@gmail.com"
+2.7.0 :013 > email = "sumit@goyal@gmail.com"
+2.7.0 :014 > !!email.match(/\A[\w.+-]+@\w+\.\w+\z/)
+ => false 
+2.7.0 :015 > email = "sumit.goyal.go@gmail.com"
+2.7.0 :016 > !!email.match(/\A[\w.+-]+@\w+\.\w+\z/)
+ => true 
+2.7.0 :017 > email = "sumit.goyal.go.go@gmail.com"
+2.7.0 :018 > !!email.match(/\A[\w+-\.+-]+@\w+\.\w+\z/)
+ => true 
+2.7.0 :019 > !!email.match(/\A[\w+\.+-]+@\w+\.\w+\z/)
+ => true 
+#Url validation reg exp
+
+.7.0 :072 > x="http://foo.com/blah"
+2.7.0 :073 > !!x.match(/^((https|ftp|http):\/\/)?(www.)?[([\w+]+\.[\w+])-]+(\/[a-zA-Z0-9#]+\/?)*$/)
+ => true 
+2.7.0 :074 > x="Hello25"
+2.7.0 :075 > !!x.match(/^((https|ftp|http):\/\/)?(www.)?[([\w+]+\.[\w+])-]+(\/[a-zA-Z0-9#]+\/?)*$/)
+ => true 
+2.7.0 :076 > !!x.match(/^((https|ftp|http):\/\/)(www.)?[([\w+]+\.[\w+])-]+(\/[a-zA-Z0-9#]+\/?)*$/)
+ => false 
+2.7.0 :077 > x="http://www.sample.com"
+2.7.0 :078 > !!x.match(/^((https|ftp|http):\/\/)(www.)?[([\w+]+\.[\w+])-]+(\/[a-zA-Z0-9#]+\/?)*$/)
+ => true 
+
 
