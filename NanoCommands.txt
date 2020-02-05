@@ -1,0 +1,38 @@
+NanoEditor Commands:
+
+ctrl x – Close the file
+
+Ctrl o – Save the file
+
+Ctrl w – Search for a string in the file you’re editing
+
+Ctrl space – Go forward one word in a line
+
+Alt space – Go backwards one word in a line
+
+Ctrl a – Go to the beginning of a line
+
+Ctrl e – Go to the end of a line
+
+Ctrl w + Ctrl v – Go to the last line of the file
+
+Ctrl + k – Cut the current line and save it to nano ‘s clipboard.
+
+Ctrl + u – Paste the text that is cut from ctrl+k
+
+Alt \ - First line of file.
+
+Alt / - last line of file.
+
+ctrl / -Enter desired line
+
+ctrl \- Replace text
+
+Alt  + 6 - copy the line
+
+ctrl +G -help
+
+Alt + a - copy text from desired postion
+
+
+

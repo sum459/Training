@@ -1,0 +1,2 @@
+class Caty < ApplicationRecord
+end
