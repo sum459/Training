@@ -1,2 +1,0 @@
-class Caty < ApplicationRecord
-end

@@ -53,3 +53,10 @@ beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/OLMS$ rake db:migrate:statu
 beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/OLMS$ rake db:rollback STEP=4
 beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/OLMS$ rake db:migrate:down VERSION=20200204100436
 
+->limit,default,precision,scale
+
+    add_column :reviews,:price,:decimal,  precision: 4, scale: 2
+    add_column :reviews,:review,:text, default: "No notes recorded"
+    add_column :reviews, :name,:string, limit: 30, null: false
+    add_index :reviews, :name, unique: true
+    remove_index :reviews, :name
