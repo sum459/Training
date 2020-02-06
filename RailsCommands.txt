@@ -1,4 +1,4 @@
-->Create a new project and connect with specified db:
+﻿->Create a new project and connect with specified db:
 
 beryl@beryl-To-be-filled-by-O-E-M:~/Desktop$ rails new OLMS -d postgresql
 
@@ -53,10 +53,23 @@ beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/OLMS$ rake db:migrate:statu
 beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/OLMS$ rake db:rollback STEP=4
 beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/Training/OLMS$ rake db:migrate:down VERSION=20200204100436
 
-->limit,default,precision,scale
+->limit,default,precision,scale,index
 
     add_column :reviews,:price,:decimal,  precision: 4, scale: 2
     add_column :reviews,:review,:text, default: "No notes recorded"
     add_column :reviews, :name,:string, limit: 30, null: false
     add_index :reviews, :name, unique: true
     remove_index :reviews, :name
+
+->require_relative,revert,primary_key migrations:
+
+require_relative '20200206092127_create_per_books.rb'
+class AddNewRevertOld < ActiveRecord::Migration[6.0]
+  def change
+     revert CreatePerBooks
+    create_table :bbooks, id: false do |t|
+      t.string :name, primary_key: true
+      t.decimal :price
+    end
+  end
+end
