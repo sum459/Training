@@ -1579,5 +1579,16 @@ AiLia => nil
 2.7.0 :077 > x="http://www.sample.com"
 2.7.0 :078 > !!x.match(/^((https|ftp|http):\/\/)(www.)?[([\w+]+\.[\w+])-]+(\/[a-zA-Z0-9#]+\/?)*$/)
  => true 
+#Ip address reg exp
+2.7.0 :002 > x="0.0.0.0"
+2.7.0 :003 > !!(x.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/))
+ => true 
+#square of array
+2.7.0 :024 >  ar = [2,3,4,5]
+=> [2, 3, 4, 5]
+2.7.0 :025 > ar.inject([]){|a,b| a << b**2}
+=> [4, 9, 16, 25]
 
+
+ 
 
