@@ -73,3 +73,20 @@ class AddNewRevertOld < ActiveRecord::Migration[6.0]
     end
   end
 end
+
+->up,down,rollback,error
+
+ class CreateAuthors < ActiveRecord::Migration[6.0]
+  def up
+   create_table :authors do |t|
+     t.string :first_name
+     t.string :last_name
+
+     t.timestamps
+   end
+ end
+
+ def down
+   raise ActiveRecord::IrreversibleMigration
+ end
+end
