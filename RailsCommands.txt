@@ -162,3 +162,15 @@ class Book < ApplicationRecord
 end
 
 2.7.0 :001 > Book.search
+
+->Associations
+
+class Book < ApplicationRecord
+    belongs_to :writer
+    scope :search, -> { where ("price < 300") }
+end
+
+class Writer < ApplicationRecord
+     has_many :books
+end
+2.7.0 :012 > Writer.book
