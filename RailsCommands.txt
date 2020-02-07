@@ -99,3 +99,20 @@ end
   execute "ALTER TABLE books ADD CONSTRAINT c CHECK (price1 IN (100, 200, 300) )"
 
 "c" CHECK (price1 = ANY (ARRAY[100, 200, 300]))
+
+->Insert data into tables:
+
+def self.up
+    Book.create(title: 'R',writer: 'a' ,published_date: '2020-02-02',category: 'H' ,price: 200 ,price1: 100)
+  end
+
+
+OLMS=# select * from books;
+ id | title | writer | published_date |        created_at         |        updated_at         | category | price | price1 
+----+-------+--------+----------------+---------------------------+---------------------------+----------+-------+--------
+  2 | R     | a      | 2020-02-02     | 2020-02-07 05:41:19.82618 | 2020-02-07 05:41:19.82618 | H        |   200 |    100
+(1 row)
+
+save in seeds.rb
+Book.create(title: 'RA',writer: 'ac' ,published_date: '2020-02-02',category: 'H' ,price: 200 ,price1: 100)
+rake db:seed
