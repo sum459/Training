@@ -146,3 +146,19 @@ rake db:seed
 
 2.7.0 :007 > helper.number_to_percentage(22, precision:2)
  => "22.00%" 
+
+2.7.0 :025 > b=Book.new
+2.7.0 :026 > b.title="Red Blood"
+2.7.0 :027 > b.save
+
+2.7.0 :030 > Book.find(2)
+2.7.0 :034 > b.delete
+
+
+
+class Book < ApplicationRecord
+  scope :search, -> { where ("price < 300") }
+  scope :with_long_title, -> { where("LENGTH(title) > 20") }
+end
+
+2.7.0 :001 > Book.search
