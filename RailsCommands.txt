@@ -116,3 +116,33 @@ OLMS=# select * from books;
 save in seeds.rb
 Book.create(title: 'RA',writer: 'ac' ,published_date: '2020-02-02',category: 'H' ,price: 200 ,price1: 100)
 rake db:seed
+
+
+->insert,Update,delete record of table:
+
+2.7.0 :002 > Book.create(title: 'Game of frowns',writer: 'Robert Pattinson' ,published_date: '2020-12-02',category: 'funny' ,price: 500 ,price1: 100)
+
+2.7.0 :003 > ap Book.all
+
+
+
+2.7.0 :017 > p=Book.first
+2.7.0 :020 > p.update(title: 'Blue Sky')
+
+  Book Update (0.3ms)  UPDATE "books" SET "title" = $1, "updated_at" = $2 WHERE 
+
+"books"."id" = $3  [["title", "Blue Sky"], ["updated_at", "2020-02-07 10:00:24.178324"], ["id", 1]]
+   
+2.7.0 :022 > p.delete
+  
+
+2.7.0 :023 > Book.first
+  
+ 
+2.7.0 :024 > Book.count
+   (1.0ms)  SELECT COUNT(*) FROM "books"
+ => 3 
+
+
+2.7.0 :007 > helper.number_to_percentage(22, precision:2)
+ => "22.00%" 
