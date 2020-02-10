@@ -209,3 +209,25 @@ end
            :book_id => 1
     }
 
+
+
+class Book < ApplicationRecord
+  has_many :reviews
+  has_many :purchase_books
+  has_many :users, through: :purchase_books
+end
+
+
+class User < ApplicationRecord
+    has_many :reviews
+    has_many :purchases
+    has_many :books, through: :purchase_books
+end
+
+
+
+
+2.7.0 :005 > Book.first.users
+  Book Load (0.4ms)  SELECT "books".* FROM "books" ORDER BY "books"."id" ASC LIMIT $1  [["LIMIT", 1]]
+  User Load (0.4ms)  SELECT "users".* FROM "users" INNER JOIN "purchase_books" ON "users"."id" = "purchase_books"."user_id" WHERE "purchase_books"."book_id" = $1 LIMIT $2  [["book_id", 1], ["LIMIT", 11]]
+ => #<ActiveRecord::Associations::CollectionProxy [#<User id: 1, name: "Robert Pattinson", contact: "9899198003", email: "rob@gmail.com", created_at: "2020-02-10 09:19:15", updated_at: "2020-02-10 09:19:15">]> 
