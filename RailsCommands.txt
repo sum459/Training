@@ -194,6 +194,17 @@ end
             :rating => 4.6,
         :created_at => Mon, 10 Feb 2020 10:12:19 UTC +00:00,
         :updated_at => Mon, 10 Feb 2020 10:21:41 UTC +00:00,
+
+Database modifications For Associations:
+
+class AddForeignKeyReferenceToPb < ActiveRecord::Migration[6.0]
+  def change
+    add_reference :purchase_books, :purchase, index: true, foreign_key: true
+    add_reference :purchase_books, :book, index: true, foreign_key: true
+    add_reference :purchase_books, :user, index: true, foreign_key: true
+  end
+end
+
            :user_id => 1,
            :book_id => 1
     }
