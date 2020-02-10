@@ -174,3 +174,27 @@ class Writer < ApplicationRecord
      has_many :books
 end
 2.7.0 :012 > Writer.book
+
+
+
+Associations:
+
+class Book < ApplicationRecord
+  has_many :reviews
+end
+
+class Review < ApplicationRecord
+  belongs_to :book
+end
+
+2.7.0 :065 > ap Book.first.reviews
+
+    [0] #<Review:0x00007fa8080d1080> {
+                :id => 1,
+            :rating => 4.6,
+        :created_at => Mon, 10 Feb 2020 10:12:19 UTC +00:00,
+        :updated_at => Mon, 10 Feb 2020 10:21:41 UTC +00:00,
+           :user_id => 1,
+           :book_id => 1
+    }
+
