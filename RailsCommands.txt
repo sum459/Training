@@ -234,3 +234,81 @@ end
 2.7.0 :001 > User.first.books
 
 #Associations between users,books,purchase,reviews is established
+
+
+
+#Queries
+
+->2.7.0 :002 > ap Book.first.users
+
+                :id => 1,
+              :name => "Robert Pattinson",
+           :contact => "9899198003",
+             :email => "rob@gmail.com",
+        :created_at => Mon, 10 Feb 2020 09:19:15 UTC +00:00,
+        :updated_at => Mon, 10 Feb 2020 09:19:15 UTC +00:00
+
+->2.7.0 :003 > ap User.first.books
+
+    [0] #<Book:0x00005599ce903a40> {
+                 :title => "The Red Thread",
+                :author => "Ann Hood",
+        :published_date => Thu, 22 Feb 2018,
+              :category => "Romance",
+                  :isbn => "123456x",
+                 :price => 300.0,
+            :created_at => Mon, 10 Feb 2020 06:11:10 UTC +00:00,
+            :updated_at => Mon, 10 Feb 2020 06:11:10 UTC +00:00
+    },
+    [1] #<Book:0x00005599ce903950> {
+                    :id => 2,
+                 :title => "Harry Potter(1-4)",
+                :author => "J.K Rowling",
+        :published_date => Fri, 22 Feb 2019,
+              :category => "Fantasy",
+                  :isbn => "123456y",
+                 :price => 1000.0,
+            :created_at => Mon, 10 Feb 2020 06:13:54 UTC +00:00,
+            :updated_at => Mon, 10 Feb 2020 06:13:54 UTC +00:00
+
+->2.7.0 :004 > ap User.first.purchases
+
+                :id => 1,
+              :date => Wed, 01 Jan 2020,
+           :ammount => 1300.0,
+        :created_at => Mon, 10 Feb 2020 10:36:45 UTC +00:00,
+        :updated_at => Mon, 10 Feb 2020 10:37:43 UTC +00:00,
+           :user_id => 1
+->2.7.0 :005 > ap User.first.purchase_books
+
+    [0] #<PurchaseBook:0x00005599cdd8f740> {
+         :created_at => Mon, 10 Feb 2020 12:10:02 UTC +00:00,
+         :updated_at => Mon, 10 Feb 2020 12:10:02 UTC +00:00,
+        :purchase_id => 1,
+            :book_id => 1,
+            :user_id => 1
+    },
+    [1] #<PurchaseBook:0x00005599cdb90f20> {
+         :created_at => Mon, 10 Feb 2020 12:10:11 UTC +00:00,
+         :updated_at => Mon, 10 Feb 2020 12:10:11 UTC +00:00,
+        :purchase_id => 1,
+            :book_id => 2,
+            :user_id => 1
+->2.7.0 :009 > ap Book.first.reviews
+
+                :id => 1,
+            :rating => 4.6,
+        :created_at => Mon, 10 Feb 2020 10:12:19 UTC +00:00,
+        :updated_at => Mon, 10 Feb 2020 10:21:41 UTC +00:00,
+           :user_id => 1,
+           :book_id => 1
+->2.7.0 :008 > ap User.first.reviews
+
+    [0] #<Review:0x00005599ce7d4f98> {
+                :id => 1,
+            :rating => 4.6,
+        :created_at => Mon, 10 Feb 2020 10:12:19 UTC +00:00,
+        :updated_at => Mon, 10 Feb 2020 10:21:41 UTC +00:00,
+           :user_id => 1,
+           :book_id => 1
+
