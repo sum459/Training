@@ -323,3 +323,17 @@ end
 
 2.7.0 :009 > Book.find(10).delete
 
+#Inserted More data into tables.
+#Practising Queries on relationships:
+
+2.7.0 :101 > ap PurchaseBook.order("purchase_id")
+2.7.0 :100 > ap PurchaseBook.order("purchase_id").last
+2.7.0 :096 > ap Book.last
+2.7.0 :093 > ap Book.find(3)
+2.7.0 :103 > ap PurchaseBook.order("purchase_id").take(2)
+2.7.0 :104 > ap PurchaseBook.find_by(purchase_id: 3)
+2.7.0 :112 > ap PurchaseBook.where(user_id: 1)
+2.7.0 :118 > Book.limit(2).offset(3)
+2.7.0 :126 > ap Book.second.users
+2.7.0 :125 > ap User.first.books
+
