@@ -311,4 +311,15 @@ end
         :updated_at => Mon, 10 Feb 2020 10:21:41 UTC +00:00,
            :user_id => 1,
            :book_id => 1
+->Create,update,Delete Records in database
+
+2.7.0 :013 > x=Book.find_by(id: 6)
+  Book Load (0.4ms)  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2  [["id", 6], ["LIMIT", 1]]
+2.7.0 :014 > x.published_date= "2018-04-22"
+2.7.0 :015 > x.isbn= "111455y"
+2.7.0 :016 > x.price= 1000
+2.7.0 :017 > x.category="Adventure"
+2.7.0 :018 > x.save
+
+2.7.0 :009 > Book.find(10).delete
 
