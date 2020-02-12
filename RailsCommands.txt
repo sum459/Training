@@ -443,3 +443,18 @@ end
  => #<ActiveRecord::Relation [#<Book id: 1, author: "Ann Hood">, #<Book id: 2, author: "J.K Rowling">, #<Book id: 3, author: "Robert Kiyonski">, #<Book id: 7, author: "J.K Rowling">, #<Book id: 8, author: "Ekta Kapoor">, #<Book id: 9, author: "George Martin">, #<Book id: 6, author: "J.K Rowling">]> 
 
 
+2.7.0 :052 > Book.find(2).users.order(:name).reorder(:id)
+  Book Load (0.4ms)  SELECT "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2  [["id", 2], ["LIMIT", 1]]
+  User Load (0.4ms)  SELECT "users".* FROM "users" INNER JOIN "purchase_books" ON "users"."id" = "purchase_books"."user_id" WHERE "purchase_books"."book_id" = $1 ORDER BY "users"."id" ASC LIMIT $2  [["book_id", 2], ["LIMIT", 11]]
+ => #<ActiveRecord::AssociationRelation [#<User id: 1, name: "Robert Pattinson", contact: "9899198003", email: "rob@gmail.com", created_at: "2020-02-10 09:19:15", updated_at: "2020-02-10 09:19:15">, #<User id: 2, name: "Denial Redcliffe", contact: "9899198002", email: "Den@gmail.com", created_at: "2020-02-10 10:24:11", updated_at: "2020-02-10 10:24:11">]> 
+
+
+2.7.0 :062 > PurchaseBook.select(:book_id).distinct
+
+2.7.0 :068 > ap PurchaseBook.order(:book_id).reverse_order
+
+2.7.0 :103 > Book.where(author: 'J.K Rowling').where(id: 6)
+  Book Load (0.3ms)  SELECT "books".* FROM "books" WHERE "books"."author" = $1 AND "books"."id" = $2 LIMIT $3  [["author", "J.K Rowling"], ["id", 6], ["LIMIT", 11]]
+ => #<ActiveRecord::Relation [#<Book id: 6, title: "Harry Potter(5-8)", author: "J.K Rowling", published_date: "2018-04-22", category: "Adventure", isbn: "111455y", price: 0.1e4, created_at: "2020-02-10 09:32:01", updated_at: "2020-02-12 05:17:29">]> 
+
+
