@@ -362,4 +362,84 @@ end
             "id" => nil,
         "author" => "Ann Hood"
 
+2.7.0 :031 > ap Book.group(:author).sum(:price)
+
+        "Ekta Kapoor" => 500.0,
+      "George Martin" => 1000.0,
+        "J.K Rowling" => 2500.0,
+    "Robert Kiyonski" => 300.0,
+           "Ann Hood" => 300.0
+
+2.7.0 :035 > ap Book.select("sum(price),author").group(:author)
+
+[
+    [0] #<Book:0x000055fe93b65c50> {
+            "id" => nil,
+        "author" => "Ekta Kapoor",
+           "sum" => 500.0
+    },
+    [1] #<Book:0x000055fe93b65b88> {
+            "id" => nil,
+        "author" => "George Martin",
+           "sum" => 1000.0
+    },
+    [2] #<Book:0x000055fe93b65ac0> {
+            "id" => nil,
+        "author" => "J.K Rowling",
+           "sum" => 2500.0
+    },
+    [3] #<Book:0x000055fe93b659f8> {
+            "id" => nil,
+        "author" => "Robert Kiyonski",
+           "sum" => 300.0
+    },
+    [4] #<Book:0x000055fe93b65930> {
+            "id" => nil,
+        "author" => "Ann Hood",
+           "sum" => 300.0
+    }
+]
+
+
+2.7.0 :036 > ap Book.group("author").count
+
+2.7.0 :039 > ap Book.select(:author).group("author").having("count(author) > 1")
+[
+    [0] #<Book:0x000055fe93a9a140> {
+            "id" => nil,
+        "author" => "J.K Rowling"
+    }
+]
+
+2.7.0 :041 > ap Book.select(:author).group("author").having("count(author) > 1").unscope(:having)
+[
+    [0] #<Book:0x000055fe91dbfbd8> {
+            "id" => nil,
+        "author" => "Ekta Kapoor"
+    },
+    [1] #<Book:0x000055fe91dbfa48> {
+            "id" => nil,
+        "author" => "George Martin"
+    },
+    [2] #<Book:0x000055fe91dbf980> {
+            "id" => nil,
+        "author" => "J.K Rowling"
+    },
+    [3] #<Book:0x000055fe91dbf778> {
+            "id" => nil,
+        "author" => "Robert Kiyonski"
+    },
+    [4] #<Book:0x000055fe91dbf368> {
+            "id" => nil,
+        "author" => "Ann Hood"
+    }
+]
+
+2.7.0 :042 >  Book.select(:author).reselect(:title)
+  Book Load (0.3ms)  SELECT "books"."title" FROM "books" LIMIT $1  [["LIMIT", 11]]
+ => #<ActiveRecord::Relation [#<Book id: nil, title: "The Red Thread">, #<Book id: nil, title: "Harry Potter(1-4)">, #<Book id: nil, title: "Rich Dad Poor Dad">, #<Book id: nil, title: "Dark Moon">, #<Book id: nil, title: "Kasauti">, #<Book id: nil, title: "Game Of Thrones">, #<Book id: nil, title: "Harry Potter(5-8)">]> 
+
+  Book Load (0.3ms)  SELECT "books"."author", "books"."id" FROM "books" LIMIT $1  [["LIMIT", 11]]
+ => #<ActiveRecord::Relation [#<Book id: 1, author: "Ann Hood">, #<Book id: 2, author: "J.K Rowling">, #<Book id: 3, author: "Robert Kiyonski">, #<Book id: 7, author: "J.K Rowling">, #<Book id: 8, author: "Ekta Kapoor">, #<Book id: 9, author: "George Martin">, #<Book id: 6, author: "J.K Rowling">]> 
+
 
