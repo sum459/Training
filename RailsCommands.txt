@@ -337,3 +337,29 @@ end
 2.7.0 :126 > ap Book.second.users
 2.7.0 :125 > ap User.first.books
 
+2.7.0 :004 >  Book.where(author: 'J.K Rowling').second_to_last
+2.7.0 :009 > ap  Book.where(author: 'J.K Rowling').all
+2.7.0 :024 > ap Book.limit(3)
+2.7.0 :028 > ap Book.select(:author).distinct
+
+    [0] #<Book:0x000055fe940386d8> {
+            "id" => nil,
+        "author" => "Ekta Kapoor"
+    },
+    [1] #<Book:0x000055fe94038610> {
+            "id" => nil,
+        "author" => "George Martin"
+    },
+    [2] #<Book:0x000055fe94038548> {
+            "id" => nil,
+        "author" => "J.K Rowling"
+    },
+    [3] #<Book:0x000055fe94038480> {
+            "id" => nil,
+        "author" => "Robert Kiyonski"
+    },
+    [4] #<Book:0x000055fe940383b8> {
+            "id" => nil,
+        "author" => "Ann Hood"
+
+
