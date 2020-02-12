@@ -458,3 +458,27 @@ end
  => #<ActiveRecord::Relation [#<Book id: 6, title: "Harry Potter(5-8)", author: "J.K Rowling", published_date: "2018-04-22", category: "Adventure", isbn: "111455y", price: 0.1e4, created_at: "2020-02-10 09:32:01", updated_at: "2020-02-12 05:17:29">]> 
 
 
+#Select all Users nd prodects they have purchased
+
+2.7.0 :131 > Book.joins(:purchase_books).joins(:users).distinct.select(:title,:id,:name)
+  Book Load (0.8ms)  SELECT DISTINCT "books"."title", "books"."id", "name" FROM "books" INNER JOIN "purchase_books" ON "purchase_books"."book_id" = "books"."id" INNER JOIN "purchase_books" "purchase_books_books_join" ON "purchase_books_books_join"."book_id" = "books"."id" INNER JOIN "users" ON "users"."id" = "purchase_books_books_join"."user_id" LIMIT $1  [["LIMIT", 11]]
+ => #<ActiveRecord::Relation [#<Book id: 7, title: "Dark Moon">, #<Book id: 2, title: "Harry Potter(1-4)">, #<Book id: 2, title: "Harry Potter(1-4)">, #<Book id: 6, title: "Harry Potter(5-8)">, #<Book id: 1, title: "The Red Thread">, #<Book id: 1, title: "The Red Thread">, #<Book id: 1, title: "The Red Thread">]> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
