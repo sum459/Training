@@ -517,11 +517,47 @@ ActiveRecord::RecordInvalid (Validation failed: Title can't be blank)
 
 2.7.0 :033 > b.save(validate: false)
 
+2.7.0 :038 > Book.create.errors[:title].any?
+ => true 
+2.7.0 :039 > Book.create!.errors[:title].any?
+Traceback (most recent call last):
+        1: from (irb):39
+ActiveRecord::RecordInvalid (Validation failed: Title can't be blank)
+2.7.0 :041 > x=Book.new
+2.7.0 :044 > x.valid?
+ => false 
+2.7.0 :045 > x.errors.details[:title]
+ => [{:error=>:blank}] 
+---------> validates :author, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
 
+2.7.0 :003 > Book.create.errors[:title].any?
+ => true 
+2.7.0 :004 > Book.create.errors[:author].any?
+ => true 
+2.7.0 :005 > Book.create(author: '123')
+ => #<Book id: nil, title: nil, author: "123", published_date: nil, category: nil, isbn: nil, price: nil, created_at: nil, updated_at: nil> 
+2.7.0 :006 > Book.create(author: '123').valid?
+ => false 
+2.7.0 :007 > Book.create(author: '123',title: 's').valid?
+ => false 
 
+2.7.0 :011 > x.errors.details
+ => {:author=>[{:error=>:invalid, :value=>"123"}]} 
 
+  validates :title, presence: true
+  validates :author, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
+  validates :category, exclusion: { in: %w(Adventure Romance Fantasy Inspiration),
+  message: "%{value} is not a valid " }
 
-
-
+2.7.0 :006 > Book.create(title: 'd',category: 'fun').valid?
+ => false 
+2.7.0 :007 > x=Book.create(title: 'd',category: 'fun')
+2.7.0 :008 > x.errors.details
+ => {:author=>[{:error=>:invalid, :value=>nil}], :category=>[{:error=>:inclusion, :value=>"fun"}]} 
+2.7.0 :002 > x=Book.create(title: 'd',category: 'Adventure')
+2.7.0 :003 > x.valid?
+ => false 
+2.7.0 :004 > x.errors.details
+ => {:author=>[{:error=>:invalid, :value=>nil}], :category=>[{:error=>:exclusion, :value=>"Adventure"}]} 
 
 
