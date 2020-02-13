@@ -548,6 +548,10 @@ ActiveRecord::RecordInvalid (Validation failed: Title can't be blank)
   validates :author, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
   validates :category, exclusion: { in: %w(Adventure Romance Fantasy Inspiration),
   message: "%{value} is not a valid " }
+  validates :title, length: {maximum: 20}
+  validates :price, numericality: {only_integer: true}
+
+---->validates :email, uniqueness: true
 
 2.7.0 :006 > Book.create(title: 'd',category: 'fun').valid?
  => false 
@@ -560,4 +564,12 @@ ActiveRecord::RecordInvalid (Validation failed: Title can't be blank)
 2.7.0 :004 > x.errors.details
  => {:author=>[{:error=>:invalid, :value=>nil}], :category=>[{:error=>:exclusion, :value=>"Adventure"}]} 
 
+2.7.0 :003 > x=Book.create(title: 'The Great Great great Empire',category: 'fun',price: 400.56)
+2.7.0 :004 > x.errors.details
+ => {:author=>[{:error=>:invalid, :value=>nil}], :title=>[{:error=>:too_long, :count=>20}], :price=>[{:error=>:not_an_integer, :value=>400.56}]} 
 
+2.7.0 :012 > x.valid?
+  User Exists? (0.9ms)  SELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+ => false 
+2.7.0 :013 > x.errors.details
+ => {:email=>[{:error=>:taken, :value=>"rob@gmail.com"}]} 
