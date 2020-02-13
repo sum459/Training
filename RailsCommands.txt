@@ -573,3 +573,31 @@ ActiveRecord::RecordInvalid (Validation failed: Title can't be blank)
  => false 
 2.7.0 :013 > x.errors.details
  => {:email=>[{:error=>:taken, :value=>"rob@gmail.com"}]} 
+
+
+
+---------------------------------------------------------Polymorphic Associations----------------------------------------------------------------------------------------
+
+--->t.references :rate, polymorphic: true
+
+class Book < ApplicationRecord
+    belongs_to :writer
+    has_many :ratings, as: :rate 
+
+class Writer < ApplicationRecord
+     has_many :books
+     has_many :ratings, as: :rate
+end
+
+class Rating < ApplicationRecord
+  belongs_to :rate, polymorphic: true
+end
+
+
+
+2.7.0 :002 > x=Rating.create(star: '4',rate_id: 1,rate_type:'Writer')
+ 
+
+2.7.0 :004 > Rating.find(1).rate_type
+  Rating Load (0.3ms)  SELECT "ratings".* FROM "ratings" WHERE "ratings"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]
+ => "Writer"
