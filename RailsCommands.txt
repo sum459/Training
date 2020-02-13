@@ -487,10 +487,35 @@ end
          "title" => "The Red Thread",
         "rating" => 4.4
 
+---------------------------------------------------------------------VALIDATIONS-----------------------------------------------------------------------------------------
+class Book < ApplicationRecord
+  validates :title, presence: true
+
+2.7.0 :003 > ap Book.new(title: '').valid?
+false
+ => nil 
+2.7.0 :004 > ap Book.new(title: 'Red Blood').valid?
+true
+ => nil 
 
 
+7.0 :015 > b=Book.new
+2.7.0 :017 > b.errors.messages
+ => {} 
+2.7.0 :018 > b.valid?
+ => false 
+2.7.0 :019 > b.errors.messages
+ => {:title=>["can't be blank"]} 
+2.7.0 :021 > x=Book.create
+2.7.0 :022 > x.errors.messages
+2.7.0 :023 > x.save
+ => false 
+2.7.0 :024 > x.save!
+Traceback (most recent call last):
+        1: from (irb):24
+ActiveRecord::RecordInvalid (Validation failed: Title can't be blank)
 
-
+2.7.0 :033 > b.save(validate: false)
 
 
 
