@@ -601,3 +601,32 @@ end
 2.7.0 :004 > Rating.find(1).rate_type
   Rating Load (0.3ms)  SELECT "ratings".* FROM "ratings" WHERE "ratings"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]
  => "Writer"
+
+# Query Interface--------------------------------------------------------------------------------
+
+2.7.0 :016 > ap Book.where(title: 'The Red Thread').or(Book.where(id: [1,2,3]))
+
+2.7.0 :036 > ap Book.where(created_at: (Time.now.midnight - 5.day)..Time.now)
+
+2.7.0 :038 > ap Book.where.not(title: 'The Red Thread')
+
+2.7.0 :074 > User.find(2).purchases.find_each do |x|
+2.7.0 :075 >   ap  x.ammount
+2.7.0 :076 > end
+  User Load (0.7ms)  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2  [["id", 2], ["LIMIT", 1]]
+  Purchase Load (0.8ms)  SELECT "purchases".* FROM "purchases" WHERE "purchases"."user_id" = $1 ORDER BY "purchases"."id" ASC LIMIT $2  [["user_id", 2], ["LIMIT", 1000]]
+2000.0
+300.0
+
+
+2.7.0 :077 > User.find_each do |x|
+2.7.0 :078 >   ap  x.name
+2.7.0 :079 > end
+  User Load (0.4ms)  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1  [["LIMIT", 1000]]
+"Robert Pattinson"
+"Denial Redcliffe"
+"Sunidhi Chauhan"
+"Sumit Goyal"
+"Naveen"
+"Amit"
+
