@@ -774,6 +774,29 @@ end
  => nil 
 
 
+#Understanding Method Chaining
+
+2.7.0 :244 > ap Book.select('books.title, users.name').joins(:users).where('books.title' =>'The Red Thread')
+
+    [0] #<Book:0x000055606ff2d7d8> {
+           "id" => nil,
+        "title" => "The Red Thread",
+         "name" => "Denial Redcliffe"
+    },
+    [1] #<Book:0x000055606ff2d558> {
+           "id" => nil,
+        "title" => "The Red Thread",
+         "name" => "Sunidhi Chauhan"
+    },
+    [2] #<Book:0x000055606ff2d2d8> {
+           "id" => nil,
+        "title" => "The Red Thread",
+         "name" => "Robert Pattinson"
+    }
+]
+
+
+
 ------------------------------------------------------include----------------------------------------------------------------------------------------------------------
 
 
@@ -801,4 +824,19 @@ end
                Index Cond: (book_id = '1'::bigint)
 (7 rows)
 
+--------------------------------------------------------Dynamic Finder--------------------------------------------------------------------------------------------------
 
+2.7.0 :208 > Book.find_by_title('The Red Thread')
+  Book Load (0.4ms)  SELECT "books".* FROM "books" WHERE "books"."title" = $1 LIMIT $2  [["title", "The Red Thread"], ["LIMIT", 1]]
+ => #<Book id: 1, title: "The Red Thread", author: "Ann Hood", published_date: "2018-02-22", category: "Romance", isbn: "123456x", price: 0.3e3, created_at: "2020-02-10 06:11:10", updated_at: "2020-02-10 06:11:10"> 
+
+
+----------------------------------------------------pluck---------------------------------------------------------------------------------------------------------------
+
+2.7.0 :214 > ap Book.where(title: 'The Red Thread').pluck(:price)
+   (0.3ms)  SELECT "books"."price" FROM "books" WHERE "books"."title" = $1  [["title", "The Red Thread"]]
+
+[
+    [0] 300.0
+]
+ => nil 
