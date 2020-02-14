@@ -840,3 +840,25 @@ end
     [0] 300.0
 ]
  => nil 
+
+---------------------------------------------------------------------enum------------------------------------------------------------------------------------------------
+
+enum status: {draft: 0,published: 1}
+
+->Book.create!(title:'hh')
+->Book.last.published!
+
+2.7.0 :195 > ap Book.second.published!
+2.7.0 :196 > ap Book.second.published?
+
+
+------------------------------------------------------------------------find or build new object-------------------------------------------------------------------------
+
+2.7.0 :253 > Book.find_or_create_by(title:'sumo')
+  Book Load (0.3ms)  SELECT "books".* FROM "books" WHERE "books"."title" = $1 LIMIT $2  [["title", "sumo"], ["LIMIT", 1]]
+ => #<Book id: nil, title: "sumo", author: nil, published_date: nil, category: nil, isbn: nil, price: nil, created_at: nil, updated_at: nil> 
+
+2.7.0 :254 > Book.find_or_create_by(title:'The Red Thread')
+  Book Load (0.3ms)  SELECT "books".* FROM "books" WHERE "books"."title" = $1 LIMIT $2  [["title", "The Red Thread"], ["LIMIT", 1]]
+ => #<Book id: 1, title: "The Red Thread", author: "Ann Hood", published_date: "2018-02-22", category: "Romance", isbn: "123456x", price: 0.3e3, created_at: "2020-02-10 06:11:10", updated_at: "2020-02-10 06:11:10"> 
+
