@@ -720,7 +720,60 @@ end
         :created_at => Tue, 11 Feb 2020 05:51:33 UTC +00:00,
         :updated_at => Tue, 11 Feb 2020 05:51:33 UTC +00:00
 
- 
+2.7.0 :127 > Book.joins(:users).where(users: {id: 2})
+  Book Load (0.5ms)  SELECT "books".* FROM "books" INNER JOIN "purchase_books" ON "purchase_books"."book_id" = "books"."id" INNER JOIN "users" ON "users"."id" = "purchase_books"."user_id" WHERE "users"."id" = $1 LIMIT $2  [["id", 2], ["LIMIT", 11]]
+ => #<ActiveRecord::Relation [#<Book id: 2, title: "Harry Potter(1-4)", author: "J.K Rowling", published_date: "2019-02-22", category: "Fantasy", isbn: "123456y", price: 0.1e4, created_at: "2020-02-10 06:13:54", updated_at: "2020-02-10 06:13:54">, #<Book id: 6, title: "Harry Potter(5-8)", author: "J.K Rowling", published_date: "2018-04-22", category: "Adventure", isbn: "111455y", price: 0.1e4, created_at: "2020-02-10 09:32:01", updated_at: "2020-02-12 05:17:29">, #<Book id: 1, title: "The Red Thread", author: "Ann Hood", published_date: "2018-02-22", category: "Romance", isbn: "123456x", price: 0.3e3, created_at: "2020-02-10 06:11:10", updated_at: "2020-02-10 06:11:10">]> 
+
+
+.7.0 :182 > ap Book.joins(:users).group(:title).count(:title)
+   (0.7ms)  SELECT COUNT("books"."title") AS count_title, "books"."title" AS books_title FROM "books" INNER JOIN "purchase_books" ON "purchase_books"."book_id" = "books"."id" INNER JOIN "users" ON "users"."id" = "purchase_books"."user_id" GROUP BY "books"."title"
+
+            "Dark Moon" => 1,
+    "Harry Potter(1-4)" => 2,
+    "Harry Potter(5-8)" => 1,
+       "The Red Thread" => 3
+
+2.7.0 :207 > ap User.joins(:books).select(:title,:name).order(:name)
+
+    [0] #<User:0x0000556070c8d0b8> {
+           "id" => nil,
+         "name" => "Denial Redcliffe",
+        "title" => "Harry Potter(1-4)"
+    },
+    [1] #<User:0x0000556070c8cff0> {
+           "id" => nil,
+         "name" => "Denial Redcliffe",
+        "title" => "The Red Thread"
+    },
+    [2] #<User:0x0000556070c8cf28> {
+           "id" => nil,
+         "name" => "Denial Redcliffe",
+        "title" => "Harry Potter(5-8)"
+    },
+    [3] #<User:0x0000556070c8ce60> {
+           "id" => nil,
+         "name" => "Robert Pattinson",
+        "title" => "The Red Thread"
+    },
+    [4] #<User:0x0000556070c8cd98> {
+           "id" => nil,
+         "name" => "Robert Pattinson",
+        "title" => "Harry Potter(1-4)"
+    },
+    [5] #<User:0x0000556070c8ccd0> {
+           "id" => nil,
+         "name" => "Sumit Goyal",
+        "title" => "Dark Moon"
+    },
+    [6] #<User:0x0000556070c8cc08> {
+           "id" => nil,
+         "name" => "Sunidhi Chauhan",
+        "title" => "The Red Thread"
+    }
+]
+ => nil 
+
+
 ------------------------------------------------------include----------------------------------------------------------------------------------------------------------
 
 
