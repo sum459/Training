@@ -949,4 +949,14 @@ class Review < ApplicationRecord
   belongs_to :user
 end
 
+
+---------------------------------Read Only Association---------------->>>>>>>>
+
+2.7.0 :086 > User.last.books.create(title: "2 Moons", author: "Ann Hood", published_date: "2019-02-22", category: "Romance", isbn: "423436x", price: 500)
+  User Load (0.4ms)  SELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1  [["LIMIT", 1]]
+Traceback (most recent call last):
+        1: from (irb):86
+ActiveRecord::HasManyThroughNestedAssociationsAreReadonly (Cannot modify association 'User#books' because it goes through more than one other association.)
+
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
