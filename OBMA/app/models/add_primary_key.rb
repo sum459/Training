@@ -1,0 +1,2 @@
+class AddPrimaryKey < ApplicationRecord
+end

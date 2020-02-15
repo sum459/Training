@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_06_060922) do
+ActiveRecord::Schema.define(version: 2020_02_15_072553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "add_primary_keys", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "books", force: :cascade do |t|
     t.string "title", null: false
@@ -29,10 +34,10 @@ ActiveRecord::Schema.define(version: 2020_02_06_060922) do
   create_table "purchase_books", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "purchases_id"
-    t.bigint "books_id"
-    t.index ["books_id"], name: "index_purchase_books_on_books_id"
-    t.index ["purchases_id"], name: "index_purchase_books_on_purchases_id"
+    t.bigint "purchase_id"
+    t.bigint "book_id"
+    t.index ["book_id"], name: "index_purchase_books_on_book_id"
+    t.index ["purchase_id"], name: "index_purchase_books_on_purchase_id"
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -48,10 +53,10 @@ ActiveRecord::Schema.define(version: 2020_02_06_060922) do
     t.decimal "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "users_id"
-    t.bigint "books_id"
-    t.index ["books_id"], name: "index_reviews_on_books_id"
-    t.index ["users_id"], name: "index_reviews_on_users_id"
+    t.bigint "user_id"
+    t.bigint "book_id"
+    t.index ["book_id"], name: "index_reviews_on_book_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,9 +67,9 @@ ActiveRecord::Schema.define(version: 2020_02_06_060922) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "purchase_books", "books", column: "books_id"
-  add_foreign_key "purchase_books", "purchases", column: "purchases_id"
+  add_foreign_key "purchase_books", "books"
+  add_foreign_key "purchase_books", "purchases"
   add_foreign_key "purchases", "users"
-  add_foreign_key "reviews", "books", column: "books_id"
-  add_foreign_key "reviews", "users", column: "users_id"
+  add_foreign_key "reviews", "books"
+  add_foreign_key "reviews", "users"
 end
