@@ -990,3 +990,17 @@ ActiveRecord::HasManyThroughNestedAssociationsAreReadonly (Cannot modify associa
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Practice validations:
+
+validates :title, presence: true
+  validates :author, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
+  validates :category, inclusion: { in: %w(Adventure Romance Fantasy Inspiration),
+  message: "%{value} is not a valid " }
+  validates :title, length: {maximum: 10, too_long: "%{count} character is max allow"}
+  validates :price, numericality: {only_integer: true}
+  validates :price, presence: true,numericality: {greater_than_or_equal_to: 300  "must be greter or equal to 300"}
+
+2.7.0 :011 > x.errors.details
+ => {:title=>[{:error=>:blank}], :author=>[{:error=>:invalid, :value=>"12"}], :category=>[{:error=>:inclusion, :value=>"q"}], :price=>[{:error=>:not_an_integer, :value=>"2.3"}, {:error=>:greater_than_or_equal_to, :value=>0.23e1, :count=>300}]} 
+
