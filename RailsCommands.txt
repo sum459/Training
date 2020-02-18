@@ -871,6 +871,17 @@ enum status: {draft: 0,published: 1}
 2.7.0 :196 > ap Book.second.published?
 
 
+  enum category: [:available, :unavailable]
+
+2.7.0 :046 > Book.new(category: 'available')
+ => #<Book id: nil, title: nil, author: nil, published_date: nil, category: "available", isbn: nil, price: nil, created_at: nil, updated_at: nil> 
+2.7.0 :047 > Book.new(category: 'available').available?
+ => true 
+2.7.0 :048 > Book.new(category: 'available').unavailable?
+ => false 
+
+
+
 ------------------------------------------------------------------------find or build new object-------------------------------------------------------------------------
 
 2.7.0 :253 > Book.find_or_create_by(title:'sumo')
