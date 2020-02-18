@@ -1108,4 +1108,36 @@ end
   Review Load (0.4ms)  SELECT "reviews".* FROM "reviews" WHERE (rating > 3) LIMIT $1  [["LIMIT", 11]]
 2.7.0 :019 > Review.top
   Review Load (0.4ms)  SELECT "reviews".* FROM "reviews" WHERE (rating > 4.5) LIMIT $1  [["LIMIT", 11]]
+
+---------------------------------------------------------------------------------------Object Existance------------------------------------------------------------------
+
+2.7.0 :061 > User.exists?(1)
+  User Exists? (1.0ms)  SELECT 1 AS one FROM "users" WHERE "users"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]
+ => true 
+2.7.0 :062 > User.exists?(name: 'Sunidhi Chauhan')
+  User Exists? (0.8ms)  SELECT 1 AS one FROM "users" WHERE "users"."name" = $1 LIMIT $2  [["name", "Sunidhi Chauhan"], ["LIMIT", 1]]
+ => true 
+2.7.0 :063 > User.exists?(name: 'Ramu')
+  User Exists? (0.4ms)  SELECT 1 AS one FROM "users" WHERE "users"."name" = $1 LIMIT $2  [["name", "Ramu"], ["LIMIT", 1]]
+ => false 
+2.7.0 :064 > User.exists?(2)
+  User Exists? (0.6ms)  SELECT 1 AS one FROM "users" WHERE "users"."id" = $1 LIMIT $2  [["id", 2], ["LIMIT", 1]]
+ => true 
+
+2.7.0 :071 > Book.first.users.any?
+ 
+ => true 
+
+2.7.0 :072 > Book.first.users.many?
+
+ => true 
+
+2.7.0 :074 > Book.exists?
+  Book Exists? (0.8ms)  SELECT 1 AS one FROM "books" LIMIT $1  [["LIMIT", 1]]
+ => true 
+
+2.7.0 :078 > User.exists?(name: ['Sunidhi Chauhan','Robert Pattinson'])
+  User Exists? (0.4ms)  SELECT 1 AS one FROM "users" WHERE "users"."name" IN ($1, $2) LIMIT $3  [["name", "Sunidhi Chauhan"], ["name", "Robert Pattinson"], ["LIMIT", 1]]
+ => true
+
  
