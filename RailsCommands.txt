@@ -1015,3 +1015,34 @@ end
 2.7.0 :011 > x.errors.details
  => {:title=>[{:error=>:blank}], :author=>[{:error=>:invalid, :value=>"12"}], :category=>[{:error=>:inclusion, :value=>"q"}], :price=>[{:error=>:not_an_integer, :value=>"2.3"}, {:error=>:greater_than_or_equal_to, :value=>0.23e1, :count=>300}]} 
 
+Custom Validators,metods:----------------------------------------------------------------------------------------------------------------------------------------------
+
+class EmailVal < ActiveModel::Validator
+  def validate(record)
+      unless record.email.match?(/^\w+\.?\w+@[a-z]+\.[a-z]+/)
+         record.errors[:email] << 'Please enter Valid Email!'
+      end
+  end
+end
+class User < ApplicationRecord
+     
+ 
+      validates_with EmailVal
+      validate :ValContact
+
+     def ValContact
+       if contact.length!=10
+       errors.add(:contact, 'Please enter right phone_no.')
+       end
+     end
+end
+
+
+2.7.0 :031 > User.create(name: 'x',contact: '123456780',email: 'sumgmail.com').errors
+
+ => #<ActiveModel::Errors:0x0000556e8b837a30 @base=#<User id: nil, name: "x", contact: "123456780", email: "sumgmail.com", created_at: nil, updated_at: nil>, @messages={:email=>["Please enter Valid Email!"], :contact=>["Please enter right phone_no."]}, @details={:contact=>[{:error=>"Please enter right phone_no."}]}> 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
