@@ -1199,6 +1199,136 @@ end
 2.7.0 :104 > Book.find_by_sql("select title,count(pb.book_id) as c from books as b inner join purchase_books as pb on b.id = pb.book_id group by(pb.book_id,b.title) ord
   Book Load (0.5ms)  select title,count(pb.book_id) as c from books as b inner join purchase_books as pb on b.id = pb.book_id group by(pb.book_id,b.title) order by(c) desc limit 1
  => [#<Book id: nil, title: "The Red Thread">] 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Callbacks<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+# module FindRecentPurchase
+#   def find_recent
+#     where("created_at > ?", 5.days.ago)
+#   end
+# end
+#
+# class EmailVal < ActiveModel::Validator
+#   def validate(record)
+#       unless record.email.match?(/^\w+\.?\w+@[a-z]+\.[a-z]+/)
+#          record.errors[:email] << 'Please enter Valid Email!'
+#       end
+#   end
+# end
+
+
+
+
+
+class User < ApplicationRecord
+    #validates :email, uniqueness: true
+    after_destroy :destroy_action
+
+    after_initialize do |user|
+     puts "You have initialized an object!"
+    end
+
+    after_find do |user|
+      puts "You have found an object!"
+    end
+
+    after_touch do |user|
+      puts "You have touched an object"
+    end
+
+
+
+    def destroy_action
+     puts 'User destroyed'
+    end
+
+
+    has_many :reviews, dependent: :destroy
+    has_many :purchases #-> { extending FindRecentPurchase }
+    has_many :purchase_books, through: :purchases
+    has_many :books, through: :purchase_books
+    #  validates_with EmailVal
+    #  validate :ValContact
+    after_create :check_permission
+    validates :email, presence: true
+    before_validation :ensure_contact_is_valid
+    before_create :ValContact
+
+     def ensure_contact_is_valid
+        if contact.nil?
+            self.contact = 'Enter Contact' unless email.blank?
+        end
+     end
+
+
+
+
+   def check_permission
+     puts "Congractulations! A new User is created"
+   end
+
+
+
+
+      def ValContact
+        if self.contact.length!=10
+        errors.add(:contact, 'Please enter right phone_no.')
+      end
+    end
+
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+2.7.0 :007 > User.create(name: "Nandini Murthy", contact: "7678311324", email: "nan@gmail.com")
+   (0.2ms)  BEGIN
+  User Create (0.3ms)  INSERT INTO "users" ("name", "contact", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["name", "Nandini Murthy"], ["contact", "7678311324"], ["email", "nan@gmail.com"], ["created_at", "2020-02-19 12:47:15.512808"], ["updated_at", "2020-02-19 12:47:15.512808"]]
+Congractulations! A new User is created
+
+
+2.7.0 :015 > User.first
+  User Load (0.3ms)  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1  [["LIMIT", 1]]
+You have found an object!
+You have initialized an object!
+ => #<User id: 1, name: "Robert Pattinson", contact: "9899198003", email: "rob@gmail.com", created_at: "2020-02-10 09:19:15", updated_at: "2020-02-10 09:19:15"> 
+
+2.7.0 :016 > User.new
+You have initialized an object!
+ => #<User id: nil, name: nil, contact: nil, email: nil, created_at: nil, updated_at: nil> 
+
+2.7.0 :019 > User.last.destroy
+
+  User Destroy (0.7ms)  DELETE FROM "users" WHERE "users"."id" = $1  [["id", 31]]
+User destroyed
+
+ => true 
+2.7.0 :024 > User.first.touch
+  User Load (0.7ms)  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1  [["LIMIT", 1]]
+
+  User Update (0.3ms)  UPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2  [["updated_at", "2020-02-19 13:18:46.968985"], ["id", 1]]
+You have touched an object
+
+
+2.7.0 :006 > User.create(name: "Nandini Murthy",contact:"234",  email: "nan@gmail.com").errors
+You have initialized an object!
+   (0.3ms)  BEGIN
+  User Create (0.3ms)  INSERT INTO "users" ("name", "contact", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["name", "Nandini Murthy"], ["contact", "234"], ["email", "nan@gmail.com"], ["created_at", "2020-02-19 13:26:32.792957"], ["updated_at", "2020-02-19 13:26:32.792957"]]
+Congractulations! A new User is created
+   (17.4ms)  COMMIT
+ => #<ActiveModel::Errors:0x00007fdc7028d738 @base=#<User id: 38, name: "Nandini Murthy", contact: "234", email: "nan@gmail.com", created_at: "2020-02-19 13:26:32", updated_at: "2020-02-19 13:26:32">, @messages={:contact=>["Please enter right phone_no."]}, @details={:contact=>[{:error=>"Please enter right phone_no."}]}> 
+
+
+
 
 
  
