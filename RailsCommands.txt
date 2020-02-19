@@ -973,13 +973,36 @@ class User < ApplicationRecord
 
 
 
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Find Top selling Book<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Find Top selling Book<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ###########Using Find by sql######################
 2.7.0 :104 > Book.find_by_sql("select title,count(pb.book_id) as c from books as b inner join purchase_books as pb on b.id = pb.book_id group by(pb.book_id,b.title) ord
   Book Load (0.5ms)  select title,count(pb.book_id) as c from books as b inner join purchase_books as pb on b.id = pb.book_id group by(pb.book_id,b.title) order by(c) desc limit 1
  => [#<Book id: nil, title: "The Red Thread">]
 
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<select users who purchased book The red thread and also date of purchase>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+2.7.0 :354 > ap Book.joins(:users).where(title: 'The Red Thread').select("title,name,purchases.created_at")  
+
+  [0] #<Book:0x0000561200c121c8> {
+                "id" => nil,
+             "title" => "The Red Thread",
+        "created_at" => Mon, 10 Feb 2020 10:36:45 UTC +00:00,
+              "name" => "Robert Pattinson"
+    },
+    [1] #<Book:0x0000561200c120d8> {
+                "id" => nil,
+             "title" => "The Red Thread",
+        "created_at" => Tue, 11 Feb 2020 05:55:15 UTC +00:00,
+              "name" => "Denial Redcliffe"
+    },
+    [2] #<Book:0x0000561200c11f48> {
+                "id" => nil,
+             "title" => "The Red Thread",
+        "created_at" => Sat, 15 Feb 2020 06:23:45 UTC +00:00,
+              "name" => "Naveen"
+    }
+]
+ => nil 
 
 
 
