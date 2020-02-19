@@ -947,30 +947,57 @@ class User < ApplicationRecord
    (27.2ms)  COMMIT
  => #<PurchaseBook created_at: "2020-02-17 05:31:20", updated_at: "2020-02-17 05:31:20", id: 10, purchase_id: 8, book_id: 8> 
 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Find the books those have not any sales<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>
+
+2.7.0 :059 >  Book.where.not(id: PurchaseBook.pluck(:book_id))
+   (0.4ms)  SELECT "purchase_books"."book_id" FROM "purchase_books"
+  Book Load (0.3ms)  SELECT "books".* FROM "books" WHERE "books"."id" NOT IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) LIMIT $12  [["id", 1], ["id", 9], ["id", 2], ["id", 6], ["id", 1], ["id", 3], ["id", 8], ["id", 9], ["id", 1], ["id", 8], ["id", 3], ["LIMIT", 11]]
+ => #<ActiveRecord::Relation [#<Book id: 7, title: "Dark Moon", author: "J.K Rowling", published_date: "2018-02-22", category: "Fantasy", isbn: "223456y", price: 0.5e3, created_at: "2020-02-11 05:24:11", updated_at: "2020-02-11 05:24:11">]> 
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Books those have sales but least sales<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+2.7.0 :102 > PurchaseBook.group(:book_id).count.each { |k, v| puts "#{k} => #{v}" if v == hash.values.min }
+   (0.4ms)  SELECT COUNT(*) AS count_all, "purchase_books"."book_id" AS purchase_books_book_id FROM "purchase_books" GROUP BY "purchase_books"."book_id"
+2 => 1
+6 => 1
+
+
+---------------------------------------------------Find max sold book id and how many quantity had sold out of that book------------------------------
+
+2.7.0 :081 > PurchaseBook.group(:book_id).count.max_by{|k,v| v}
+   (0.4ms)  SELECT COUNT(*) AS count_all, "purchase_books"."book_id" AS purchase_books_book_id FROM "purchase_books" GROUP BY "purchase_books"."book_id"
+ => [1, 3] 
+
+
+
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Find Top selling Book<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<>>>>>>>>>>
+###########Using Find by sql######################
+2.7.0 :104 > Book.find_by_sql("select title,count(pb.book_id) as c from books as b inner join purchase_books as pb on b.id = pb.book_id group by(pb.book_id,b.title) ord
+  Book Load (0.5ms)  select title,count(pb.book_id) as c from books as b inner join purchase_books as pb on b.id = pb.book_id group by(pb.book_id,b.title) order by(c) desc limit 1
+ => [#<Book id: nil, title: "The Red Thread">]
+
+
+
+
 
 -------------------------------------------------------------Setting up associations-------------------------------------------------------------------------------------
 
 class User < ApplicationRecord
-    validates :email, uniqueness: true
     has_many :reviews, dependent: :destroy
     has_many :purchases
     has_many :purchase_books, through: :purchases
-    has_many :books, through: :purchases
+    has_many :books, through: :purchase_books
 end
 
 
 class Book < ApplicationRecord
-  validates :title, presence: true
-  validates :author, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
-  #validates :category, exclusion: { in: %w(Adventure Romance Fantasy Inspiration),
-  #message: "%{value} is not a valid " }
-  #validates :title, length: {maximum: 20}
-  validates :price, numericality: {only_integer: true}
   has_many :reviews, dependent: :destroy
   has_many :purchase_books
   has_many :purchases, through: :purchase_books
   has_many :users, through: :purchases
-  
 end
 
 class PurchaseBook < ApplicationRecord
