@@ -1004,7 +1004,11 @@ class User < ApplicationRecord
 ]
  => nil 
 
+-----------------------------------------Select which user purchased which cheap book------------------------------------------------------------------------------------
 
+2.7.0 :020 > User.joins(:books).merge(Book.Cheap).select(:title,:name)
+  User Load (2.0ms)  SELECT "title", "users"."name" FROM "users" INNER JOIN "purchases" ON "purchases"."user_id" = "users"."id" INNER JOIN "purchase_books" ON "purchase_books"."purchase_id" = "purchases"."id" INNER JOIN "books" ON "books"."id" = "purchase_books"."book_id" WHERE (price < 800) LIMIT $1  [["LIMIT", 11]]
+ => #<ActiveRecord::Relation [#<User id: nil, name: "Naveen">, #<User id: nil, name: "Denial Redcliffe">, #<User id: nil, name: "Robert Pattinson">, #<User id: nil, name: "Robert Pattinson">, #<User id: nil, name: "Sunidhi Chauhan">, #<User id: nil, name: "Robert Pattinson">, #<User id: nil, name: "Sumit Goyal">]> 
 
 -------------------------------------------------------------Setting up associations-------------------------------------------------------------------------------------
 
@@ -1140,7 +1144,9 @@ ________________________________________________________________________________
   scope :created_before, ->(time) { where("created_at < ?", time) }
   scope :created_before, ->(time) { where("created_at < ?", time) if time.present? }
   default_scope { where ('rating > 3')}
-end
+  
+ scope :cheap_books, -> {joins(:books).merge(Book.cheap)}
+
 2.7.0 :017 > Book.Cheap
   Book Load (0.5ms)  SELECT "books".* FROM "books" WHERE (price < 800) LIMIT $1  [["LIMIT", 11]]
  
@@ -1158,6 +1164,10 @@ end
   Review Load (0.4ms)  SELECT "reviews".* FROM "reviews" WHERE (rating > 3) LIMIT $1  [["LIMIT", 11]]
 2.7.0 :019 > Review.top
   Review Load (0.4ms)  SELECT "reviews".* FROM "reviews" WHERE (rating > 4.5) LIMIT $1  [["LIMIT", 11]]
+
+2.7.0 :002 > User.cheap_books
+  User Load (0.7ms)  SELECT "users".* FROM "users" INNER JOIN "purchases" ON "purchases"."user_id" = "users"."id" INNER JOIN "purchase_books" ON "purchase_books"."purchase_id" = "purchases"."id" INNER JOIN "books" ON "books"."id" = "purchase_books"."book_id" WHERE (price < 800) LIMIT $1  [["LIMIT", 11]]
+
 
 ---------------------------------------------------------------------------------------Object Existance------------------------------------------------------------------
 
