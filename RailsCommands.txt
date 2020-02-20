@@ -815,6 +815,46 @@ end
 ]
 
 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SELF JOIN<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+------Migration-------
+    create_table :people do |t|
+      t.string :name
+      t.integer :manager_id, null: true
+
+-----------Model
+
+class Person < ApplicationRecord
+
+  belongs_to :manager, class_name: "Person", foreign_key: :manager_id
+  has_many :employees, class_name: "Person", foreign_key: :manager_id
+
+end
+
+2.7.0 :004 > Person.third.manager
+
+  Person Load (0.8ms)  SELECT "people".* FROM "people" ORDER BY "people"."id" ASC LIMIT $1 OFFSET $2  [["LIMIT", 1], ["OFFSET", 2]]
+  Person Load (0.3ms)  SELECT "people".* FROM "people" WHERE "people"."id" = $1 LIMIT $2  [["id", 2], ["LIMIT", 1]]
+ => #<Person id: 2, name: "Sunidhi", manager_id: nil, created_at: "2020-02-20 12:52:10", updated_at: "2020-02-20 12:52:10"> 
+
+
+2.7.0 :012 > Person.second.employees
+
+  Person Load (0.5ms)  SELECT "people".* FROM "people" ORDER BY "people"."id" ASC LIMIT $1 OFFSET $2  [["LIMIT", 1], ["OFFSET", 1]]
+  Person Load (0.3ms)  SELECT "people".* FROM "people" WHERE "people"."manager_id" = $1 LIMIT $2  [["manager_id", 2], ["LIMIT", 11]]
+ => #<ActiveRecord::Associations::CollectionProxy [#<Person id: 6, name: "Shubham", manager_id: 2, created_at: "2020-02-20 12:53:39", updated_at: "2020-02-20 12:53:39">, #<Person id: 3, name: "Suman", manager_id: 2, created_at: "2020-02-20 12:52:31", updated_at: "2020-02-20 12:54:47">]> 
+
+2.7.0 :017 > Person.joins(:manager)
+
+  Person Load (0.5ms)  SELECT "people".* FROM "people" INNER JOIN "people" "managers_people" ON "managers_people"."id" = "people"."manager_id" LIMIT $1  [["LIMIT", 11]]
+ => #<ActiveRecord::Relation [#<Person id: 4, name: "Sudha", manager_id: 1, created_at: "2020-02-20 12:52:49", updated_at: "2020-02-20 12:52:49">, #<Person id: 5, name: "Sneha", manager_id: 1, created_at: "2020-02-20 12:52:58", updated_at: "2020-02-20 12:52:58">, #<Person id: 6, name: "Shubham", manager_id: 2, created_at: "2020-02-20 12:53:39", updated_at: "2020-02-20 12:53:39">, #<Person id: 3, name: "Suman", manager_id: 2, created_at: "2020-02-20 12:52:31", updated_at: "2020-02-20 12:54:47">]> 
+
+2.7.0 :018 > Person.joins(:manager).where.not(managers_people: { id: Person.find_by!(name: "Sumit")})
+  Person Load (0.3ms)  SELECT "people".* FROM "people" WHERE "people"."name" = $1 LIMIT $2  [["name", "Sumit"], ["LIMIT", 1]]
+  Person Load (0.4ms)  SELECT "people".* FROM "people" INNER JOIN "people" "managers_people" ON "managers_people"."id" = "people"."manager_id" WHERE "managers_people"."id" != $1 LIMIT $2  [["id", 1], ["LIMIT", 11]]
+ => #<ActiveRecord::Relation [#<Person id: 6, name: "Shubham", manager_id: 2, created_at: "2020-02-20 12:53:39", updated_at: "2020-02-20 12:53:39">, #<Person id: 3, name: "Suman", manager_id: 2, created_at: "2020-02-20 12:52:31", updated_at: "2020-02-20 12:54:47">]> 
+
 
 ------------------------------------------------------include----------------------------------------------------------------------------------------------------------
 
