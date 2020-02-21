@@ -1,0 +1,44 @@
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  Controllers  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+CONTROLLERS:- Controller contain functions that are mapped to routes,and handle the endpoints for our application.
+->Controller names are plural.
+
+VIEWS:- Defines the html view for each endpoint in the application. Views path matches controller and functions---app/views/writers/index.html.erb
+
+ROUTES:- Defines the endpoints that our application serves --- config/routes.rb
+
+-------------------------Created controller writers and retrieved data from Database and showed on browser--------------------------------------------------------------
+Controllers:-
+class WritersController < ApplicationController
+  def index
+    @w = Writer.all
+  end
+end
+
+views>> create a file index.html.erb
+
+<h2>Writers:</h2>
+
+<ul>
+<% @w.each do |writer| %>
+ <li> <%=writer.name %></li>
+ <% end %>
+</ul>
+
+routes.rb:-
+
+Rails.application.routes.draw do
+
+  get '/writers', controller: 'writers', action: 'index'
+
+end
+
+Browser:-
+
+Output:-  http://localhost:3000/writers
+
+Writers:
+
+    Robert Pattinson
+    Sameer
+
