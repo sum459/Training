@@ -13,8 +13,8 @@ class Book < ApplicationRecord
   has_many :purchases, through: :purchase_books
   has_many :users, through: :purchases
 
-  #scope :Cheap, -> { where ('price < 800') }
-  #scope :Costly, -> { where ('price >= 800') }
+  scope :cheap, -> { where ('price < 800') }
+  scope :costly, -> { where ('price >= 800') }
 
      #validates :price,presence: true, if: -> { price > 300 }
      #validates :price,presence: true, unless: -> { price.blank?}
