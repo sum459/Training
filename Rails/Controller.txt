@@ -42,3 +42,22 @@ Writers:
     Robert Pattinson
     Sameer
 
+
+created link and fetch id of record from link--------------------------------------------
+
+Rails.application.routes.draw do
+  resource :writers
+  get '/writers' => 'writers#index'
+  get '/writers/:id' => 'writers#index', as: 'writer'
+
+<% @w.each do |writer| %>
+ <li> <%= link_to writer.name, writer_path(writer.id) %></li>
+ <% end %>
+
+Writers:
+
+    Robert Pattinson
+    Sameer
+    Sunandha Chauhan
+
+http://localhost:3000/writers/1
