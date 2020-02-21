@@ -42,8 +42,33 @@ Writers:
     Robert Pattinson
     Sameer
 
+-------------------------------------------------Helpers---------------------------------------------------------------------------------------------------------------
 
-created link and fetch id of record from link--------------------------------------------
+2.7.0 :002 > helper.time_ago_in_words(Time.now)
+ => "less than a minute" 
+2.7.0 :003 > helper.time_ago_in_words(Time.now + 600)
+ => "10 minutes" 
+2.7.0 :004 > helper.time_ago_in_words(Time.now + 600)
+
+
+----->>>>>>>Helper Module
+
+module WritersHelper
+  def format_name(writer)
+    if writer.gender == "M"
+      "Mr. #{writer.name}"
+    else
+      "Ms. #{writer.name}"
+    end
+  end
+end
+
+2.7.0 :002 > helper.format_name(Writer.first)
+  Writer Load (0.4ms)  SELECT "writers".* FROM "writers" ORDER BY "writers"."id" ASC LIMIT $1  [["LIMIT", 1]]
+ => "Mr. Robert Pattinson" 
+
+
+-------------------------------------------------------------------------created link and fetch id of record from link---------------------------------------------------
 
 Rails.application.routes.draw do
   resource :writers
