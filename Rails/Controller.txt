@@ -362,3 +362,33 @@ id 	Writer 	Action
 8 	Harry Peter 	Show Edit Delete
 
 
+
+-------------------------------------------------layouts-----------------------------------------------------------------------------------------------------------------
+
+
+Controller:
+
+  layout 'admin'
+
+admin.html.erb
+
+<html>
+<head>
+  <title>E-Book Management System</title>
+</head>
+
+<body>
+
+  <% if !flash[:notice].blank?%>
+  <div class = "notice">
+    <%= flash[:notice] %>
+  </div>
+  <%end%>
+
+  <%=yield %>
+
+</body>
+</html>
+
+
+
