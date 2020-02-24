@@ -86,3 +86,237 @@ Writers:
     Sunandha Chauhan
 
 http://localhost:3000/writers/1
+
+-----------------------------------------------ROUTES--------------------------------------------------------------------------------------------------------------------
+
+root 'writers#index'  #root route
+
+get 'writers/index'   #simple route
+
+------------------------------------------CRUD OPERATION-----------------------------------------------------------------------------------------------------------------
+Controller:
+
+class WritersController < ApplicationController
+  #layout false
+  def index
+    @writers = Writer.all
+  end
+
+  def show
+    @writer = Writer.find(params[:id])
+  end
+
+  def new
+    @writer = Writer.new#({:name =>'Default'})
+  end
+
+  def create
+    @writer = Writer.new(writer_params)
+    if @writer.save
+      redirect_to(writers_path)
+    else
+      render('new')
+    end
+  end
+
+  def edit
+      @writer = Writer.find(params[:id])
+  end
+
+  def update
+      @writer = Writer.find(params[:id])
+      if @writer.update_attributes(writer_params)
+        redirect_to(writer_path(@writer))
+      else
+        render('edit')
+      end
+  end
+
+  def delete
+    @writer = Writer.find(params[:id])
+  end
+
+  def destroy
+    @writer = Writer.find(params[:id])
+    @writer.destroy
+    redirect_to(writers_path)
+  end
+
+  def writer_params
+    params.required(:writer).permit(:name,:gender)
+  end
+
+end
+
+
+Routes:
+
+    root 'writers#index'
+  resources :writers do
+     member do
+       get :delete
+     end
+  end
+
+
+View:
+>>>>>>>>>>>index.html<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<div class="writers index">
+  <h1>Writers:</h1>
+
+  <%= link_to("Add New Writer",'writers/new',:class=>'action new')%>
+
+<table class="listing" summary="Writers list"  style="width:50%">
+
+  <tr class="header">
+      <th>id<th>
+      <th>Writer</th>
+      <th>Action</th>
+  </tr>
+
+  <% @writers.each do |writer| %>
+
+  <tr>
+    <td><%= writer.id %></td>
+    <td><%= writer.name %></td>
+    <td class ="action" >
+      <%=link_to("Show",writer_path(writer.id),:class=>'action show')%>
+      <%=link_to("Edit",edit_writer_path(writer.id),:class=>'action edit')%>
+      <%=link_to("Delete",delete_writer_path(writer.id),:class=>'action delete')%>
+    </td>
+  </tr>
+  <%end%>
+</table>
+</div>
+
+
+output:
+
+
+Writers:
+Add New Writer
+id		Writer   	Action
+1 	Robert Pattinson 	Show Edit Delete
+2 	Sameer 	                Show Edit Delete
+4 	Ann Hood 	        Show Edit Delete
+3 	Sunidhi Chauhan 	Show Edit Delete
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<Edit.html>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+<%= link_to("Back to list",writers_path,:class=>'back-link')%>
+
+<div class="writer new">
+  <h1>Update Writer</h1>
+  <%= form_for(@writer,:url => writer_path(@writer),:method => 'patch')do |w| %>
+  <table summary="Add Writers">
+    <tr>
+      <th>Name</th>
+      <td><%= w.text_field(:name) %></td>
+    </tr>
+
+    <tr>
+      <th>Gender</th>
+      <td><%= w.text_field(:gender) %></td>
+    </tr>
+</table>
+<div class="form-buttons">
+  <%= w.submit("Update Writer")%>
+</div>
+ <%end%>
+</div>
+
+Back to list
+Update Writer
+Name 	
+Gender 	
+
+<<<<<<<<<<<<<<<<<<<<<<<<<delete.html>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+<%= link_to("Back to list",writers_path,:class=>'back-link')%>
+
+<div class="writer delete">
+  <h1>Remove Writer</h1>
+  <%= form_for(@writer,:url => writer_path(@writer),:method => 'delete')do |w| %>
+  <p> Are you sure you want to delete this Writer</p>
+  <p class="reference-name"><%= @writer.name%></p>
+<div class="form-buttons">
+  <%= w.submit("Remove Writer")%>
+</div>
+ <%end%>
+</div>
+
+Back to list
+Remove Writer
+
+Are you sure you want to delete this Writer
+
+Sunidhi Chauhan
+
+<<<<<<<<<<<<<<<<<<<<<<<<<new.html>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+<%= link_to("Back to list",writers_path,:class=>'back-link')%>
+
+<div class="writer new">
+  <h1>Create  Writer</h1>
+  <%= form_for(@writer,:url => writers_path,:method => 'post')do |w| %>
+  <table summary="Add Writers">
+    <tr>
+      <th>Name</th>
+      <td><%= w.text_field(:name) %></td>
+    </tr>
+
+    <tr>
+      <th>Gender</th>
+      <td><%= w.text_field(:gender) %></td>
+    </tr>
+</table>
+<div class="form-buttons">
+  <%= w.submit("create Writer")%>
+</div>
+ <%end%>
+</div>
+
+Back to list
+Create Writer
+Name 	
+Gender 	
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<show.html>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+<%= link_to("Back to list",writers_path,:class=>'back-link')%>
+
+<div class="writers show">
+  <h1>Show Writer Details</h1>
+  <table summary="Writers detailed view">
+    <tr>
+      <th>Name</th>
+      <td><%= @writer.name %></td>
+    </tr>
+
+    <tr>
+      <th>Gender</th>
+      <td><%= @writer.gender %></td>
+    </tr>
+
+    <tr>
+      <th>Created</th>
+      <td><%= @writer.created_at %></td>
+    </tr>
+
+    <tr>
+      <th>Updated</th>
+      <td><%= @writer.updated_at %></td>
+    </tr>
+  </table>
+</div>
+
+Back to list
+Show Writer Details
+Name 	Sunidhi Chauhan
+Gender 	f
+Created 	2020-02-21 12:05:35 UTC
+Updated 	2020-02-24 09:23:50 UTC
+
