@@ -1403,6 +1403,236 @@ Congractulations! A new User is created
   User Load (0.4ms)  SELECT name, created_at as Reg_date FROM "users" WHERE (created_at >= '2020-02-11' AND created_at <= '2020-02-21') LIMIT $1  [["LIMIT", 11]]
  => #<ActiveRecord::Relation [#<User id: nil, name: "Sunidhi Chauhan">, #<User id: nil, name: "Sumit Goyal">, #<User id: nil, name: "Naveen">, #<User id: nil, name: "Nandini Murthy">]> 
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Curd operation on Magzines Model
+
+class MagzinesController < ApplicationController
+
+  def index
+    @magzines=Magzine.all
+  end
+
+  def show
+    @magzine=Magzine.find(params[:id])
+  end
+
+  def new
+    @magzine=Magzine.new
+  end
+
+  def create
+    @magzine=Magzine.new(mag_params)
+    if @magzine.save
+        flash[:notice]="Magzine Created!!!"
+      redirect_to(magzines_path)
+    else
+      flash[:error]="Failed!!!"
+      render('new')
+    end
+  end
+
+  def edit
+    @magzine=Magzine.find(params[:id])
+  end
+
+  def update
+    @magzine=Magzine.find(params[:id])
+    if @magzine.update_attributes(mag_params)
+      flash[:notice]="Magzine Updated!!!"
+      redirect_to root_path
+    else
+      flash[:error]="Failed!!!"
+      render :edit
+    end
+  end
+
+  def destroy
+    @magzine=Magzine.find(params[:id])
+    if @magzine.delete
+      flash[:notice]="Magzine deleted!!!"
+      redirect_to root_path
+    else
+      flash[:error]="Failed!!!"
+      render :destroy
+    end
+  end
+end
+
+def mag_params
+ params.required(:magzine).permit(:id,:name,:price,:writer_id)
+end
+
+
+
+
+edit.html.erb
+
+
+<div class="list">
+  <%= form_for @magzine,url: {action: :update} do |magzine| %>
+<h3>Update Magzine:</h3>
+  <br>
+<div class="align">
+  <div>
+    <label>id :</label>
+    <%= magzine.text_field :id %>
+  </div>
+  <div>
+    <label>Name :</label>
+    <%= magzine.text_field :name %>
+  </div>
+  <div>
+    <label>Price :</label>
+    <%= magzine.text_field :price %>
+  </div>
+  <div>
+    <label>Writer_id :</label>
+    <%= magzine.text_field :writer_id %>
+  </div>
+</div>
+<br>
+<div>
+  <%= magzine.submit 'Update Magzine' %>
+</div>
+<%end%>
+<br>
+<div class="links">
+  <%= link_to'Back',magzines_path %>
+</div>
+
+
+</div>
+
+New.html.erb
+
+
+<div class="list">
+  <%= form_for @magzine,url: {action: :create} do |magzine| %>
+
+  <h3>Add Magzine:</h3>
+  <br>
+
+
+
+  <div class="align">
+  <div>
+    <label>id :</label>
+    <%= magzine.text_field :id %>
+  </div>
+  <div>
+    <label>Name :</label>
+    <%= magzine.text_field :name %>
+  </div>
+  <div>
+    <label>Price :</label>
+    <%= magzine.text_field :price %>
+  </div>
+  <div>
+    <label>Writer_id :</label>
+    <%= magzine.text_field :writer_id %>
+  </div>
+</div>
+<br>
+<div>
+  <%= magzine.submit 'Create Product' %>
+</div>
+<%end%>
+<br>
+<div class="links">
+  <%= link_to'Back',magzines_path %>
+</div>
+
+
+</div>
+
+index.html.erb
+
+
+<html>
+
+<body>
+<div class="list">
+   <h1>Magzines:</h1>
+
+
+<div class="links">
+<%= link_to'Add New Magzine',new_magzine_path %>
+</div>
+<br>
+<table>
+   <thead>
+      <tr>
+         <th>id</th>
+         <th>Name</th>
+         <th>Actions</th>
+      </tr>
+   </thead>
+   <tbody>
+      <% @magzines.each do |magzine|%>
+      <tr>
+         <td><%= magzine.id %></td>
+         <td><%= magzine.name %></td>
+         <div>
+            <td class='Action'>
+               <%=link_to 'Show',magzine_path(magzine) %>
+               <%=link_to 'Edit',edit_magzine_path(magzine) %>
+               <%=link_to 'Delete',magzine_path(magzine),method: :delete %>
+            </td>
+         <div>
+      </tr>
+      <%end%>
+   </tbody>
+</table>
+</div>
+</body>
+</html>
+
+
+show.html.erb
+
+<style>
+.align {display:flex; align-items:center; justify-content:space-between;}
+.align div {border: 2px solid;padding: 10px}
+</style>
+
+<div class="list">
+  <h3> Magzine Details:</h3>
+  <br>
+  <div class="align">
+  <div>
+    <lable>id :</lable>
+    <%= @magzine.id %>
+  </div>
+  <div>
+    <lable>Name :</lable>
+    <%= @magzine.name %>
+  </div>
+  <div>
+    <lable>Price :</lable>
+    <%= @magzine.price %>
+  </div>
+  <div>
+    <lable>Writer_id :</lable>
+    <%= @magzine.writer_id %>
+  </div>
+  <div>
+    <lable>Created_at :</lable>
+    <%= @magzine.created_at %>
+  </div>
+  <div>
+    <lable>Updated_at :</lable>
+    <%= @magzine.updated_at %>
+  </div>
+</div>
+<br>
+  <div class="links">
+  <%= link_to'Back',magzines_path %>
+  </div>
+
+</div>
+
+
 
 
 
