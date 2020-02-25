@@ -1633,7 +1633,192 @@ show.html.erb
 </div>
 
 
+------------------------------------Book controller view -----------------------------------------------------------------------------------------------------------
 
+class BooksController < ApplicationController
+
+  def index
+    @books=Book.all
+  end
+
+  def show
+    @book=Book.find(params[:id])
+  end
+
+  def new
+    @book=Book.new
+  end
+
+  def create
+    @book=Book.new(book_params)
+    if @book.save
+      flash[:notice]="Book Created successfully!!!"
+      redirect_to root_path
+    else
+      flash[:error]="Task Failed!!!"
+      render :new
+    end
+  end
+
+  def edit
+    @book=Book.find(params[:id])
+  end
+
+  def update
+    @book=Book.find(params[:id])
+    if @book.update_attributes(book_params)
+      flash[:notice]="Book Updated successfully!!!"
+      redirect_to(book_path)
+    else
+      flash[:error]="Task Failed!!!"
+      render :edit
+    end
+  end
+
+  def delete
+    @book=Book.find(params[:id])
+  end
+
+  def destroy
+    @book=Book.find(params[:id])
+    if @book.destroy
+      flash[:notice]="Deleted Successfully!!!"
+      redirect_to root_path
+    else
+      flash[:error]="Task failed!!!"
+      render :delete
+  end
+
+def book_params
+  params.require(:book).permit(:id,:title,:author,:published_date,:category,:isbn,:price)
+end
+
+end
+
+edit:
+
+<div class="New_books">
+
+  <div><h2>Update Book:</h2></br></div>
+
+  <%= form_for @book,url: {action: :update} do |b| %>
+
+<div class="form_rep">
+
+  <div>
+    <label>id :</label>
+    <%= b.text_field :id %>
+  </div>
+  <div>
+    <label>Name :</label>
+    <%= b.text_field :title %>
+  </div>
+  <div>
+    <label>Price :</label>
+    <%= b.text_field :price %>
+  </div>
+  <div>
+    <label>Writer:</label>
+    <%= b.text_field :author %>
+  </div>
+  <div>
+    <label>Category:</label>
+    <%= b.text_field :category %>
+  </div>
+  <div>
+    <label>Published Date:</label>
+    <%= b.text_field :published_date %>
+  </div>
+  <div>
+    <label>ISBN:</label>
+    <%= b.text_field :isbn %>
+  </div>
+</div><br>
+
+<div class"submit"><%= b.submit 'Update Book' %></div></br>
+
+<%end%>
+
+<div class="Back_link">  <%= link_to'Back',books_path %> </div>
+
+</div>
+
+index.html.erb
+
+<div class="books">
+   <div><h2>Books:</h2></div>
+
+<div><%= link_to'Add New book',new_book_path %></div></br>
+
+<div><table class="index_table">
+   <thead>
+      <tr>
+         <th>id</th>
+         <th>Name</th>
+         <th>Actions</th>
+      </tr>
+   </thead>
+   <tbody>
+      <% @books.each do |book|%>
+      <tr>
+         <td><%= book.id %></td>
+         <td><%= book.title %></td>
+    <div><td class='Action'>
+               <%=link_to 'Show',book_path(book) %>
+               <%=link_to 'Edit',edit_book_path(book) %>
+               <%=link_to 'Delete',book_path(book),method: :delete %></td></div>
+      </tr>
+      <%end%>
+   </tbody>
+</table></div>
+</div>
+
+new.html.erb
+<div class="New_books">
+
+  <div><h2>Add Book:</h2></br></div>
+
+  <%= form_for @book,url: {action: :create} do |b| %>
+
+<div class="form_rep">
+
+  <div>
+    <label>id :</label>
+    <%= b.text_field :id %>
+  </div>
+  <div>
+    <label>Name :</label>
+    <%= b.text_field :title %>
+  </div>
+  <div>
+    <label>Price :</label>
+    <%= b.text_field :price %>
+  </div>
+  <div>
+    <label>Writer:</label>
+    <%= b.text_field :author %>
+  </div>
+  <div>
+    <label>Category:</label>
+    <%= b.text_field :category %>
+  </div>
+  <div>
+    <label>Published Date:</label>
+    <%= b.text_field :published_date %>
+  </div>
+  <div>
+    <label>ISBN:</label>
+    <%= b.text_field :isbn %>
+  </div>
+</div><br>
+
+<div class"submit"><%= b.submit 'Add New Book' %></div></br>
+
+<%end%>
+
+<div class="Back_link">  <%= link_to'Back',books_path %> </div>
+
+</div>
 
 
  
