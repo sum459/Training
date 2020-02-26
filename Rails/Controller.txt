@@ -564,3 +564,24 @@ Validate Password:-------------------
 
           ps.style.display = "none";
         });
+
+---------------------------------------------------------------confirm password------------------------------------------------------------------------------------
+
+cpass.addEventListener('focus',()=>{
+            cp.style.display = "block";
+
+
+        });
+
+      cpass.addEventListener('keyup',()=>{
+          x = pass.value
+          pass.value == cpass.value? cp.style.display = 'none':cp.style.display = 'block';
+
+        });
+
+        cpass.addEventListener('focusout',()=>{
+
+          cp.style.display = "none";
+        });
+
+
