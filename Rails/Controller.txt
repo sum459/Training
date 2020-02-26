@@ -541,3 +541,26 @@ CREATED A uSER FORM>>>>>>>>>>>>>>>>>>>>>>>>>>
           un.style.display = "none";
         });
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Validate Password:-------------------
+
+
+        pass.addEventListener('focus',()=>{
+
+          ps.style.display = "block";
+
+        });
+
+        pass.addEventListener('keyup',()=>{
+    			x = pass.value
+    			x.match(/[A-Z]+/)? p1.style.display="none":p1.style.display="block"
+    			x.match(/[a-z]+/)? p2.style.display="none":p2.style.display="block"
+    			x.match(/[0-9]+/)? p3.style.display="none":p3.style.display="block"
+    			x.match(/.{8}/)? p4.style.display="none":p4.style.display="block"
+
+    		});
+
+        pass.addEventListener('focusout',()=>{
+
+          ps.style.display = "none";
+        });
