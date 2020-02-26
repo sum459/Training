@@ -584,4 +584,19 @@ cpass.addEventListener('focus',()=>{
           cp.style.display = "none";
         });
 
+----------------------------------------------------Mobile No---------------------------------------------------------------------------------------------------------
+mobile.addEventListener('keyup',()=>{
+
+          x = mobile.value
+
+          x.match(/\d{10}/)? em.style.display="none":em.style.display="block";
+
+        });
+
+        mobile.addEventListener('focusout',()=>{
+
+          mo.style.display = "none";
+        });
+
+
 
