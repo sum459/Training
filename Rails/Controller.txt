@@ -598,5 +598,24 @@ mobile.addEventListener('keyup',()=>{
           mo.style.display = "none";
         });
 
+-----------------------------------------------------email--------------------------------------------------------------------------------------------------------------
 
+  email.addEventListener('focus',()=>{
+
+          em.style.display = "block";
+
+        });
+
+        email.addEventListener('keyup',()=>{
+
+    			x = email.value
+
+    			x.match(/\A[\w+\.+-]+@\w+\.\w+\z/)? em.style.display="none":em.style.display="block";
+
+    		});
+
+        email.addEventListener('focusout',()=>{
+
+          em.style.display = "none";
+        });
 
