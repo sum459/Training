@@ -507,4 +507,37 @@ CREATED A uSER FORM>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     	</div>
     </div>
+
+
+
+     <script type="text/javascript">
+
+
+
+        const ps = document.querySelector('#ps');
+        const pass = document.querySelector('#pass');
+        const user = document.querySelector('#user');
+        const email = document.querySelector('#email');
+        const mobile = document.querySelector('#mobile');
+    	const un = document.querySelector('#un');
+    	const mo = document.querySelector('#mo');
+   	const em = document.querySelector('#em');
+   	const cp = document.querySelector('#cp');
+ 	const p1 = document.querySelector('#p1');
+    	const p2 = document.querySelector('#p2');
+	const p3 = document.querySelector('#p3');
+        const p4 = document.querySelector('#p4');
+
+------------------------------------------ username should not be empty validation---------------------------------------------------------------------------------------
+
+
+      user.addEventListener('focus',()=>{
+
+          un.style.display = "block";
+
+        });
+
+        user.addEventListener('focusout',()=>{
+          un.style.display = "none";
+        });
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
