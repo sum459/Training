@@ -1,0 +1,46 @@
+<div class="books">
+
+  <div><h2>Book Details:</h2></div></br>
+
+<div class="book_rep">
+  <div>
+    <label>id :</label>
+    <%= @book.id %>
+  </div>
+  <div>
+    <label>Name :</label>
+    <%= @book.title %>
+  </div>
+  <div>
+    <label>Price :</label>
+    <%= @book.price %>
+  </div>
+  <div>
+    <label>Writer:</label>
+    <%= @book.author %>
+  </div>
+  <div>
+    <label>Category:</label>
+    <%= @book.category %>
+  </div>
+  <div>
+    <label>Published Date:</label>
+    <%= @book.published_date %>
+  </div>
+  <div>
+    <label>ISBN:</label>
+    <%= @book.isbn %>
+  </div>
+  <div>
+    <label>Created</label>
+    <%= @book.created_at %>
+  </div>
+  <div>
+    <label>Updated</label>
+    <%= @book.updated_at %>
+  </div>
+</div><br>
+
+<div class="Back_link">  <%= link_to'Back',books_path %> </div>
+
+</div>

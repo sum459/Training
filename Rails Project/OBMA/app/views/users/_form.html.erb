@@ -1,0 +1,67 @@
+<div class="container">
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-2" id="form">			
+    	<center><b class= "registration">Registration Form</b></center>
+
+<%=form_for @user do |u| %>
+ <div class="form-group">
+ 	<div class="control-label col-sm-2">
+ 	<%= u.label :name%>
+ 	</div>
+ 	<div class="col-sm-6">
+ 	<%= u.text_field :name, class: "form-control",id: "user", placeholder: "name",  autofocus: true%>
+ 	<p id="un" class="text-danger font-weight-bold">**Please Enter User name</p>
+    </div>
+</div>
+<div class="form-group">
+ 	<div class="control-label col-sm-2">
+ 	<%= u.label :email%>
+ 	</div>
+ 	<div class="col-sm-6">
+ 	<%= u.text_field :email, class: "form-control",placeholder: "email",id: "email",  autofocus: true%>
+ 	<p id="em" class="text-danger font-weight-bold">invalid email</p>
+    </div>
+</div>
+<div class="form-group">
+ 	<div class="control-label col-sm-2">
+ 	<%= u.label :contact%>
+ 	</div>
+ 	<div class="col-sm-6">
+ 	<%= u.text_field :contact, class: "form-control",placeholder: "phone no.",id: "mobile",  autofocus: true%>
+ 	<p id="mo" class="text-danger font-weight-bold">should be 10 digits</p>
+    </div>
+</div>
+<div class="form-group">
+ 	<div class="control-label col-sm-2">
+ 	<%= u.label :password%>
+ 	</div>
+ 	<div class="col-sm-6">
+ 	<%= u.text_field :password, class: "form-control",placeholder: "password",id: "pass",  autofocus: true%>
+ 	<div id="ps" class="text-danger font-weight-bold">
+                  <p id="p1" >At least one uppercase</p>
+                  <p id="p2">At least one lowercase</p>
+                  <p id="p3">At least one digit</p>
+                  <p id="p4">Minimum 8 characters</p></div>
+
+    </div>
+</div>
+    <div class="form-group">
+ 	<div class="control-label col-sm-6">
+ 	<%= u.label :confirm_password%>
+ 	</div>
+ 	<div class="col-sm-6">
+ 	<%= u.text_field :confirm_password, class: "form-control",placeholder: "confirm_password", id: "cpass", autofocus: true%><br>
+ 	<p id="cp" class="text-danger font-weight-bold">password didn't match</p>
+    </div>
+     <div class="form-group">
+ 	<div class="control-label col-sm-2">
+ 	<%= u.submit class: "btn btn-primary" %>
+ 	</div>
+</div>
+</div>
+<% end %>
+</div>
+</div>
+</div>
+
