@@ -873,3 +873,9 @@ document.addEventListener("DOMContentLoaded",()=>{
         			// 	}
         		});
     });
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//scaffold to generate model,view,controller nd routes
+
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/ebook$ rails generate scaffold User name:string email:string contact:integer password:string confirm_password:string
+
