@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users=User.not_deleted
+    @users=User.all
   end
 
   def show
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
 
    def is_delete
     @user=User.find(params[:id])
-     if @user.update(is_deleted:'0')
+     if @user.update(is_deleted: true)
        redirect_to(users_path)
     end 
    end
