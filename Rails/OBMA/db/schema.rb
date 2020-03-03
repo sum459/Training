@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_131408) do
+ActiveRecord::Schema.define(version: 2020_03_03_131132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_131408) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "confirm_password"
     t.string "password"
+    t.boolean "is_deleted"
   end
 
   add_foreign_key "purchase_books", "books"

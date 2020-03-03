@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users=User.all
+    @users=User.not_deleted
   end
 
   def show
@@ -51,9 +51,18 @@ class UsersController < ApplicationController
       render :delete
     end
   end
+   
+
+
+   def is_delete
+    @user=User.find(params[:id])
+     if @user.update(is_deleted:'0')
+       redirect_to(users_path)
+    end 
+   end
 
   def user_params
-  params.require(:user).permit(:name,:contact,:email,:password,:confirm_password)
+  params.require(:user).permit(:name,:contact,:email,:password,:confirm_password,:is_deleted)
   end
 
   end
