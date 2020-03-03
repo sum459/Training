@@ -1,0 +1,45 @@
+<div class="New_books">
+
+  <div><h2>Add Book:</h2></br></div>
+
+  <%= form_for @book,url: {action: :create} do |b| %>
+
+<div class="form_rep">
+
+  <div>
+    <label>id :</label>
+    <%= b.text_field :id %>
+  </div>
+  <div>
+    <label>Name :</label>
+    <%= b.text_field :title %>
+  </div>
+  <div>
+    <label>Price :</label>
+    <%= b.text_field :price %>
+  </div>
+  <div>
+    <label>Writer:</label>
+    <%= b.text_field :author %>
+  </div>
+  <div>
+    <label>Category:</label>
+    <%= b.text_field :category %>
+  </div>
+  <div>
+    <label>Published Date:</label>
+    <%= b.text_field :published_date %>
+  </div>
+  <div>
+    <label>ISBN:</label>
+    <%= b.text_field :isbn %>
+  </div>
+</div><br>
+
+<div class="submit"><%= b.submit 'Add New Book' %></div></br>
+
+<%end%>
+
+<div class="Back_link">  <%= link_to'Back',books_path %> </div>
+
+</div>
