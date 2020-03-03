@@ -1,0 +1,49 @@
+
+
+<body class="body">
+   
+   <div class="form-div">
+
+    <div class="info-div">
+      Create Account
+    </div>
+
+    <form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post">
+    
+
+      <label class="label" for="user_name">Name</label>
+      <input class="input" type="text" name="user[name]" id="user_name">
+      <div id="un1"><p id="un">*Name can't be blank</p></div>
+
+      <label class="label" for="user_email">Email</label> 
+      <input class="input" type="text" id="mail" name="user[email]" id="user_email">
+      <div id="em-div"><p id="em">invalid email</p></div>
+
+      <label class="label" for="user_phoneno">Mobile number</label> 
+      <input class="input" type="number" name="user[contact]" id="user_phoneno" maxlength="10">
+      <div id="pm-div"><p id="pm">should be 10 digits</p></div>
+
+
+      <label class="label" for="user_password">Password</label> 
+      <input class="input" type="password" name="user[password]" id="user_password">
+      <div id="ps">
+			<p id="m1">*At least one uppercase</p>
+			<p id="m2">*At least one lowercase</p>
+			<p id="m3">*At least one digit</p>
+			<p id="m4">*Minimum 8 characters</p>
+	</div>
+
+	  <label class="label" for="user_password_confirm">Confirm password</label> 
+      <input class="input" type="password" id="user_password_confirm">
+      <div id="psw2-div"><p id="cp">*password didn't match</p></div>
+
+
+
+      <label  class="label" for="user_address">Address</label> 
+      <input class="input" type="text" name="user[address]" id="user_address">
+
+      <input class="submit_button" type="submit" name="commit" value="Sign Up" data-disable-with="Sign Up" id="submit">
+	</form>  
+ </div>
+
+</body>

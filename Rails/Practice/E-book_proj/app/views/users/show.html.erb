@@ -1,0 +1,39 @@
+<div class="Users">
+
+  <div><h2>User Details:</h2></div></br>
+
+
+  <div class="text-align">
+    <strong>id :</strong>
+    <%= @user.id %>
+  </div>
+  <div>
+    <strong>Name :</strong>
+    <%= @user.name %>
+  </div>
+  <div>
+    <strong>email :</strong>
+    <%= @user.email %>
+  </div>
+  <div>
+    <strong>contact:</strong>
+    <%= @user.contact %>
+  </div>
+  <div>
+    <strong>password:</strong>
+    <%= @user.password %>
+  </div>
+  <div>
+    <strong>Created:</strong>
+    <%= @user.created_at %>
+  </div>
+  <div>
+    <strong>Updated:</strong>
+    <%= @user.updated_at %>
+  </div>
+</div><br>
+
+<div class="Back_link">  <%= link_to'Back',users_path %> </div>
+
+</div>
+
