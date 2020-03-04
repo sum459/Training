@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
     @user=User.find(params[:id])
     if (@user.is_deleted)
+      flash[:notice]="#{@user.name} is soft deleted so can't show User info!!!"
       redirect_to(users_path)
     end
   end
@@ -61,8 +62,10 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
      if (@user.is_deleted)
       @user.update(is_deleted: false)
+      flash[:notice]="Reverted soft delete state of #{@user.name}!!!"
      else
       @user.update(is_deleted: true)
+      flash[:notice]="#{@user.name} is soft deleted.!!!"
     end
      redirect_to(users_path)
    end
