@@ -33,8 +33,28 @@
   </div>
 </div><br>
 
-<div class="back link"><%= link_to'Back',users_path %></div>  
+
+
+<div class="back_link"><%= link_to'Back',users_path %></div>  
 <div class="soft_delete"><%= link_to 'Is_Delete',user_is_delete_path(@user) %></div>
+<div class="associated_links "><%= link_to'Reviews',user_reviews_path(@user) %></div>
+
+<div>
+  <strong>Reviews:</strong>
+  <table>
+    <tr>
+      <th>id</th>
+      <th>book_id</th>
+      <th>Rating</th>
+    </tr>
+    <tr>
+  <% @user.reviews.each do |r| %>
+  <td><%= r.id %></td>
+  <td><%=r.book_id %></td>
+  <td><%= r.rating %></td>
+  </tr>
+  <% end %>
+</div>
 
 
 </div>

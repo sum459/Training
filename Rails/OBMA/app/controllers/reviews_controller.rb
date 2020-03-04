@@ -2,7 +2,11 @@ class ReviewsController < ApplicationController
   
 
   def index
-    @reviews=Review.all
+    if params[:id]
+      @reviews=User.find(params[:id]).reviews
+    else 
+      @reviews=Review.all
+    end
   end
 
   def new
