@@ -20,7 +20,7 @@
                <%=link_to 'Show',user_path(user) %>
                <%=link_to 'Edit',edit_user_path(user) %>
                <%=link_to "Delete",user_path(user),method: :delete,data: {confirm: "Are you sure you want to delete this user?"}%>
-               <%= link_to 'Is_Delete',{controller: "users",action: "is_delete", id: user.id} %></div>
+               <%= link_to 'Is_Delete',user_is_delete_path(user) %></div>
       </tr>
       <%end%>
    </tbody>

@@ -6,6 +6,9 @@ class UsersController < ApplicationController
 
   def show
     @user=User.find(params[:id])
+    if (@user.is_deleted)
+      redirect_to(users_path)
+    end
   end
 
   def new
@@ -56,13 +59,16 @@ class UsersController < ApplicationController
 
    def is_delete
     @user=User.find(params[:id])
-     if @user.update(is_deleted: true)
-       redirect_to(users_path)
-    end 
+     if (@user.is_deleted)
+      @user.update(is_deleted: false)
+     else
+      @user.update(is_deleted: true)
+    end
+     redirect_to(users_path)
    end
 
   def user_params
-  params.require(:user).permit(:name,:contact,:email,:password,:confirm_password,:is_deleted)
+  params.require(:user).permit(:name,:contact,:email,:password,:confirm_password)
   end
 
   end
