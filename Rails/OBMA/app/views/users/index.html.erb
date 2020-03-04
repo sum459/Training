@@ -21,9 +21,9 @@
                <%=link_to 'Edit',edit_user_path(user) %>
                <%=link_to "Delete",user_path(user),method: :delete,data: {confirm: "Are you sure you want to delete this user?"}%>
                <% if (user.is_deleted) %> 
-               <%= link_to 'Is_Delete',user_is_delete_path(user) %>
-               <% else %>
                <%= link_to 'Revert',user_is_delete_path(user) %>
+               <% else %>
+               <%= link_to 'is_delete',user_is_delete_path(user) %>
                <%end%>
             </div>
       </tr>
