@@ -48,7 +48,7 @@ class User < ApplicationRecord
      update(is_deleted: true)
    end
  
-   # make an undelete method
+   #make an undelete method
    def undelete
      update(is_deleted: false)
    end

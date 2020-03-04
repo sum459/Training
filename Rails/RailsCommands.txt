@@ -1821,4 +1821,49 @@ new.html.erb
 </div>
 
 
+ ----------------------------------------------SOFT Delete scopes and functions on model_side---------------------------------------------------------------------------
+Model: user.rb
+
+   scope :not_deleted, -> { where(is_deleted: false) }
+   scope :deleted, -> { where(is_deleted: true) }
  
+   #create the soft delete method
+   def is_delete
+     update(is_deleted: true)
+   end
+ 
+   #make an undelete method
+   def undelete
+     update(is_deleted: false)
+   end
+
+
+
+2.7.0 :001 > User.not_deleted
+
+  User Load (0.4ms)  SELECT "users".* FROM "users" WHERE "users"."is_deleted" = $1 LIMIT $2  [["is_deleted", false], ["LIMIT", 11]]
+ => #<ActiveRecord::Relation [#<User id: 4, name: "Sumit Goyal", contact: "7689198002", email: "sum@gmail.com", created_at: "2020-02-11 05:51:33", updated_at: ........................]>
+ 
+2.7.0 :002 > User.deleted
+  User Load (0.5ms)  SELECT "users".* FROM "users" WHERE "users"."is_deleted" = $1 LIMIT $2  [["is_deleted", true], ["LIMIT", 11]]
+ => #<ActiveRecord::Relation [#<User id: 2, name: "Denial Redcliffe", contact: "9899198002", email: "Den@gmail.com", created_at: "2020-02-10 10:24:11", updated_at: .............................]> 
+
+2.7.0 :004 > User.find(1).undelete
+
+  User Load (0.4ms)  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]
+
+   (0.2ms)  BEGIN
+  User Exists? (0.5ms)  SELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3  [["email", "rob@gmail.com"], ["id", 1], ["LIMIT", 1]]
+
+  User Update (0.4ms)  UPDATE "users" SET "is_deleted" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["is_deleted", false], ["updated_at", "2020-03-04 05:20:27.636739"], ["id", 1]]
+   (16.3ms)  COMMIT
+ => true 
+2.7.0 :005 > User.find(1).is_delete
+
+  User Load (0.9ms)  SELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]
+   (0.4ms)  BEGIN
+  User Exists? (0.8ms)  SELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3  [["email", "rob@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  User Update (0.8ms)  UPDATE "users" SET "is_deleted" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["is_deleted", true], ["updated_at", "2020-03-04 05:20:34.798895"], ["id", 1]]
+   (19.3ms)  COMMIT
+ => true 
+
