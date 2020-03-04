@@ -1,0 +1,12 @@
+
+<%= form_for @review do |r| %>
+<%= r.label :user_id%>
+<%= r.text_field :user_id %></br>
+<%= r.label :book_id%>
+<%= r.text_field :book_id %><br>
+<%= r.label :rating%>
+<%= r.text_field :rating %><br>
+<%= r.submit %>
+<%end%>
+
+

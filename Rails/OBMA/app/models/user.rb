@@ -39,7 +39,7 @@ class User < ApplicationRecord
    #  end
    
 
-     #add a model scope to fetch only non-deleted records
+
    scope :not_deleted, -> { where(is_deleted: false) }
    scope :deleted, -> { where(is_deleted: true) }
  
@@ -71,7 +71,7 @@ class User < ApplicationRecord
    #
    #   def ensure_contact_is_valid
    #      if contact.nil?
-   #          self.contact = 'Enter Contact' unless email.blank?
+   #          self.contact = 'Enter Contact' unless contact.blank?
    #      end
    #   end
    #
