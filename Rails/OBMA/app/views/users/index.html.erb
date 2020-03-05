@@ -1,9 +1,10 @@
 <div><h2>Users:</h2></div>
 
-<div><%= form_tag(users_path, method: :get) do %>
+<div ><%= form_tag(users_path, method: 'get', remote: true) do %>
   Name <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag 'Search' %>
-<% end %></div>
+       <%= submit_tag 'Search' %>
+       <% end %>
+</div>
 
 <div>
    <table class="index_table">
@@ -16,7 +17,7 @@
       </tr>
    </thead>
    <tbody id="ajax">
-      <%= render partial: 'ajax' %>
+      <%= render 'index' %>
    </tbody>
    </table><br>
 
