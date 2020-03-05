@@ -90,6 +90,10 @@ class User < ApplicationRecord
      #    errors.add(:contact, 'Please enter right phone_no.')
      #    end
      # end
+    
 
+     # def self.search(search)
+     #   where('name ILIKE ?', "%#{search}%") 
+     # end
 
 end
