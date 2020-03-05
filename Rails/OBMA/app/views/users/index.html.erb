@@ -1,16 +1,17 @@
 <div><h2>Users:</h2></div>
 
-<div ><%= form_tag(users_path, method: 'get', remote: true) do %>
-  Name <%= text_field_tag :search, params[:search] %>
+  <div >
+       <%= form_tag(users_path, method: 'get', remote: true) do %>
+       Name <%= text_field_tag :search, params[:search] %>
        <%= submit_tag 'Search' %>
        <% end %>
-</div>
+  </div>
 
 <div>
    <table class="index_table">
    <thead>
       <tr>
-         <th>id</th>
+         <th>id </th>
          <th>Name</th>
          <th> delete_status </th>
          <th>Actions</th>
@@ -20,6 +21,18 @@
       <%= render 'index' %>
    </tbody>
    </table><br>
+<div>
+  <%= link_to "Previous", users_path(page: @page - 1), method: 'get',remote: true %>
+  <%= link_to "1", users_path(page: 0), method: 'get', remote: true %>
+  <%= link_to "2", users_path(page: 1), method: 'get', remote: true %>
+  <%= link_to "3", users_path(page: 2), method: 'get', remote: true %>
+  <%= "..." %>
+  <%= link_to "Next", users_path(page: @page + 1), method: 'get', remote: true %>
+</div><br><br>
 
-   <div><%= link_to'Add New user',new_user_path %></div></br>
+
+
+   <div><%= link_to 'Add New user',new_user_path %></div></br>
 </div>
+
+
