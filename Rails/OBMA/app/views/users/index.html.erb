@@ -11,9 +11,9 @@
    <table class="index_table">
    <thead>
       <tr>
-         <th><%= link_to "Id", sort: :id %></th>
-         <th><%= link_to "Name", sort: :name %></th>
-         <th><%= link_to "Delete Status", sort: :is_deleted %></th>
+         <th><%= sortable "id", "ID" %></th>
+         <th><%= sortable "name", "Name" %></th>
+         <th><%= sortable "is_deleted", "Delete Status" %></th>
          <th>Actions</th>
       </tr>
    </thead>
