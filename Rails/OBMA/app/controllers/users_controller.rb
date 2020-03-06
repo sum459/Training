@@ -4,7 +4,7 @@ class UsersController < ApplicationController
    # @users = User.all
   # binding.pry
    @page = params.fetch(:page, 0).to_i
-   @users = User.limit(5).offset(@page*5)
+   @users = User.offset(@page*5).limit(5)
    @records=User.count
        
    if params[:search]
