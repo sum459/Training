@@ -1,15 +1,24 @@
 class UsersController < ApplicationController
 
   def index
-   @users = User.all
+   # @users = User.all
+  # binding.pry
+   @page = params.fetch(:page, 0).to_i
+   @users = User.limit(5).offset(@page*5)
+   @records=User.count
+       
    if params[:search]
     @users = User.where('name ilike ? OR contact ilike ? OR email ilike ?', "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").or(User.where(is_deleted: "#{params[:search]}"))
+    @page = params.fetch(:page, 0).to_i
+    @users = @users.limit(5).offset(@page*5)
+    @records=@users.count   
    else
-    @users = User.all
+    @page = params.fetch(:page, 0).to_i
+    @users = @users.limit(5).offset(@page*5)
    end
-   # @page = (params[:page] || 0).to_i
-   # @users = User.offset(@page*5).limit(5)
-       @users = @users.order("#{params[:sort]} #{params[:direction]}")
+
+   @users = @users.order("#{params[:sort]} #{params[:direction]}")
+   
   end
 
   def show

@@ -1,7 +1,7 @@
 <div><h2>Users:</h2></div>
 
   <div >
-       <%= form_tag(users_path, method: 'get', remote: true) do %>
+       <%= form_tag(users_path, method: 'get', :remote=> true) do %>
        Name <%= text_field_tag :search, params[:search] %>
        <%= submit_tag 'Search' %>
        <% end %>
@@ -9,7 +9,7 @@
 
 <div>
    <table class="index_table">
-   <thead>
+   <thead id="head">
       <tr>
          <th><%= sortable "id", "ID" %></th>
          <th><%= sortable "name", "Name" %></th>
@@ -21,6 +21,23 @@
       <%= render 'index' %>
    </tbody>
    </table><br>
+
+<div>
+  <% if @page == 0 %>
+    <%= link_to "<<Previous", users_path(page: 0), remote: true%>
+  <% else %>
+    <%= link_to "<<Previous", users_path(page: @page - 1), method: 'get',remote: true %>
+  <% end %>
+  <%= link_to "1", users_path(page: 0), method: 'get', remote: true %>
+  <%= link_to "2", users_path(page: 1), method: 'get', remote: true %>
+  <%= link_to "3", users_path(page: 2), method: 'get', remote: true %>
+  <%= "..." %>
+  <% if @page > (@records/5).ceil-1 %>
+    <%= link_to "Next>>", users_path(page: (@records/5).ceil), remote: true %>
+  <% else %>
+    <%= link_to "Next>>", users_path(page: @page + 1), remote: true %>
+  <% end %>
+</div><br><br>
 
 
 

@@ -1,4 +1,4 @@
-
+<% #if @page >= 0 and @page <= @users.count %>
 <% @users.each do |user|%>
       <tr>
          <td><%= user.id %></td>
@@ -16,5 +16,6 @@
                <%end%>
             </td></div>
       </tr> 
-<% end %>
+<%# end %>
       
+<%end%>
