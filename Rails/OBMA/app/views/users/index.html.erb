@@ -11,9 +11,9 @@
    <table class="index_table">
    <thead>
       <tr>
-         <th>id </th>
-         <th>Name</th>
-         <th> delete_status </th>
+         <th><%= link_to "Id", sort: :id %></th>
+         <th><%= link_to "Name", sort: :name %></th>
+         <th><%= link_to "Delete Status", sort: :is_deleted %></th>
          <th>Actions</th>
       </tr>
    </thead>
@@ -21,14 +21,7 @@
       <%= render 'index' %>
    </tbody>
    </table><br>
-<div>
-  <%= link_to "Previous", users_path(page: @page - 1), method: 'get',remote: true %>
-  <%= link_to "1", users_path(page: 0), method: 'get', remote: true %>
-  <%= link_to "2", users_path(page: 1), method: 'get', remote: true %>
-  <%= link_to "3", users_path(page: 2), method: 'get', remote: true %>
-  <%= "..." %>
-  <%= link_to "Next", users_path(page: @page + 1), method: 'get', remote: true %>
-</div><br><br>
+
 
 
 
