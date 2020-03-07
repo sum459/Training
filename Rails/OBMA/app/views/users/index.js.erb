@@ -1,2 +1,4 @@
-var usersList = document.querySelector('#ajax')
-usersList.innerHTML = "<%= j render 'index' %>"
+
+$('#ajax').html('<%= escape_javascript render partial: 'index' %>');
+
+
