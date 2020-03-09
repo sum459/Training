@@ -16,7 +16,7 @@
    <tbody id="ajax">
      <% #if @page >= 0 and @page <= @users.count %>
 <% @users.each do |user|%>
-      <tr>
+      <tr class="user-row">
          <td><%= user.id %></td>
          <td><%= user.name %></td>
          <th><%= user.is_deleted %></td>
@@ -38,23 +38,10 @@
    </tbody>
    </table><br>
 
+<div style= "height: 800px; border: 1px solid black;">
+    </div>
 
-<div >
-  <% if @page == 0 %>
-    <%= link_to "<<Previous", users_path(page: 0), remote: true%>|
-  <% else %>
-    <%= link_to "<<Previous", users_path(page: @page - 1), method: 'get',remote: true %>|
-  <% end %>
-  <%= link_to "1", users_path(page: 0), method: 'get', remote: true %>|
-  <%= link_to "2", users_path(page: 1), method: 'get', remote: true %>|
-  <%= link_to "3", users_path(page: 2), method: 'get', remote: true %>|
-  <%= "..." %>
-  <% if @page >= (@records/5).ceil-1 %>
-    <%= link_to "Next>>", users_path(page: (@records/5).ceil), remote: true %>
-  <% else %>
-    <%= link_to "Next>>", users_path(page: @page + 1), remote: true %>
-  <% end %>
-</div><br><br>
+
       
 <div><%= link_to 'Add New user',new_user_path %></div>
 

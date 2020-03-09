@@ -1,24 +1,34 @@
 class UsersController < ApplicationController
 
   def index
-  # @users = User.all
-   @page = params.fetch(:page, 0).to_i
-   @users = User.offset(@page*5).limit(5)
-   @records = User.count
+  # @users = User.limit(5)
+
+  if params[:count]
+      @count = params[:count].to_i
+      if @count < User.all.count 
+        @users = User.limit(@count+1)
+      end
+    else 
+     @users = User.limit(2)
+    end
+  #  # @page = params.fetch(:page, 0).to_i
+  #  # @users = User.offset(@page*5).limit(5)
+  #  # @records = User.count
        
-   if params[:search]
-    @users = User.where("name ilike ? or contact ilike ? or email ilike ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").or(User.where("is_deleted::TEXT ilike ?", "#{params[:search]}"))
-    @page = params.fetch(:page, 0).to_i
-    @users = @users.limit(5).offset(@page*5)
-    @records=@users.count  
-   else
-    @page = params.fetch(:page, 0).to_i
-    @users = @users.limit(5).offset(@page*5)
+  #  # if params[:search]
+  #  #  @users = User.where("name ilike ? or contact ilike ? or email ilike ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").or(User.where("is_deleted::TEXT ilike ?", "#{params[:search]}"))
+  #  #  @page = params.fetch(:page, 0).to_i
+  #  #  @users = @users.limit(5).offset(@page*5)
+  #  #  @records=@users.count  
+  #  # else
+  #  #  @page = params.fetch(:page, 0).to_i
+  #  #  @users = @users.limit(5).offset(@page*5)
    
-   end
+  #  # end
    
    @users = @users.order("#{params[:sort]} #{params[:direction]}")
    
+
   end
 
   def show
