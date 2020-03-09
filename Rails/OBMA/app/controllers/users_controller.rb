@@ -7,7 +7,7 @@ class UsersController < ApplicationController
    @records = User.count
        
    if params[:search]
-    @users = User.where("name ilike ? or contact ilike ? or email ilike ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")#.or(User.where(is_deleted: "#{params[:search]}"))
+    @users = User.where("name ilike ? or contact ilike ? or email ilike ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").or(User.where("is_deleted::TEXT ilike ?", "#{params[:search]}"))
     @page = params.fetch(:page, 0).to_i
     @users = @users.limit(5).offset(@page*5)
     @records=@users.count  

@@ -1,24 +1,27 @@
-<div><h2>Users:</h2></div>
+<head>
+	<title>Online Liberary</title>
+	<style type="text/css">
+		table,th,td {border: 1px solid black;}
+		table {margin: auto; width: 50%;border-collapse: collapse;}
+		th,td {padding:10px; text-align: center; font-size: 15px;}
+		tr:hover {background:  	#8A2BE2; color:#fff;}
+		.Search-form { text-align: center; }
+	</style>
+</head>
 
-  <div id="ajax">
-  	
+
+<body>
+	<div><h2>Users:</h2></div>
+
+  <div class="Search-form">
+       <%= form_tag(users_path, method: 'get', :remote=> true) do %>
+       Name <%= text_field_tag :search, params[:search] %>
+       <%= submit_tag 'Search' %>
+       <% end %>
+  </div><br><br>
+
+  <div class="ajax">
       <%= render 'index' %>
-  
-<div style="border: 1px solid black; height: 900px"> </div> 
-  <script type="text/javascript">
-	window.addEventListener('scroll',()=>{
-	console.log("hello")
-	
-})
- 
- </script>
   </div>
-     
-
-
-
-
- 
-</div>
-
-
+</body>
+  

@@ -1,12 +1,7 @@
 
 
 
-  <div >
-       <%= form_tag(users_path, method: 'get', :remote=> true) do %>
-       Name <%= text_field_tag :search, params[:search] %>
-       <%= submit_tag 'Search' %>
-       <% end %>
-  </div>
+
 
 <div>
    <table class="index_table">
@@ -43,7 +38,8 @@
    </tbody>
    </table><br>
 
-<div>
+
+<div >
   <% if @page == 0 %>
     <%= link_to "<<Previous", users_path(page: 0), remote: true%>|
   <% else %>
@@ -59,11 +55,7 @@
     <%= link_to "Next>>", users_path(page: @page + 1), remote: true %>
   <% end %>
 </div><br><br>
+      
+<div><%= link_to 'Add New user',new_user_path %></div>
 
-  <div><%= link_to 'Add New user',new_user_path %></div></br><br><br><br>
-
-  <div>
-      <% if flash[:notice] %>
-           <div><%= flash[:notice] %></div>
-      <% end %> 
-  </div>
+  
