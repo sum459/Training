@@ -1,9 +1,7 @@
-console.log('hello')
+
     document.addEventListener('DOMContentLoaded',()=>{
       
-  
-
-    window.addEventListener('scroll',()=>{
+      window.addEventListener('scroll',()=>{
       console.log('scrolled')
       let countValue = 0
       let userRow = document.querySelectorAll('.user-row') 
@@ -16,6 +14,6 @@ console.log('hello')
           },
           dataType: "script",
         });  
-    })
+      })
     
     })

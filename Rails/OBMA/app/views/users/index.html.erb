@@ -2,7 +2,8 @@
 	<title>Online Liberary</title>
 	<style type="text/css">
 		table,th,td {border: 1px solid black;}
-		thead {background: #A9A9A9; color: white; }
+		thead {background: #A9A9A9; color: black; }
+		tbody {background: #D3D3D3; color: black; }
 		table {margin: auto; width: 50%;border-collapse: collapse;}
 		th,td {padding:10px; text-align: center; font-size: 15px;}
 		tr:hover {background:  	#8A2BE2; color:#fff;}
@@ -14,11 +15,15 @@
 <body>
 	<div><h2>Users:</h2></div>
 
- 
+  <div class="Search-form">
+       <%= form_tag(users_path, method: 'get', :remote=> true) do %>
+       Name <%= text_field_tag :search, params[:search] %>
+       <%= submit_tag 'Search' %>
+       <% end %>
+  </div><br><br>
 
   <div class="ajax">
       <%= render 'index' %>
   </div>
-  
 </body>
   

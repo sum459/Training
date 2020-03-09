@@ -14,4 +14,5 @@
  *= require_self
  */
 
-     /*.container{ background-image: url("x.jpeg");}*/
+     html { background: url("x.jpeg")  no-repeat center fixed ; background-size: cover;}
+     

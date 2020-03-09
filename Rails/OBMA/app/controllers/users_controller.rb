@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-  # @users = User.limit(5)
+  # @users = User.all
 
   if params[:count]
       @count = params[:count].to_i
@@ -9,22 +9,22 @@ class UsersController < ApplicationController
         @users = User.limit(@count+1)
       end
     else 
-     @users = User.limit(2)
+     @users = User.limit(4)
     end
-  #  # @page = params.fetch(:page, 0).to_i
-  #  # @users = User.offset(@page*5).limit(5)
-  #  # @records = User.count
+   # @page = params.fetch(:page, 0).to_i
+   # @users = User.offset(@page*5).limit(5)
+   # @records = User.count
        
-  #  # if params[:search]
-  #  #  @users = User.where("name ilike ? or contact ilike ? or email ilike ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").or(User.where("is_deleted::TEXT ilike ?", "#{params[:search]}"))
-  #  #  @page = params.fetch(:page, 0).to_i
-  #  #  @users = @users.limit(5).offset(@page*5)
-  #  #  @records=@users.count  
-  #  # else
-  #  #  @page = params.fetch(:page, 0).to_i
-  #  #  @users = @users.limit(5).offset(@page*5)
+   if params[:search]
+    @users = User.where("name ilike ? or contact ilike ? or email ilike ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").or(User.where("is_deleted::TEXT ilike ?", "#{params[:search]}"))
+    # @page = params.fetch(:page, 0).to_i
+    # @users = @users.limit(5).offset(@page*5)
+    # @records=@users.count  
+   # else
+   #  @page = params.fetch(:page, 0).to_i
+   #  @users = @users.limit(5).offset(@page*5)
    
-  #  # end
+   end
    
    @users = @users.order("#{params[:sort]} #{params[:direction]}")
    
