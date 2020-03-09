@@ -15,4 +15,5 @@
  */
 
      html { background: url("x.jpeg")  no-repeat center fixed ; background-size: cover;}
-     
+     .links,.message { background-color: white;color: #8A2BE2; text-decoration: none;}
+     a{ text-decoration: none; color: black;}

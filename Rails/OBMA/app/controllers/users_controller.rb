@@ -8,9 +8,9 @@ class UsersController < ApplicationController
       if @count < User.all.count 
         @users = User.limit(@count+1)
       end
-    else 
-     @users = User.limit(4)
-    end
+  else 
+   @users = User.limit(4)
+  end
    # @page = params.fetch(:page, 0).to_i
    # @users = User.offset(@page*5).limit(5)
    # @records = User.count
