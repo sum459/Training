@@ -33,6 +33,10 @@ class UsersController < ApplicationController
 
   def show
     @user=User.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json {render json: @user}
+    end
     if (@user.is_deleted)
       flash[:notice]="#{@user.name} is soft deleted so can't show User info!!!"
       redirect_to(users_path)
