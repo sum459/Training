@@ -1,8 +1,21 @@
+<head>
+   <title>Online Liberary</title>
+   <style type="text/css">
+      table,th,td {border: 1px solid black;}
+      thead {background: #9370DB; color: black; }
+      tbody {background: #fff; color: black; }
+      table {margin: auto; width: 50%;border-collapse: collapse;}
+      th,td {padding:10px; text-align: center; font-size: 15px;}
+      .links,tr:hover {background:     #8A2BE2; color:#fff;}
+   </style>
+</head>
+
+
 
 <div class="books">
    <div><h2>Books:</h2></div>
 
-<div><%= link_to'Add New book',new_book_path %></div></br>
+<div><%= link_to'Add New book',new_book_path, class: "links" %></div></br>
 
 <div><table class="index_table">
    <thead>
