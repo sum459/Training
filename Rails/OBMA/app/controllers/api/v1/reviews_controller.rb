@@ -3,12 +3,12 @@ module Api
 	  class ReviewsController < ApplicationController
         def index
           @reviews = Review.order('id');
-          render json: {status: "SUCCESS", message: "Loaded Reviews", data: @reviews},status: :ok
+          render json: @reviews
         end
 
         def show
          @review=Review.find(params[:id])
-         render json: {status: "SUCCESS", message: "Loaded Reviews", data: @review},status: :ok
+         render json: @review
         end
 
         def create

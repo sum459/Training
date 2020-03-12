@@ -183,3 +183,75 @@ Response:
         "updated_at": "2020-03-11T10:48:09.549Z"
     }
 }
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+>>>>>Created custom methods to show specific data with associated results
+
+class ReviewSerializer < ActiveModel::Serializer
+  attributes :id, :rating, :book, :user
+
+  # belongs_to :user
+  # belongs_to :book
+
+  def book
+   object.book.title
+  end
+
+  def user
+   object.user.name
+  end
+
+end
+
+
+[
+    {
+        "id": 1,
+        "rating": "4.8",
+        "book": "The Red Thread",
+        "user": "Robert Pattinson"
+    },
+    {
+        "id": 3,
+        "rating": "5.0",
+        "book": "Harry Potter(1-4)",
+        "user": "Robert Pattinson"
+    },
+    {
+        "id": 4,
+        "rating": "4.5",
+        "book": "Dark Moon",
+        "user": "Sumit Goyal"
+    },
+    {
+        "id": 5,
+        "rating": "4.5",
+        "book": "Harry Potter(1-4)",
+        "user": "Denial Redcliffe"
+    },
+    {
+        "id": 6,
+        "rating": "4.5",
+        "book": "The Red Thread",
+        "user": "Denial Redcliffe"
+    },
+    {
+        "id": 7,
+        "rating": "4.5",
+        "book": "Harry Potter(5-8)",
+        "user": "Denial Redcliffe"
+    },
+    {
+        "id": 15,
+        "rating": "5.0",
+        "book": "Game Of Thrones",
+        "user": "Robert Pattinson"
+    },
+    {
+        "id": 16,
+        "rating": "4.0",
+        "book": "Dark Moon",
+        "user": "Denial Redcliffe"
+    }
+]
