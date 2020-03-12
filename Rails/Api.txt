@@ -255,3 +255,25 @@ end
         "user": "Denial Redcliffe"
     }
 ]
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> JWT : Token Authentication >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+2.7.0 :002 > JWT
+ => JWT 
+
+2.7.0 :005 > Rails.application.secrets.secret_key_base
+ => "7a71e3bafebae53e0ca28f7f40b585b56eb5c1c7cf4b670b5d29fcca38647683ce249092765e5fc037b33e2ac1f2bebf13838163bb9bc7b0623a6c83bd2872d1" 
+
+
+2.7.0 :013 > data = { user_id: 1}
+2.7.0 :014 > secret = "sumit"
+2.7.0 :015 > JWT.encode data, secret, 'HS256'
+ => "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.0rQgBQ_-jlv18u9RNdE_5nbbseeruexzmuPPOPLxW-s" 
+
+2.7.0 :016 > JWT.encode data, Rails.application.secrets.secret_key_base, 'HS256'
+ => "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.QtqkAUPA4epSCwHZ9ia7p6a1scojUyuh-MsNNrRCHqw" 
+
+
+Used jwt.io website to decode data, detect algo and verify signature
+
+
