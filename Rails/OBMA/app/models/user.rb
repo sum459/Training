@@ -55,7 +55,7 @@ class User < ApplicationRecord
    
 
     has_many :reviews, dependent: :destroy
-    has_many :purchases, -> { extending FindRecentPurchase }
+    has_many :purchases#, -> { extending FindRecentPurchase }
     has_many :purchase_books, through: :purchases
     has_many :books, through: :purchase_books
 
