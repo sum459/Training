@@ -3,12 +3,12 @@ module Api
 	  class BooksController < ApplicationController
         def index
           @books = Book.order('id');
-          render json: {status: "SUCCESS", message: "Loaded Books", data: @books},status: :ok
+          render json: @books
         end
 
         def show
          @book=Book.find(params[:id])
-         render json: {status: "SUCCESS", message: "Loaded Books", data: @book},status: :ok
+         render json: @book
         end
 
         def create
