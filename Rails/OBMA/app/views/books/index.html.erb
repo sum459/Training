@@ -1,41 +1,14 @@
-<head>
-   <title>Online Liberary</title>
-   <style type="text/css">
-      table,th,td {border: 1px solid black;}
-      thead {background: #9370DB; color: black; }
-      tbody {background: #fff; color: black; }
-      table {margin: auto; width: 50%;border-collapse: collapse;}
-      th,td {padding:10px; text-align: center; font-size: 15px;}
-      .links,tr:hover {background:     #8A2BE2; color:#fff;}
-   </style>
-</head>
-
-
-
-<div class="books">
-   <div><h2>Books:</h2></div>
-
-<div><%= link_to'Add New book',new_book_path, class: "links" %></div></br>
-
-<div><table class="index_table">
-   <thead>
-      <tr>
-         <th>id</th>
-         <th>Name</th>
-         <th>Actions</th>
-      </tr>
-   </thead>
-   <tbody>
-      <% @books.each do |book|%>
-      <tr>
-         <td><%= book.id %></td>
-         <td><%= book.title %></td>
-    <div><td class='Action'>
-               <%=link_to 'Show',book_path(book) %>
-               <%=link_to 'Edit',edit_book_path(book) %>
-               <%=link_to 'Delete',book_path(book),method: :delete %></td></div>
-      </tr>
-      <%end%>
-   </tbody>
-</table></div>
+<h2>Books</h2><br>
+<div>
+ <ol>
+   <% @books.each do |book|%>
+    <li><%= link_to "#{book.title}", book_path(book) %></li>
+  <%end%>
+  </ol>
 </div>
+
+<div><%= link_to "add new book", new_book_path %></div><br>
+<div><%= link_to "log in", user_login_path %></div><br>
+<div><%= link_to "log out", user_logout_path %></div>
+
+

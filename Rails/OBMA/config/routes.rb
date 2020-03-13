@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
 
+  get "login", to:"sessions#new", as: "user_login"
+  post "login", to:"sessions#create"
+  get "logout", to: "sessions#log_out", as: "user_logout"
+
+
  resources :reviews
  resources :books
   
- root 'users#index'
+ root 'books#index'
  get 'users/:id/is_delete', to:'users#is_delete', as: 'user_is_delete'
 
  resources :users do
