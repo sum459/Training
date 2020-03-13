@@ -15,8 +15,8 @@ class SessionsController < ApplicationController
 
   def log_out
     session[:user_id] = ''
-    redirect_to users_path
+    redirect_to books_path
   end
-  
+
 end
 
