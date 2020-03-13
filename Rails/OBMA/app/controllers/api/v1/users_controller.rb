@@ -3,12 +3,12 @@ module Api
 	  class UsersController < ApplicationController
         def index
           @users = User.order('id');
-          render json: @users
+          render json: { status: 'SUCCESS', message: 'loaded all users',users: ActiveModel::Serializer::CollectionSerializer.new(@users, each_serializer: UserSerializer) }
         end
 
         def show
          @user=User.find(params[:id])
-         render json: @user
+         render json: {status: "SUCCESS", message: "Saved User", data: UserSerializer.new(@user)},status: :ok
         end
 
         def create
