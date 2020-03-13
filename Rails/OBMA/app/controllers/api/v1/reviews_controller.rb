@@ -1,6 +1,6 @@
 module Api
 	module V1
-	  class ReviewsController < ApplicationController
+	  class ReviewsController < CustomController
         def index
           @reviews = Review.order('id');
           render json: @reviews

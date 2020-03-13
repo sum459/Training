@@ -1,6 +1,6 @@
 module Api
 	module V1
-	  class BooksController < ApplicationController
+	  class BooksController < CustomController
         def index
           @books = Book.order('id');
           render json: @books

@@ -20,6 +20,7 @@ namespace 'api' do
 		resources :users
 		resources :books
 		resources :reviews
+		post "user/login", to: 'sessions#login'
 	end
 end
 

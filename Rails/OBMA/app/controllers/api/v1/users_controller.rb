@@ -1,6 +1,7 @@
 module Api
 	module V1
-	  class UsersController < ApplicationController
+	  class UsersController < CustomController
+      before_action :authenticate_user
         def index
           @users = User.order('id');
           render json: { status: 'SUCCESS', message: 'loaded all users',users: ActiveModel::Serializer::CollectionSerializer.new(@users, each_serializer: UserSerializer) }
