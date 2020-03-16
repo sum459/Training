@@ -1,0 +1,14 @@
+<center><h4> Welcome to Books Hub!!! </h4></center>
+
+
+<div>
+   <% if current_user %>
+      Logged in as <%= current_user.name %>
+      <%= link_to 'Log Out', books_path %>
+   <% else %>
+      <%= link_to 'Sign Up', new_user_path %>|
+      <%= link_to 'Log In', login_path %>
+   <% end %>
+</div>
+
+<div><%= link_to 'Books', books_path %></div>

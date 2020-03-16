@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'home/index'
   get "login", to:"sessions#new", as: "user_login"
   post "login", to:"sessions#create"
   get "logout", to: "sessions#log_out", as: "user_logout"
@@ -7,8 +8,9 @@ Rails.application.routes.draw do
 
  resources :reviews
  resources :books
+ resources :home, only: [:index]
   
- root 'books#index'
+ root 'home#index'
  get 'users/:id/is_delete', to:'users#is_delete', as: 'user_is_delete'
 
  resources :users do
