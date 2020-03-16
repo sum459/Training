@@ -1,0 +1,15 @@
+
+<h4>Documents</h4>
+  <div>
+    <ul>
+      <% @docs.each do |doc|%>
+        <li><%= link_to "#{doc.title}", doc %></li>
+        <li><%= time_ago_in_words(doc.created_at) %></li>
+        <li><%= truncate(doc.content, length:50) %></li><br>
+      <%end%>
+    </ul>
+  </div>
+
+  <%= link_to "Create Doc", new_doc_path %>
+
+
