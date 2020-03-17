@@ -1,5 +1,6 @@
 class DocsController < ApplicationController
   before_action :find_doc, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   
   def index
     @docs = Doc.where(user_id: current_user)
