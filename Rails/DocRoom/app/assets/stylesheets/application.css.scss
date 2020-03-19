@@ -1,0 +1,141 @@
+
+@import "bootstrap";
+
+@mixin bold_font 
+{
+  font-family: 'Dosis', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+
+// BUTTON STYLING
+
+button, .button {
+    border: none;
+    outline: none;
+    background: #529ECC;
+    padding: 1rem 3.5rem;
+    border-radius: 0.1rem;
+    a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+}
+
+.button {
+    color: white;
+    margin: 2rem 0;
+}
+
+a {
+    color: green;
+    text-decoration: none;
+    &:hover {
+        color: gray;
+    }
+}
+
+// HEADER STYLING
+
+header 
+{
+ 
+    background: #529ECC;
+    top: 0;
+	width: 100%;
+	padding: 1.75rem 0;
+	border-bottom: 1.5px solid #376490;
+}
+
+
+	
+
+
+nav {
+	float: right;
+	}
+
+
+	
+
+.notice, .alert { color: red }			
+
+
+
+.logo
+{
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-left: 1rem;
+}
+
+.banner_content 
+{
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        h1 {
+           
+            color: #529ECC;
+            font-size: 3.5rem;
+            margin: 0;
+            text-align: center;
+        }
+        p {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0 0 2.5rem 0;
+            color: rgba(82,158,204, 0.6);
+        }
+    }
+
+
+
+ #callouts {
+    background-image: image-url("cb.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    width: 100%;
+    min-height: 400px;
+    display: table;
+    .callout_inner {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .callout {
+        text-align: center;
+        width: 100%;
+        padding: 1.5rem 2.5%;
+        float: left;
+        h2 {
+            @include bold_font;
+            color: white;
+            margin-bottom: 0;
+        }
+        p {
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+}
+
+
+#bottom_cta {
+    text-align: center;
+    padding: 7.5rem 0;
+    h2 {
+        @include bold_font;
+        color: black;
+        font-size: 3rem;
+        margin: 0;
+    }
+    p {
+            font-size: 1.25rem;
+            margin: 0 0 2.5rem 0;
+            color: #a7a8a8;
+        }
+}
