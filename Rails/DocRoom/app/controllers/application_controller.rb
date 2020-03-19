@@ -4,8 +4,14 @@ class ApplicationController < ActionController::Base
 
   protected
 
+   def after_sign_in_path_for(users)
+    authenticated_root_path
+  end
+
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :user_name, :contact, :email, :password])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:user_name, :password, :remember_me])
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :user_name, :contact, :email, :password, :current_password]) 
   end
 end
