@@ -25,5 +25,8 @@ class User < ApplicationRecord
       end
   end
 
+  mount_uploader :avatar, AvatarUploader
+  serialize :avatar, JSON
+
 
 end
