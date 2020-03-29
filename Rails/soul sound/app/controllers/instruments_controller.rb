@@ -30,6 +30,7 @@ class InstrumentsController < ApplicationController
     respond_to do |format|
       if @instrument.save
         format.html { redirect_to @instrument, notice: 'Instrument was successfully created.' }
+        format.js 
         format.json { render :show, status: :created, location: @instrument }
       else
         format.html { render :new }
