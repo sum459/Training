@@ -28,7 +28,7 @@ class VideoUploader < CarrierWave::Uploader::Base
   def convert_to_gif
     target_path = convert_name(current_path)
 
-    system("ffmpeg -i #{current_path}  #{target_path}")
+    system("ffmpeg -ss 0 -t 5 -i #{current_path}  #{target_path}")
       
 
     file.delete
