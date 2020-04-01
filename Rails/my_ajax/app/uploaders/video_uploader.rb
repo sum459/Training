@@ -22,6 +22,21 @@ class VideoUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
+   
+   process :convert_to_gif
+
+  def convert_to_gif
+    target_path = convert_name(current_path)
+
+    system("ffmpeg -i #{current_path}  #{target_path}")
+      
+
+    file.delete
+
+    @file = CarrierWave::SanitizedFile.new(File.open(target_path))
+    @filename = convert_name(@filename)
+  end
+
   # process scale: [200, 300]
   #
   # def scale(width, height)
@@ -29,19 +44,24 @@ class VideoUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-   # version :thumb do
-   #   process resize_to_fit: [50, 50]
-   # end
+    version :thumb do
+      process resize_to_fit: [80, 80]
+    end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_whitelist
-  #   %w(jpg jpeg gif png)
-  # end
+   def extension_whitelist
+     %w(mp4)
+   end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  def convert_name(value)
+    "#{value.chomp('.mp4')}.gif"
+  end
+
 end
