@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @video.title %>
+</p>
+
+<p>
+  <strong>Length:</strong>
+  <%= @video.length %>
+</p>
+
+<div>
+ <video id="myVideo" width="320" height="176" controls>
+ <source src="<%= @video.video %>" type="video/mp4">
+ </video>
+</div>
+
+<div>
+<strong>Viewings(sec):</strong>
+<span id = "viewLength"><%= @video.viewing %></span>
+</div>
+
+<%= link_to 'Edit', edit_video_path(@video) %> |
+<%= link_to 'Back', videos_path %>
