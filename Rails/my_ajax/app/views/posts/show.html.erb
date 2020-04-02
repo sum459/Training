@@ -8,7 +8,18 @@
 <p>
   <strong>Content:</strong>
   <%= @post.content %>
-</p>
+</p><br><br><br><br>
+
+
+<div>
+ <video id="myVideo" width="320" height="176" controls>
+ <source src="<%= @post.video %>" type="video/mp4">
+ </video>
+</div>
+
+<p>Playback position: <span id="demo"></span></p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
+
+

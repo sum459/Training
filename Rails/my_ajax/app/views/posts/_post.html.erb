@@ -12,7 +12,7 @@
                       <div><%= image_tag post.avatar.url(:thumb) if post.avatar? %>
                       </div><br><br>
                       <div>
-                       <image controls width="100" height="100" <%= image_tag post.video.url %> 
+                       <video controls width="100" height="100" <%= video_tag post.video %> />
                       </div>
                     </div>
                     <br>
