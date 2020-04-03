@@ -11,9 +11,13 @@
                     <div style="color: #3BB2D6;"><%= time_ago_in_words(post.created_at) %>
                       <div><%= image_tag post.avatar.url(:thumb) if post.avatar? %>
                       </div><br><br>
+                      
                       <div>
-                       <image controls width="100" height="100" <%= image_tag post.video.url if post.video.url %>>
-                      </div>
+                        <video id="myVideo" width="220" height="106" controls>
+                        <source src="<%= @post.video %>" type="video/mp4">
+                        </video>
+                       </div>
+
                     </div>
                     <br>
 
