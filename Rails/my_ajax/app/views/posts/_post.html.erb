@@ -12,17 +12,21 @@
                       <div><%= image_tag post.avatar.url(:thumb) if post.avatar? %>
                       </div><br><br>
                       <div>
-                       <image controls width="100" height="100" <%= image_tag post.video.url %>
+                       <image controls width="100" height="100" <%= image_tag post.video.url if post.video.url %>>
                       </div>
                     </div>
                     <br>
 
-                    <div class="btn-group" role="group" aria-label="...">
+                    <% if post.user == current_user || current_user.try(:admin?) %>
+
+                     <div class="btn-group" role="group" aria-label="...">
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myupdatepost_<%= post.id %>">
                           Edit
                         </button>
                         <%= link_to 'Destroy', post, method: :delete, class: "btn btn-danger", remote: true %>
-                    </div>
+                     </div>
+
+                    <% end %>
                   </div><!-- Panel Body -->
 
             </div><!-- Panel Info -->
