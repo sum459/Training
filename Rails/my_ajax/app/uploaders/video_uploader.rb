@@ -45,7 +45,20 @@ class VideoUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
     version :thumb do
-      process resize_to_fit: [80, 80]
+
+      process :convert_to_gif
+
+      def convert_to_gif
+        target_path = convert_name(current_path)
+
+        system("ffmpeg -ss 0 -t 5 -i #{current_path}  #{target_path}")
+      
+
+        file.delete
+
+        @file = CarrierWave::SanitizedFile.new(File.open(target_path))
+        @filename = convert_name(@filename)
+      end
     end
 
   # # Add a white list of extensions which are allowed to be uploaded.
@@ -60,8 +73,8 @@ class VideoUploader < CarrierWave::Uploader::Base
   # #   "something.jpg" if original_filename
   # # end
 
-  # def convert_name(value)
-  #   "#{value.chomp('.mp4')}.gif"
-  # end
+  def convert_name(value)
+    "#{value.chomp('.mp4')}.gif"
+  end
 
 end

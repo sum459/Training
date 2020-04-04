@@ -9,12 +9,12 @@
 
                   <div class="panel-body"><!-- Panel Body -->
                     <div style="color: #3BB2D6;"><%= time_ago_in_words(post.created_at) %>
-                      <div><%= image_tag post.avatar.url(:thumb) if post.avatar? %>
+                      <div><img src="<%= post.avatar if post.avatar? %>" height="42" width="42"> 
                       </div><br><br>
                       
-                      <div>
-                        <video id="myVideo" width="220" height="106" controls>
-                        <source src="<%= @post.video %>" type="video/mp4">
+                       <div>
+                        <video id="myVideo" width="320" height="176" controls>
+                        <source src="<%= post.video %>" type="video/mp4">
                         </video>
                        </div>
 

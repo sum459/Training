@@ -10,6 +10,6 @@ class PostMailer < ApplicationMailer
   def new_post(post)
     @post = post
 
-    mail to: "sumit459goyal@gmail.com"
+    mail to: "sumit.goyal@berylsystems.com"
   end
 end

@@ -30,6 +30,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        PostMailer.new_post(@post).deliver_now
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
         format.js
@@ -46,6 +47,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
+        PostMailer.new_post(@post).deliver_now
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
         format.js
