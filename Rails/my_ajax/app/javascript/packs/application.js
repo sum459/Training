@@ -19,3 +19,5 @@ require("jquery")
 // const imagePath = (name) => images(name, true)
 
 // https://image.shutterstock.com/image-vector/red-heart-design-icon-flat-260nw-530555074.jpg
+//= require rails-ujs
+//= require commontator/application

@@ -56,3 +56,6 @@ gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
 gem "carrierwave-video"
 gem 'devise'
+gem 'commontator'
+gem 'jquery-rails'
+gem 'sassc-rails'
