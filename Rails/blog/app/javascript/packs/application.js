@@ -23,7 +23,6 @@ var video = document.getElementById("myVideo");
 var vidViews = parseInt(document.getElementById("viewLength").innerHTML);
 console.log(vidViews);
 
-
 video.onplay = function() {
 
 video.addEventListener("timeupdate", () => { getPlayedTime(video); });

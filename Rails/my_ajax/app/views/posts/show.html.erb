@@ -1,27 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>Title: </strong>
   <%= @post.title %>
-</p>
+</p><br>
+
+<div>
+	<img src="<%= @post.avatar if @post.avatar? %>" height="42" width="42">
+</div><br>
 
 <p>
-  <strong>Content:</strong>
   <%= @post.content %>
-</p><br><br><br><br>
-
+</p><br>
 
 <div>
  <video id="myVideo" width="320" height="176" controls>
  <source src="<%= @post.video %>" type="video/mp4">
  </video>
-</div>
+</div><br>
+<!-- <p>Playback position: <span id="demo"></span></p> -->
 
-<p>Playback position: <span id="demo"></span></p>
+<% if @post.user == current_user || current_user.try(:admin?) %>
+ <%= link_to 'Edit', edit_post_path(@post) %>
+<% end %><br>
 
-<%= commontator_thread(@post) %>
+<%= commontator_thread(@post) %><br>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
 
 
