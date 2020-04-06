@@ -23,3 +23,12 @@ require("jquery")
 //= require commontator/application
 //= require bootstrap
 
+
+  
+// $( document ).ready(function() {
+//     setInterval("my_function();",1000); 
+ 
+//     function my_function(){
+//         window.location = location.href;
+//     }
+// });
