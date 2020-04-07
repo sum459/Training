@@ -18,7 +18,20 @@
  <source src="<%= @post.video %>" type="video/mp4">
  </video>
 </div><br>
-<!-- <p>Playback position: <span id="demo"></span></p> -->
+
+<%= link_to like_post_path(@post), class: "like", method: :put do %>
+    <button type="button" class="btn btn-info" aria-label="Left Align">
+      <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
+      <span class="badge"><%= @post.get_upvotes.size %></span>
+    </button>
+  <% end %>
+
+  <%= link_to dislike_post_path(@post), class: "like", method: :put do %>
+    <button type="button" class="btn btn-info" aria-label="Left Align">
+      <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
+      <span class="badge"><%= @post.get_downvotes.size %></span>
+    </button>
+  <% end %>
 
 <% if @post.user == current_user || current_user.try(:admin?) %>
  <%= link_to 'Edit', edit_post_path(@post) %>

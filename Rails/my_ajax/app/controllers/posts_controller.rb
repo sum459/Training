@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :authenticate_user!, except: [:index, :show]
-  
+  respond_to :js, :html, :json
   # GET /posts
   # GET /posts.json
   def index
@@ -70,6 +70,27 @@ class PostsController < ApplicationController
       format.js
     end
   end
+
+  # def like
+  #   if params[:format] == 'like'
+  #     @post.liked_by current_user
+  #   elsif params[:format] == 'unlike'
+  #     @post.unliked_by current_user
+  #   end
+  # end
+
+  def upvote
+    @post.upvote_from current_user
+    redirect_to posts_path
+  end
+
+  def downvote
+    @post.downvote_from current_user
+    redirect_to posts_path
+  end
+
+
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
